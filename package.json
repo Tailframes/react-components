@@ -8,7 +8,8 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --check --ignore-path .gitignore .",
     "format:fix": "prettier --write --ignore-path .gitignore .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "release": "standard-version"
   },
   "author": "Tomasz Guzik <tomasz.guzik94@gmail.com>",
   "license": "MIT",
@@ -38,6 +39,7 @@
     "prettier": "^3.2.4",
     "prettier-plugin-tailwindcss": "^0.5.11",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "standard-version": "^9.5.0"
   }
 }

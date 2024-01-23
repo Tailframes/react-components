@@ -1,6 +1,6 @@
-import { clsxMerge } from '@/utils';
-import HalfStarIcon from '@/assets/half-star-icon';
-import StarIcon from '@/assets/star-icon';
+import { clsxMerge } from '../utils';
+import { HalfStarIcon } from '../assets/half-star-icon';
+import { StarIcon } from '../assets/star-icon';
 import { cva, type VariantProps } from 'class-variance-authority';
 import React, { type HTMLAttributes } from 'react';
 
@@ -17,7 +17,7 @@ interface RateProps extends HTMLAttributes<HTMLDivElement>, RateVariants {
   stars?: 1 | 2 | 3 | 4 | 5;
 }
 
-export default function Rate({ value, className, label, stars = 5, ...rest }: RateProps) {
+export function Rate({ value, className, label, stars = 5, ...rest }: RateProps) {
   const ITEMS_COUNT = 5;
 
   return (
@@ -30,7 +30,7 @@ export default function Rate({ value, className, label, stars = 5, ...rest }: Ra
           ) : null}
         </div>
       ))}
-      {label && <span className='ml-1.5 font-normal leading-snug text-slate-500'>{label}</span>}
+      {label && <span className='ml-1.5 text-sm font-normal leading-snug text-slate-500'>{label}</span>}
     </div>
   );
 }

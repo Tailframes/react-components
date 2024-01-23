@@ -1,4 +1,4 @@
-import { clsxMerge } from '@/utils';
+import { clsxMerge } from '../utils';
 import { cva, type VariantProps } from 'class-variance-authority';
 import React, { type HTMLAttributes } from 'react';
 
@@ -38,7 +38,7 @@ interface SpinnerProps extends HTMLAttributes<HTMLDivElement>, SpinnerVariants {
   label?: React.ReactNode;
 }
 
-export default function Spinner({ children, className, label, size, ...rest }: SpinnerProps) {
+export function Spinner({ children, className, label, size, ...rest }: SpinnerProps) {
   return (
     <div className='inline-flex flex-col items-center justify-center gap-3'>
       <div className={clsxMerge(spinnerContainerVariants({ size }))} {...rest}>
@@ -58,7 +58,7 @@ export default function Spinner({ children, className, label, size, ...rest }: S
           />
         </svg>
       </div>
-      {label && <span className='text-sm font-semibold leading-tight text-blue-700'>{label}</span>}
+      {label && <span className='text-xs font-semibold leading-tight text-blue-700'>{label}</span>}
       {!label && <span className='sr-only'>Loading...</span>}
     </div>
   );

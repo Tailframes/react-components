@@ -13,9 +13,6 @@
     "jsx": "preserve",
     "incremental": true,
     "baseUrl": ".",
-    "paths": {
-      "@/*": ["./*"],
-    },
     "moduleResolution": "node",
   },
   "include": ["**/*.ts", "**/*.tsx"],

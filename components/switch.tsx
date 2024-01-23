@@ -1,5 +1,5 @@
-import { clsxMerge } from '@/utils';
-import { Label } from '@/components/label';
+import { clsxMerge } from '../utils';
+import { Label } from './label';
 import { cva, type VariantProps } from 'class-variance-authority';
 import React, { type InputHTMLAttributes } from 'react';
 
@@ -62,7 +62,7 @@ interface SwitchProps
   uncheckedText?: string;
 }
 
-export default function Switch({
+export function Switch({
   children,
   className,
   label,

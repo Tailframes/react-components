@@ -1,4 +1,4 @@
-import { clsxMerge } from '@/utils';
+import { clsxMerge } from '../utils';
 import { cva, type VariantProps } from 'class-variance-authority';
 import React, { type HTMLAttributes } from 'react';
 
@@ -147,7 +147,7 @@ interface TooltipProps extends HTMLAttributes<HTMLDivElement>, TooltipVariants {
   height?: number;
 }
 
-export default function Tooltip({
+export function Tooltip({
   children,
   className,
   placement,

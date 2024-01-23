@@ -1,6 +1,6 @@
-import { clsxMerge, kebabCase } from '@/utils';
-import { Badge, type BadgeProps } from '@/components/badge';
-import { Button } from '@/components/button';
+import { clsxMerge, kebabCase } from '../utils';
+import { Badge, type BadgeProps } from './badge';
+import { Button } from './button';
 import { cva, type VariantProps } from 'class-variance-authority';
 import React, { type HTMLAttributes, type ReactNode, useState } from 'react';
 
@@ -39,13 +39,13 @@ export interface TabItem {
   badge?: BadgeProps;
 }
 
-interface TabProps extends HTMLAttributes<HTMLDivElement>, TabVariants {
+export interface TabProps extends HTMLAttributes<HTMLDivElement>, TabVariants {
   name?: string;
   items: TabItem[];
 }
 
 // TODO https://www.w3.org/WAI/ARIA/apg/patterns/tabs/
-export default function Tabs({ name, className, items, ...rest }: TabProps) {
+export function Tabs({ name, className, items, ...rest }: TabProps) {
   // TODO remove react state, https://codepen.io/magikMaker/pen/BaGxXQx
   // https://www.geeksforgeeks.org/how-to-create-tabs-containing-different-content-in-html/
   const [activeTab, setActiveTab] = useState(items[0].label);

@@ -1,5 +1,5 @@
-import { clsxMerge } from '@/utils';
-import { Label } from '@/components/label';
+import { clsxMerge } from '../utils';
+import { Label } from './label';
 import { cva, type VariantProps } from 'class-variance-authority';
 import React, { type InputHTMLAttributes } from 'react';
 
@@ -44,7 +44,7 @@ interface RadioProps
   label?: string;
 }
 
-export default function Radio({ children, className, label, size, ...rest }: RadioProps) {
+export function Radio({ children, className, label, size, ...rest }: RadioProps) {
   return (
     <div className={clsxMerge(radioContainerVariants({ size }), className)}>
       <input type='radio' className={clsxMerge(radioVariants({ size }), className)} {...rest} />

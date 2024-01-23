@@ -1,5 +1,5 @@
-import { clsxMerge } from '@/utils';
-import { Badge, type BadgeProps } from '@/components/badge';
+import { clsxMerge } from '../utils';
+import { Badge, type BadgeProps } from './badge';
 import { cva, type VariantProps } from 'class-variance-authority';
 import React, { type HTMLAttributes, type ReactNode } from 'react';
 
@@ -80,7 +80,7 @@ export interface AvatarVariants extends Omit<VariantProps<typeof avatarVariants>
 
 type Type = { src: string } | { icon: ReactNode } | { text: string };
 
-type AvatarProps = (HTMLAttributes<HTMLDivElement> & AvatarVariants) &
+export type AvatarProps = (HTMLAttributes<HTMLDivElement> & AvatarVariants) &
   Type & {
     imgProps?: Omit<HTMLAttributes<HTMLImageElement>, 'src'>;
   };
@@ -106,7 +106,7 @@ const Root = ({ children, className, size, shape, badge, src, icon, text, imgPro
   </div>
 );
 
-export default function Avatar(props: AvatarProps) {
+export function Avatar(props: AvatarProps) {
   if (!props.badge) {
     return <Root {...props} />;
   }

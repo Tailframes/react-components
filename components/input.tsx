@@ -1,7 +1,7 @@
-import { clsxMerge } from '@/utils';
+import { clsxMerge } from '../utils';
 import React, { type ForwardedRef, type InputHTMLAttributes } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
-import { Label } from '@/components/label';
+import { Label } from './label';
 
 const inputVariants = cva(
   'w-full rounded-lg border-slate-300 px-3 text-sm font-medium placeholder-slate-400 outline-none transition-all duration-300 ease-out ' +

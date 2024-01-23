@@ -1,4 +1,4 @@
-import { clsxMerge } from '@/utils';
+import { clsxMerge } from '../utils';
 import React, { type HTMLAttributes } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 
@@ -60,7 +60,7 @@ const badgeVariants = cva(
   }
 );
 
-const badgeLabelVariants = cva('text-xs text-black', {
+const badgeLabelVariants = cva('text-xs font-medium text-black', {
   variants: {
     dotOnly: {
       true: '',

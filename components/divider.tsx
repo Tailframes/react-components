@@ -1,4 +1,4 @@
-import { clsxMerge } from '@/utils';
+import { clsxMerge } from '../utils';
 import { cva, type VariantProps } from 'class-variance-authority';
 import React, { type HTMLAttributes } from 'react';
 
@@ -45,7 +45,7 @@ export interface DividerVariants extends VariantProps<typeof dividerVariants> {}
 
 interface DividerProps extends HTMLAttributes<HTMLDivElement>, DividerVariants {}
 
-export default function Divider({ children, className, size, direction, ...rest }: DividerProps) {
+export function Divider({ children, className, size, direction, ...rest }: DividerProps) {
   return (
     <div className={clsxMerge(dividerVariants({ size, direction }), className)} {...rest}>
       {children}

@@ -1,5 +1,5 @@
-import { clsxMerge } from '@/utils';
-import { Label } from '@/components/label';
+import { clsxMerge } from '../utils';
+import { Label } from './label';
 import { cva, type VariantProps } from 'class-variance-authority';
 import React, { type InputHTMLAttributes } from 'react';
 
@@ -43,7 +43,7 @@ interface CheckboxProps
   label?: string;
 }
 
-export default function Checkbox({ children, className, label, size, ...rest }: CheckboxProps) {
+export function Checkbox({ children, className, label, size, ...rest }: CheckboxProps) {
   return (
     <div className={clsxMerge(checkboxContainerVariants({ size }), className)}>
       <input type='checkbox' className={clsxMerge(checkboxVariants({ size }), className)} {...rest} />
