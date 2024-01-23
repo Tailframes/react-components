@@ -1,0 +1,107 @@
+import { clsxMerge, kebabCase } from '@/utils';
+import { Badge, type BadgeProps } from '@/components/badge';
+import { Button } from '@/components/button';
+import { cva, type VariantProps } from 'class-variance-authority';
+import React, { type HTMLAttributes, type ReactNode, useState } from 'react';
+
+const tabsContainerVariants = cva('mb-4 border-b border-gray-200', {
+  variants: {},
+  defaultVariants: {},
+});
+
+const tabVariants = cva(
+  'box-content rounded-none border-b-2 border-b-transparent p-0 font-normal transition-all duration-100 ease-in-out',
+  {
+    variants: {
+      active: {
+        true: 'rounded-none border-b-blue-700 stroke-blue-700 font-semibold text-blue-700',
+        false: '',
+      },
+      disabled: {
+        true: 'text-slate-400',
+        false: '',
+      },
+    },
+    defaultVariants: {
+      active: false,
+      disabled: false,
+    },
+  }
+);
+
+export interface TabVariants extends VariantProps<typeof tabsContainerVariants> {}
+
+export interface TabItem {
+  label: string;
+  content: ReactNode;
+  disabled?: boolean;
+  startIcon?: ReactNode;
+  badge?: BadgeProps;
+}
+
+interface TabProps extends HTMLAttributes<HTMLDivElement>, TabVariants {
+  name?: string;
+  items: TabItem[];
+}
+
+// TODO https://www.w3.org/WAI/ARIA/apg/patterns/tabs/
+export default function Tabs({ name, className, items, ...rest }: TabProps) {
+  // TODO remove react state, https://codepen.io/magikMaker/pen/BaGxXQx
+  // https://www.geeksforgeeks.org/how-to-create-tabs-containing-different-content-in-html/
+  const [activeTab, setActiveTab] = useState(items[0].label);
+
+  return (
+    <div className='w-full'>
+      <div className={clsxMerge(tabsContainerVariants({}))} {...rest}>
+        <ul className='-mb-px flex space-x-6 overflow-auto text-center text-sm font-medium' role='tablist'>
+          {items.map(({ label, disabled, startIcon, badge }, index) => {
+            const isActive = label === activeTab;
+
+            return (
+              <li key={index} role='presentation'>
+                <Button
+                  variant='text-default'
+                  className={clsxMerge(tabVariants({ active: isActive, disabled }), className)}
+                  id={`${name ? `${name}-` : ''}tab-${index}`}
+                  role='tab'
+                  aria-controls={kebabCase(`${name ? `${name}-` : ''}tab-panel-${index}`)}
+                  aria-selected={isActive}
+                  onClick={() => {
+                    setActiveTab(label);
+                  }}
+                  disabled={disabled}
+                  startIcon={startIcon}
+                  endIcon={
+                    badge ? (
+                      <Badge
+                        variant={isActive ? 'primary' : 'secondary'}
+                        className={disabled ? 'border-transparent bg-slate-100 text-slate-400' : ''}
+                        {...badge}
+                      />
+                    ) : undefined
+                  }
+                  tabIndex={0}
+                >
+                  {label}
+                </Button>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+      <div>
+        {items.map(({ label, content }, index) => (
+          <div
+            key={index}
+            id={kebabCase(`${name ? `${name}-` : ''}tab-panel-${index}`)}
+            className={`${label === activeTab ? '' : 'hidden'}`}
+          >
+            {content}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+Tabs.displayName = 'Tabs';
