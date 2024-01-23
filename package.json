@@ -6,10 +6,11 @@
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "format": "prettier --check --ignore-path .gitignore .",
-    "format:fix": "prettier --write --ignore-path .gitignore .",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "release": "standard-version"
+    "release": "standard-version",
+    "prepare": "husky install"
   },
   "author": "Tomasz Guzik <tomasz.guzik94@gmail.com>",
   "license": "MIT",
@@ -36,10 +37,15 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-tailwindcss": "^3.14.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
     "prettier": "^3.2.4",
     "prettier-plugin-tailwindcss": "^0.5.11",
+    "standard-version": "^9.5.0",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5.3.3",
-    "standard-version": "^9.5.0"
+    "typescript": "^5.3.3"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": "npm run lint:fix && npm run format:fix"
   }
 }
