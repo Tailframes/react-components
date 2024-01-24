@@ -1,6 +1,6 @@
 import React, { type SVGProps } from 'react';
 
-export function HalfStarIcon(props: SVGProps<never>) {
+export function HalfStarIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       width='24'

@@ -1,6 +1,6 @@
 import React, { type SVGProps } from 'react';
 
-export function StarIcon(props: SVGProps<never>) {
+export function StarIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       width='24'
