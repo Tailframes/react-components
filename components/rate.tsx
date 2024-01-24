@@ -15,10 +15,12 @@ interface RateProps extends HTMLAttributes<HTMLDivElement>, RateVariants {
   value: 0.5 | 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5;
   label?: React.ReactNode;
   stars?: 1 | 2 | 3 | 4 | 5;
+  labelProps?: React.HTMLAttributes<HTMLSpanElement>;
 }
 
-export function Rate({ value, className, label, stars = 5, ...rest }: RateProps) {
+export function Rate({ value, className, label, stars = 5, labelProps = {}, ...rest }: RateProps) {
   const ITEMS_COUNT = 5;
+  const { className: labelClassName, ...labelRest } = labelProps;
 
   return (
     <div className={clsxMerge(rateVariants({}), className)} {...rest}>
@@ -30,7 +32,14 @@ export function Rate({ value, className, label, stars = 5, ...rest }: RateProps)
           ) : null}
         </div>
       ))}
-      {label && <span className='ml-1.5 text-sm font-normal leading-snug text-slate-500'>{label}</span>}
+      {label && (
+        <span
+          className={clsxMerge('ml-1.5 text-sm font-normal leading-snug text-slate-500', labelClassName)}
+          {...labelRest}
+        >
+          {label}
+        </span>
+      )}
     </div>
   );
 }

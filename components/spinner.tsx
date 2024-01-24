@@ -36,9 +36,12 @@ export interface SpinnerVariants extends VariantProps<typeof spinnerVariants> {}
 
 interface SpinnerProps extends HTMLAttributes<HTMLDivElement>, SpinnerVariants {
   label?: React.ReactNode;
+  labelProps?: React.HTMLAttributes<HTMLSpanElement>;
 }
 
-export function Spinner({ children, className, label, size, ...rest }: SpinnerProps) {
+export function Spinner({ children, className, label, size, labelProps = {}, ...rest }: SpinnerProps) {
+  const { className: labelClassName, ...labelRest } = labelProps;
+
   return (
     <div className='inline-flex flex-col items-center justify-center gap-3'>
       <div className={clsxMerge(spinnerContainerVariants({ size }))} {...rest}>
@@ -58,7 +61,11 @@ export function Spinner({ children, className, label, size, ...rest }: SpinnerPr
           />
         </svg>
       </div>
-      {label && <span className='text-xs font-semibold leading-tight text-blue-700'>{label}</span>}
+      {label && (
+        <span className={clsxMerge('text-xs font-semibold leading-tight text-blue-700', labelClassName)} {...labelRest}>
+          {label}
+        </span>
+      )}
       {!label && <span className='sr-only'>Loading...</span>}
     </div>
   );
