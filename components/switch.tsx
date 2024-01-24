@@ -39,8 +39,8 @@ const switchContainerVariants = cva(
   {
     variants: {
       size: {
-        medium: 'left-[3px] h-5 w-5 peer-checked:left-[5px]',
-        small: 'left-[2px] h-4 w-4',
+        medium: 'left-[3px] size-5 peer-checked:left-[5px]',
+        small: 'left-[2px] size-4',
       },
     },
     defaultVariants: {
@@ -82,7 +82,7 @@ export function Switch({
           <div className={clsxMerge(switchDotVariants({ size }))} />
           <div className={clsxMerge(switchContainerVariants({ size }))}></div>
           {checkedIcon && (
-            <div className='pointer-events-none invisible absolute left-3 top-1/2 h-[18px] w-[18px] -translate-x-1/2 -translate-y-1/2 cursor-pointer overflow-hidden stroke-white peer-checked:visible peer-disabled:cursor-not-allowed peer-disabled:stroke-slate-400'>
+            <div className='pointer-events-none invisible absolute left-3 top-1/2 size-[18px] -translate-x-1/2 -translate-y-1/2 cursor-pointer overflow-hidden stroke-white peer-checked:visible peer-disabled:cursor-not-allowed peer-disabled:stroke-slate-400'>
               {checkedIcon}
             </div>
           )}
@@ -92,7 +92,7 @@ export function Switch({
             </div>
           )}
           {uncheckedIcon && (
-            <div className='absolute right-1 top-1/2 h-[18px] w-[18px] -translate-y-1/2 cursor-pointer overflow-hidden stroke-blue-700 peer-checked:invisible peer-disabled:cursor-not-allowed peer-disabled:stroke-slate-400'>
+            <div className='absolute right-1 top-1/2 size-[18px] -translate-y-1/2 cursor-pointer overflow-hidden stroke-blue-700 peer-checked:invisible peer-disabled:cursor-not-allowed peer-disabled:stroke-slate-400'>
               {uncheckedIcon}
             </div>
           )}

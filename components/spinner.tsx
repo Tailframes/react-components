@@ -5,11 +5,11 @@ import React, { type HTMLAttributes } from 'react';
 const spinnerContainerVariants = cva('relative', {
   variants: {
     size: {
-      xsmall: 'h-3 w-3',
-      small: 'h-4 w-4',
-      medium: 'h-6 w-6',
-      large: 'h-8 w-8',
-      xlarge: 'h-10 w-10',
+      xsmall: 'size-3',
+      small: 'size-4',
+      medium: 'size-6',
+      large: 'size-8',
+      xlarge: 'size-10',
     },
   },
   defaultVariants: {
@@ -20,11 +20,11 @@ const spinnerContainerVariants = cva('relative', {
 const spinnerVariants = cva('absolute rounded-full border-2 border-blue-100', {
   variants: {
     size: {
-      xsmall: 'h-3 w-3',
-      small: 'h-4 w-4',
-      medium: 'h-6 w-6',
-      large: 'h-8 w-8',
-      xlarge: 'h-10 w-10',
+      xsmall: 'size-3',
+      small: 'size-4',
+      medium: 'size-6',
+      large: 'size-8',
+      xlarge: 'size-10',
     },
   },
   defaultVariants: {

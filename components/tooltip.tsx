@@ -23,7 +23,7 @@ const tooltipVariants = cva(
         left: 'right-[calc(100%+0.75rem)] top-1/2 -translate-y-1/2',
       },
       showArrow: {
-        true: 'after:absolute after:block after:h-0 after:w-0 after:border-8 after:border-transparent',
+        true: 'after:absolute after:block after:size-0 after:border-8 after:border-transparent',
         false: '',
       },
     },
@@ -107,33 +107,33 @@ const tooltipVariants = cva(
       {
         size: 'large',
         placement: 'top',
-        class: '-top-[3.25rem]',
+        class: 'top-[-3.25rem]',
       },
       {
         size: 'medium',
         placement: 'top',
-        class: '-top-[2.75rem]',
+        class: 'top-[-2.75rem]',
       },
       {
         size: 'small',
         placement: 'top',
-        class: '-top-[2.25rem]',
+        class: 'top-[-2.25rem]',
       },
       /// /
       {
         size: 'large',
         placement: 'bottom',
-        class: '-bottom-[3.25rem]',
+        class: 'bottom-[-3.25rem]',
       },
       {
         size: 'medium',
         placement: 'bottom',
-        class: '-bottom-[2.75rem]',
+        class: 'bottom-[-2.75rem]',
       },
       {
         size: 'small',
         placement: 'bottom',
-        class: '-bottom-[2.25rem]',
+        class: 'bottom-[-2.25rem]',
       },
     ],
   }

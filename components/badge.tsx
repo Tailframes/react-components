@@ -34,7 +34,7 @@ const badgeVariants = cva(
     compoundVariants: [
       {
         dotOnly: true,
-        class: 'h-2 w-2 px-0 py-0',
+        class: 'size-2 p-0',
       },
       {
         dotOnly: true,

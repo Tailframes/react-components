@@ -12,9 +12,8 @@ const radioVariants = cva(
   {
     variants: {
       size: {
-        medium:
-          'h-[10px] w-[10px] disabled:h-[14px] disabled:w-[14px] disabled:checked:h-[10px] disabled:checked:w-[10px]',
-        small: 'h-2 w-2 disabled:h-3 disabled:w-3 disabled:checked:h-3 disabled:checked:w-3',
+        medium: 'size-[10px] disabled:size-[14px] disabled:checked:size-[10px]',
+        small: 'size-2 disabled:size-3 disabled:checked:size-3',
       },
     },
     defaultVariants: {

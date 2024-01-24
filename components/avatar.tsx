@@ -10,9 +10,9 @@ const avatarVariants = cva('relative box-content flex items-center justify-cente
       square: 'rounded-lg',
     },
     size: {
-      large: 'h-[3.5rem] w-[3.5rem]',
-      medium: 'h-10 w-10',
-      small: 'h-8 w-8',
+      large: 'size-[3.5rem]',
+      medium: 'size-10',
+      small: 'size-8',
     },
     badge: {
       true: '',
@@ -48,9 +48,9 @@ const avatarVariants = cva('relative box-content flex items-center justify-cente
 const avatarIconVariants = cva('flex items-center justify-center', {
   variants: {
     size: {
-      large: 'h-6 w-6',
-      medium: 'h-[18px] w-[18px]',
-      small: 'h-3.5 w-3.5',
+      large: 'size-6',
+      medium: 'size-[18px]',
+      small: 'size-3.5',
     },
   },
   defaultVariants: {

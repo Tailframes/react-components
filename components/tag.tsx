@@ -45,12 +45,10 @@ export function Tag({ className, startIcon, endIcon, variant, children, ...rest 
       )}
     >
       {startIcon && (
-        <div className='inline-flex h-[18px] w-[18px] items-center justify-start overflow-hidden'>{startIcon}</div>
+        <div className='inline-flex size-[18px] items-center justify-start overflow-hidden'>{startIcon}</div>
       )}
       <span {...rest}>{children}</span>
-      {endIcon && (
-        <div className='inline-flex h-[18px] w-[18px] items-center justify-end overflow-hidden'>{endIcon}</div>
-      )}
+      {endIcon && <div className='inline-flex size-[18px] items-center justify-end overflow-hidden'>{endIcon}</div>}
     </div>
   );
 }
