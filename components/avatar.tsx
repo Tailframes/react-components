@@ -42,6 +42,13 @@ const avatarVariants = cva('relative box-content flex items-center justify-cente
       badge: false,
       class: 'border-4 border-white shadow-md',
     },
+    {
+      shape: 'circle',
+      size: ['medium', 'large'],
+      text: false,
+      icon: false,
+      class: 'bg-white',
+    },
   ],
 });
 
