@@ -51,7 +51,7 @@ const switchContainerVariants = cva(
 
 export interface SwitchVariants extends VariantProps<typeof switchVariants> {}
 
-interface SwitchProps
+export interface SwitchProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'id' | 'name' | 'type' | 'size'>,
     Required<Pick<InputHTMLAttributes<HTMLInputElement>, 'id' | 'name'>>,
     SwitchVariants {

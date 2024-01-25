@@ -36,7 +36,7 @@ const checkboxContainerVariants = cva('inline-flex items-center justify-start ga
 
 export interface CheckboxVariants extends VariantProps<typeof checkboxVariants> {}
 
-interface CheckboxProps
+export interface CheckboxProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'id' | 'name' | 'type' | 'size'>,
     Required<Pick<InputHTMLAttributes<HTMLInputElement>, 'id' | 'name'>>,
     CheckboxVariants {

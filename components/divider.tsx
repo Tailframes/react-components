@@ -43,7 +43,7 @@ const dividerVariants = cva('bg-slate-300', {
 
 export interface DividerVariants extends VariantProps<typeof dividerVariants> {}
 
-interface DividerProps extends HTMLAttributes<HTMLDivElement>, DividerVariants {}
+export interface DividerProps extends HTMLAttributes<HTMLDivElement>, DividerVariants {}
 
 export function Divider({ children, className, size, direction, ...rest }: DividerProps) {
   return (

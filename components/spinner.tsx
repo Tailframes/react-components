@@ -34,7 +34,7 @@ const spinnerVariants = cva('absolute rounded-full border-2 border-blue-100', {
 
 export interface SpinnerVariants extends VariantProps<typeof spinnerVariants> {}
 
-interface SpinnerProps extends HTMLAttributes<HTMLDivElement>, SpinnerVariants {
+export interface SpinnerProps extends HTMLAttributes<HTMLDivElement>, SpinnerVariants {
   label?: React.ReactNode;
   labelProps?: React.HTMLAttributes<HTMLSpanElement>;
 }

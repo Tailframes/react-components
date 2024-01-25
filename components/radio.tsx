@@ -36,7 +36,7 @@ const radioContainerVariants = cva('inline-flex items-center justify-start', {
 
 export interface RadioVariants extends VariantProps<typeof radioVariants> {}
 
-interface RadioProps
+export interface RadioProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'id' | 'name' | 'type' | 'size'>,
     Required<Pick<InputHTMLAttributes<HTMLInputElement>, 'id' | 'name'>>,
     RadioVariants {

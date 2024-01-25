@@ -11,7 +11,7 @@ const rateVariants = cva('flex items-center justify-center gap-0.5', {
 
 export interface RateVariants extends VariantProps<typeof rateVariants> {}
 
-interface RateProps extends HTMLAttributes<HTMLDivElement>, RateVariants {
+export interface RateProps extends HTMLAttributes<HTMLDivElement>, RateVariants {
   value: 0.5 | 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5;
   label?: React.ReactNode;
   stars?: 1 | 2 | 3 | 4 | 5;
