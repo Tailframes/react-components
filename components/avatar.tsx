@@ -10,11 +10,14 @@ const avatarVariants = cva('relative box-content flex items-center justify-cente
       square: 'rounded-lg',
     },
     size: {
-      large: 'size-[3.5rem]',
       medium: 'size-10',
       small: 'size-8',
     },
     badge: {
+      true: '',
+      false: '',
+    },
+    elevated: {
       true: '',
       false: '',
     },
@@ -34,17 +37,32 @@ const avatarVariants = cva('relative box-content flex items-center justify-cente
   defaultVariants: {
     shape: 'circle',
     size: 'medium',
+    elevated: false,
   },
   compoundVariants: [
     {
       shape: 'circle',
-      size: ['medium', 'large'],
+      elevated: true,
       badge: false,
-      class: 'border-4 border-white shadow-md',
+      class: 'border-white shadow-md',
     },
     {
       shape: 'circle',
-      size: ['medium', 'large'],
+      size: 'small',
+      elevated: true,
+      badge: false,
+      class: 'border-2',
+    },
+    {
+      shape: 'circle',
+      size: 'medium',
+      elevated: true,
+      badge: false,
+      class: 'border-[3px]',
+    },
+    {
+      shape: 'circle',
+      size: 'medium',
       text: false,
       icon: false,
       class: 'bg-white',
@@ -55,7 +73,6 @@ const avatarVariants = cva('relative box-content flex items-center justify-cente
 const avatarIconVariants = cva('flex items-center justify-center', {
   variants: {
     size: {
-      large: 'size-6',
       medium: 'size-[18px]',
       small: 'size-3.5',
     },
@@ -68,7 +85,6 @@ const avatarIconVariants = cva('flex items-center justify-center', {
 const avatarTextVariants = cva('flex items-center justify-center font-semibold text-white', {
   variants: {
     size: {
-      large: 'text-base',
       medium: 'text-sm',
       small: 'text-xs',
     },
@@ -92,7 +108,19 @@ export type AvatarProps = (HTMLAttributes<HTMLDivElement> & AvatarVariants) &
     imgProps?: Omit<HTMLAttributes<HTMLImageElement>, 'src'>;
   };
 
-const Root = ({ children, className, size, shape, badge, src, icon, text, imgProps = {}, ...rest }: AvatarProps) => (
+const Root = ({
+  children,
+  className,
+  size,
+  shape,
+  badge,
+  src,
+  icon,
+  text,
+  elevated,
+  imgProps = {},
+  ...rest
+}: AvatarProps) => (
   <div
     className={clsxMerge(
       avatarVariants({
@@ -102,6 +130,7 @@ const Root = ({ children, className, size, shape, badge, src, icon, text, imgPro
         image: Boolean(src),
         text: Boolean(text),
         icon: Boolean(icon),
+        elevated,
       }),
       className
     )}
