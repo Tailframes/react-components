@@ -10,7 +10,8 @@
     "format:fix": "prettier --write .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "release": "standard-version",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "jsx-components": "npx tsc --project tsconfig.json --outDir jsx --noEmit false"
   },
   "author": "Tomasz Guzik <tomasz.guzik94@gmail.com>",
   "license": "MIT",

@@ -1,5 +1,5 @@
 import { clsxMerge } from '../utils';
-import React, { type HTMLAttributes } from 'react';
+import { type HTMLAttributes } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 
 const badgeVariants = cva(

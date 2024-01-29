@@ -2,7 +2,7 @@ import { clsxMerge, kebabCase } from '../utils';
 import { Badge, type BadgeProps } from './badge';
 import { Button } from './button';
 import { cva, type VariantProps } from 'class-variance-authority';
-import React, { type HTMLAttributes, type ReactNode, useState } from 'react';
+import { type HTMLAttributes, type ReactNode, useState } from 'react';
 
 const tabsContainerVariants = cva('mb-4 border-b border-gray-200', {
   variants: {},

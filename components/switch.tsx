@@ -1,7 +1,7 @@
 import { clsxMerge } from '../utils';
 import { Label } from './label';
 import { cva, type VariantProps } from 'class-variance-authority';
-import React, { type InputHTMLAttributes } from 'react';
+import { type InputHTMLAttributes } from 'react';
 
 const switchVariants = cva('', {
   variants: {

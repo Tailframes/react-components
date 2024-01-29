@@ -1,7 +1,7 @@
 import { clsxMerge } from '../utils';
 import { Badge, type BadgeProps } from './badge';
 import { cva, type VariantProps } from 'class-variance-authority';
-import React, { type HTMLAttributes, type ReactNode } from 'react';
+import { type HTMLAttributes, type ReactNode } from 'react';
 
 const avatarVariants = cva('relative box-content flex items-center justify-center overflow-hidden', {
   variants: {

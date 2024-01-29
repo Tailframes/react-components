@@ -1,5 +1,5 @@
 import { clsxMerge } from '../utils';
-import React, { type ButtonHTMLAttributes } from 'react';
+import { type ButtonHTMLAttributes, forwardRef, type ReactNode } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 
 const buttonVariants = cva(
@@ -101,11 +101,11 @@ export interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement>,
     Omit<ButtonVariants, 'disabled' | 'href' | 'startIcon' | 'endIcon'> {
   href?: string;
-  startIcon?: React.ReactNode;
-  endIcon?: React.ReactNode;
+  startIcon?: ReactNode;
+  endIcon?: ReactNode;
 }
 
-export const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
+export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
   (
     { href, className, variant, size, children, iconOnly, startIcon, endIcon, fullWidth, ...rest }: ButtonProps,
     ref

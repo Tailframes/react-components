@@ -1,6 +1,6 @@
 import { clsxMerge } from '../utils';
 import { cva, type VariantProps } from 'class-variance-authority';
-import React, { type HTMLAttributes } from 'react';
+import { type HTMLAttributes } from 'react';
 
 const tooltipVariants = cva(
   'pointer-events-none absolute inline-flex items-center justify-center rounded-lg font-semibold opacity-0 transition-opacity ' +

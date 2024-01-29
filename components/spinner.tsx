@@ -1,6 +1,6 @@
 import { clsxMerge } from '../utils';
 import { cva, type VariantProps } from 'class-variance-authority';
-import React, { type HTMLAttributes } from 'react';
+import { type HTMLAttributes } from 'react';
 
 const spinnerContainerVariants = cva('relative', {
   variants: {

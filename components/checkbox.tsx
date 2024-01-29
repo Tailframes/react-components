@@ -1,7 +1,7 @@
 import { clsxMerge } from '../utils';
 import { Label } from './label';
 import { cva, type VariantProps } from 'class-variance-authority';
-import React, { type InputHTMLAttributes } from 'react';
+import { type InputHTMLAttributes } from 'react';
 
 const checkboxVariants = cva(
   'peer cursor-pointer rounded border-2 border-blue-700 transition-colors duration-300 ease-in-out indeterminate:bg-red-300 ' +

@@ -1,5 +1,5 @@
 import { clsxMerge } from '../utils';
-import React, { type LabelHTMLAttributes } from 'react';
+import { type LabelHTMLAttributes } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 
 const labelVariants = cva('font-medium leading-none peer-disabled:opacity-70', {

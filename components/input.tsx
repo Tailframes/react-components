@@ -1,5 +1,5 @@
 import { clsxMerge } from '../utils';
-import React, { type ForwardedRef, type InputHTMLAttributes } from 'react';
+import { type ForwardedRef, forwardRef, type InputHTMLAttributes, type ReactNode } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { Label } from './label';
 
@@ -77,11 +77,11 @@ export interface InputProps
   containerClassName?: string;
   label?: string;
   helperText?: string;
-  startIcon?: React.ReactNode;
-  endIcon?: React.ReactNode;
+  startIcon?: ReactNode;
+  endIcon?: ReactNode;
 }
 
-export const Input = React.forwardRef<HTMLInputElement, InputProps>(
+export const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     { className, containerClassName, variant, size, label, startIcon, endIcon, helperText, error, ...rest }: InputProps,
     ref: ForwardedRef<HTMLInputElement>

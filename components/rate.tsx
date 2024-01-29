@@ -2,7 +2,7 @@ import { clsxMerge } from '../utils';
 import { HalfStarIcon } from '../assets/half-star-icon';
 import { StarIcon } from '../assets/star-icon';
 import { cva, type VariantProps } from 'class-variance-authority';
-import React, { type HTMLAttributes } from 'react';
+import { type HTMLAttributes } from 'react';
 
 const rateVariants = cva('flex items-center justify-center gap-0.5', {
   variants: {},

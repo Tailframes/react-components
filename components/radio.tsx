@@ -1,7 +1,7 @@
 import { clsxMerge } from '../utils';
 import { Label, type LabelProps } from './label';
 import { cva, type VariantProps } from 'class-variance-authority';
-import React, { type InputHTMLAttributes } from 'react';
+import { type InputHTMLAttributes } from 'react';
 
 const radioVariants = cva(
   'peer cursor-pointer border-0 ring-2 ring-slate-300 ring-offset-2 transition-colors duration-300 ease-in-out ' +
