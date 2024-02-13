@@ -3,7 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { type HTMLAttributes } from 'react';
 
 const tooltipVariants = cva(
-  'pointer-events-none absolute inline-flex items-center justify-center rounded-lg font-semibold opacity-0 transition-opacity ' +
+  'pointer-events-none absolute z-50 inline-flex items-center justify-center rounded-lg font-semibold opacity-0 transition-opacity ' +
     'group-hover:opacity-100',
   {
     variants: {
@@ -34,7 +34,6 @@ const tooltipVariants = cva(
       showArrow: true,
     },
     compoundVariants: [
-      // Arrow variants
       {
         variant: 'primary',
         showArrow: true,
@@ -103,7 +102,6 @@ const tooltipVariants = cva(
         showArrow: true,
         class: 'after:-left-4 after:top-1/2 after:-translate-y-1/2',
       },
-      /// /
       {
         size: 'large',
         placement: 'top',
@@ -119,7 +117,6 @@ const tooltipVariants = cva(
         placement: 'top',
         class: 'top-[-2.25rem]',
       },
-      /// /
       {
         size: 'large',
         placement: 'bottom',
@@ -161,17 +158,16 @@ export function Tooltip({
   ...rest
 }: TooltipProps) {
   return (
-    <div className='p-10'>
-      <div className='group relative z-10 inline-block whitespace-nowrap'>
-        {children}
-        <span
-          className={clsxMerge(tooltipVariants({ placement, size, variant, showArrow }), className)}
-          style={{ width, height, ...style }}
-          {...rest}
-        >
-          {value}
-        </span>
-      </div>
+    <div className='group relative inline-block whitespace-nowrap'>
+      {children}
+      <span
+        role='tooltip'
+        className={clsxMerge(tooltipVariants({ placement, size, variant, showArrow }), className)}
+        style={{ width, height, ...style }}
+        {...rest}
+      >
+        {value}
+      </span>
     </div>
   );
 }
