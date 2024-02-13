@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.3](https://github.com/Tailframes/tailframes-components/compare/v0.0.2...v0.0.3) (2024-02-13)
+
+
+### Features
+
+* add jsx components generation script ([802ab21](https://github.com/Tailframes/tailframes-components/commit/802ab2142635ba4d578f0b5efd5758922671fd51))
+* add label props to radio component; add empty value to rate component ([7082f9d](https://github.com/Tailframes/tailframes-components/commit/7082f9df215b23937b620847ec840b054f03ea4c))
+* **button:** decrease button gap for small & xsmall size variants ([4364e91](https://github.com/Tailframes/tailframes-components/commit/4364e913801ffc48d3062e781f8e954799033250))
+* **tooltip:** remove tooltip padding wrapper; fix and increase tooltip z-index; add tooltip role ([60166d4](https://github.com/Tailframes/tailframes-components/commit/60166d498e00a1003faba4ab386bf454f35f55f1))
+
+
+### Bug Fixes
+
+* **avatar:** add elevated variant ([80cf2f7](https://github.com/Tailframes/tailframes-components/commit/80cf2f78e91ea8c203e4413d88fe9892a5a256ee))
+* remove unnecessary eslint plugin (eslint-plugin-n) ([fd290f0](https://github.com/Tailframes/tailframes-components/commit/fd290f0175c834cf13117c93928b740fd24e7b26))
+
 ### 0.0.2 (2024-01-25)
 
 
