@@ -16,8 +16,8 @@ const buttonVariants = cva(
       size: {
         large: 'h-[42px] min-w-[42px]',
         medium: 'h-[38px] min-w-[38px]',
-        small: 'h-8 min-w-[32px] text-xs',
-        xsmall: 'h-6 min-w-[24px] text-xs',
+        small: 'h-8 min-w-[32px] gap-1.5 text-xs',
+        xsmall: 'h-6 min-w-[24px] gap-1 text-xs',
       },
       disabled: {
         true: '',
@@ -99,7 +99,8 @@ export interface ButtonVariants extends VariantProps<typeof buttonVariants> {}
 
 export interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement>,
-    Omit<ButtonVariants, 'disabled' | 'href' | 'startIcon' | 'endIcon'> {
+    Omit<ButtonVariants, 'disabled' | 'href' | 'startIcon' | 'endIcon'>,
+    Partial<Pick<HTMLAnchorElement, 'target'>> {
   href?: string;
   startIcon?: ReactNode;
   endIcon?: ReactNode;
