@@ -3,7 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { type HTMLAttributes } from 'react';
 
 const tooltipVariants = cva(
-  'pointer-events-none absolute z-50 inline-flex items-center justify-center rounded-lg font-semibold opacity-0 transition-opacity ' +
+  'pointer-events-none absolute z-50 inline-flex items-center justify-center rounded-lg font-semibold opacity-0 transition-opacity duration-300 ease-in-out ' +
     'group-hover:opacity-100',
   {
     variants: {
@@ -85,22 +85,22 @@ const tooltipVariants = cva(
       {
         placement: 'top',
         showArrow: true,
-        class: 'after:-bottom-4 after:left-1/2 after:-translate-x-1/2',
+        class: 'after:-bottom-[0.95rem] after:left-1/2 after:-translate-x-1/2',
       },
       {
         placement: 'bottom',
         showArrow: true,
-        class: 'after:-top-4 after:left-1/2 after:-translate-x-1/2',
+        class: 'after:-top-[0.95rem] after:left-1/2 after:-translate-x-1/2',
       },
       {
         placement: 'left',
         showArrow: true,
-        class: 'after:-right-4 after:top-1/2 after:-translate-y-1/2',
+        class: 'after:-right-[0.95rem] after:top-1/2 after:-translate-y-1/2',
       },
       {
         placement: 'right',
         showArrow: true,
-        class: 'after:-left-4 after:top-1/2 after:-translate-y-1/2',
+        class: 'after:-left-[0.95rem] after:top-1/2 after:-translate-y-1/2',
       },
       {
         size: 'large',
