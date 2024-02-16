@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/Tailframes/tailframes-components/compare/v0.0.3...v0.0.4) (2024-02-16)
+
+
+### Features
+
+* **button:** fix button child components gap; decrease padding for small/xsmall variants ([dea72bf](https://github.com/Tailframes/tailframes-components/commit/dea72bf94fca5b5a1d5a2f3b088f9b53c6b64a8a))
+* **tooltip:** add tooltip transition; fix tooltip arrow placement ([5d7de33](https://github.com/Tailframes/tailframes-components/commit/5d7de3303c31b335a5e4d14cd96b16469ffc046d))
+
+
+### Bug Fixes
+
+* **tabs:** remove unnecessary comments ([255c754](https://github.com/Tailframes/tailframes-components/commit/255c754faf593014cd4a121b8713a003c4d8ba0b))
+
 ### [0.0.3](https://github.com/Tailframes/tailframes-components/compare/v0.0.2...v0.0.3) (2024-02-13)
 
 
