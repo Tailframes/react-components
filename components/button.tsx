@@ -3,7 +3,7 @@ import { type ButtonHTMLAttributes, forwardRef, type ReactNode } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 
 const buttonVariants = cva(
-  'group inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg py-2 align-middle text-sm font-semibold leading-none transition-all duration-300 ease-in-out disabled:cursor-not-allowed',
+  'group inline-flex items-center justify-center whitespace-nowrap rounded-lg py-2 align-middle text-sm font-semibold leading-none transition-all duration-300 ease-in-out disabled:cursor-not-allowed',
   {
     variants: {
       variant: {
@@ -14,10 +14,10 @@ const buttonVariants = cva(
         'text-default': 'stroke-black px-2 text-black',
       },
       size: {
-        large: 'h-[42px] min-w-[42px]',
-        medium: 'h-[38px] min-w-[38px]',
+        large: 'h-[42px] min-w-[42px] gap-2',
+        medium: 'h-[38px] min-w-[38px] gap-2',
         small: 'h-8 min-w-[32px] gap-1.5 text-xs',
-        xsmall: 'h-6 min-w-[24px] gap-1 text-xs',
+        xsmall: 'h-6 min-w-[24px] gap-1.5 text-xs',
       },
       disabled: {
         true: '',
@@ -75,7 +75,7 @@ const buttonVariants = cva(
         variant: ['primary', 'secondary', 'outlined'],
         iconOnly: false,
         size: ['small', 'xsmall'],
-        class: 'px-3',
+        class: 'px-2',
       },
       {
         variant: ['text', 'text-default'],
