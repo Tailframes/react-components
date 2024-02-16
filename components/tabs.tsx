@@ -46,8 +46,6 @@ export interface TabProps extends HTMLAttributes<HTMLDivElement>, TabVariants {
 
 // TODO https://www.w3.org/WAI/ARIA/apg/patterns/tabs/
 export function Tabs({ name, className, items, ...rest }: TabProps) {
-  // TODO remove react state, https://codepen.io/magikMaker/pen/BaGxXQx
-  // https://www.geeksforgeeks.org/how-to-create-tabs-containing-different-content-in-html/
   const [activeTab, setActiveTab] = useState(items[0].label);
 
   return (
