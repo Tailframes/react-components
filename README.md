@@ -3,4 +3,4 @@ Open source React components styled with Tailwind CSS for streamlined and respon
 
 ## Documentation
 
-Documentation can be found on [tailframes.com](https://tailframes.com/docs).
+Documentation can be found on [tailframes.com](https://tailframes.com/getting-started/introduction).
