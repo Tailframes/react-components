@@ -136,7 +136,7 @@ const Root = ({
     )}
     {...rest}
   >
-    {!icon && !text && <img src={src} alt='avatar' className='aspect-square' {...imgProps} />}
+    {!icon && !text && <img src={src} alt='' className='aspect-square' {...imgProps} />}
     {icon && <div className={avatarIconVariants({ size })}>{children}</div>}
     {text && <span className={avatarTextVariants({ size })}>{text}</span>}
   </div>
