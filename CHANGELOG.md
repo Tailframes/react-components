@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.6](https://github.com/Tailframes/tailframes-components/compare/v0.0.5...v0.0.6) (2024-02-27)
+
+
+### Bug Fixes
+
+* **button:** transparent outlined button background ([57ba406](https://github.com/Tailframes/tailframes-components/commit/57ba4069550bf150e2e8bc0a28375a4afef89909))
+
 ### [0.0.5](https://github.com/Tailframes/tailframes-components/compare/v0.0.4...v0.0.5) (2024-02-20)
 
 
