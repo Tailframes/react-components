@@ -14,7 +14,7 @@
     "jsx-components": "npx tsc --project tsconfig.json --outDir jsx --noEmit false"
   },
   "author": "Tomasz Guzik <tomasz.guzik94@gmail.com>",
-  "license": "MIT",
+  "license": "https://tailframes.com/license",
   "dependencies": {
     "@tailwindcss/forms": "^0.5.7",
     "class-variance-authority": "^0.7.0",
