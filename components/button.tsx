@@ -9,7 +9,7 @@ const buttonVariants = cva(
       variant: {
         primary: 'bg-blue-700 stroke-white px-6 text-white hover:bg-blue-950',
         secondary: 'bg-blue-50 stroke-blue-700 px-6 text-blue-700 hover:bg-blue-100',
-        outlined: 'border border-blue-700 bg-white stroke-blue-700 px-6 text-blue-700 hover:bg-blue-50',
+        outlined: 'border border-blue-700 bg-transparent stroke-blue-700 px-6 text-blue-700 hover:bg-blue-50',
         text: 'stroke-blue-700 px-2 text-blue-600',
         'text-default': 'stroke-black px-2 text-black',
       },
