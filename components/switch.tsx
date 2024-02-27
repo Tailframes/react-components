@@ -1,7 +1,7 @@
 import { clsxMerge } from '../utils';
 import { Label } from './label';
 import { cva, type VariantProps } from 'class-variance-authority';
-import { type InputHTMLAttributes } from 'react';
+import { type InputHTMLAttributes, type ReactNode } from 'react';
 
 const switchVariants = cva('', {
   variants: {
@@ -56,8 +56,8 @@ export interface SwitchProps
     Required<Pick<InputHTMLAttributes<HTMLInputElement>, 'id' | 'name'>>,
     SwitchVariants {
   label?: string;
-  checkedIcon?: React.ReactNode;
-  uncheckedIcon?: React.ReactNode;
+  checkedIcon?: ReactNode;
+  uncheckedIcon?: ReactNode;
   checkedText?: string;
   uncheckedText?: string;
 }

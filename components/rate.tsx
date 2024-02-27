@@ -2,7 +2,7 @@ import { clsxMerge } from '../utils';
 import { HalfStarIcon } from '../assets/half-star-icon';
 import { StarIcon } from '../assets/star-icon';
 import { cva, type VariantProps } from 'class-variance-authority';
-import { type HTMLAttributes } from 'react';
+import { type HTMLAttributes, type ReactNode } from 'react';
 
 const rateVariants = cva('flex items-center justify-center gap-0.5', {
   variants: {},
@@ -13,9 +13,9 @@ export interface RateVariants extends VariantProps<typeof rateVariants> {}
 
 export interface RateProps extends HTMLAttributes<HTMLDivElement>, RateVariants {
   value: 0 | 0.5 | 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5;
-  label?: React.ReactNode;
+  label?: ReactNode;
   stars?: 1 | 2 | 3 | 4 | 5;
-  labelProps?: React.HTMLAttributes<HTMLSpanElement>;
+  labelProps?: HTMLAttributes<HTMLSpanElement>;
 }
 
 export function Rate({ value, className, label, stars = 5, labelProps = {}, ...rest }: RateProps) {

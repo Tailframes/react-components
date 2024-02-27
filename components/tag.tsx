@@ -1,5 +1,5 @@
 import { clsxMerge } from '../utils';
-import { type HTMLAttributes } from 'react';
+import { type HTMLAttributes, type ReactNode } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 
 const tagVariants = cva(
@@ -32,8 +32,8 @@ const tagVariants = cva(
 export interface TagVariants extends VariantProps<typeof tagVariants> {}
 
 export interface TagProps extends HTMLAttributes<HTMLSpanElement>, Omit<TagVariants, 'startIcon' | 'endIcon'> {
-  startIcon?: React.ReactNode;
-  endIcon?: React.ReactNode;
+  startIcon?: ReactNode;
+  endIcon?: ReactNode;
 }
 
 export function Tag({ className, startIcon, endIcon, variant, children, ...rest }: TagProps) {

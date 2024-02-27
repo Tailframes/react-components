@@ -1,5 +1,5 @@
 import { clsxMerge } from '../utils';
-import { type HTMLAttributes } from 'react';
+import { type HTMLAttributes, type ReactNode } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 
 const badgeVariants = cva(
@@ -105,7 +105,7 @@ const badgeLabelVariants = cva('text-xs font-medium text-black', {
 export interface BadgeVariants extends VariantProps<typeof badgeVariants> {}
 
 export interface BadgeProps extends HTMLAttributes<HTMLSpanElement>, Omit<BadgeVariants, 'labelled'> {
-  label?: React.ReactNode;
+  label?: ReactNode;
   dotOnly?: boolean;
 }
 

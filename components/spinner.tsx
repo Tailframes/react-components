@@ -1,6 +1,6 @@
 import { clsxMerge } from '../utils';
 import { cva, type VariantProps } from 'class-variance-authority';
-import { type HTMLAttributes } from 'react';
+import { type HTMLAttributes, type ReactNode } from 'react';
 
 const spinnerContainerVariants = cva('relative', {
   variants: {
@@ -35,8 +35,8 @@ const spinnerVariants = cva('absolute rounded-full border-2 border-blue-100', {
 export interface SpinnerVariants extends VariantProps<typeof spinnerVariants> {}
 
 export interface SpinnerProps extends HTMLAttributes<HTMLDivElement>, SpinnerVariants {
-  label?: React.ReactNode;
-  labelProps?: React.HTMLAttributes<HTMLSpanElement>;
+  label?: ReactNode;
+  labelProps?: HTMLAttributes<HTMLSpanElement>;
 }
 
 export function Spinner({ children, className, label, size, labelProps = {}, ...rest }: SpinnerProps) {
