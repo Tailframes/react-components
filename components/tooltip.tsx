@@ -3,7 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { type HTMLAttributes } from 'react';
 
 const tooltipVariants = cva(
-  'pointer-events-none absolute z-50 inline-flex items-center justify-center rounded-lg font-semibold opacity-0 transition-opacity duration-300 ease-in-out ' +
+  'pointer-events-none absolute z-50 inline-flex items-center justify-center rounded-lg px-3 py-1 font-semibold opacity-0 transition-opacity duration-300 ease-in-out ' +
     'group-hover:opacity-100',
   {
     variants: {
@@ -12,9 +12,8 @@ const tooltipVariants = cva(
         secondary: 'bg-blue-50 text-blue-700',
       },
       size: {
-        large: 'h-10 px-4 text-sm',
-        medium: 'h-8 px-3 text-sm',
-        small: 'h-6 px-3 text-xs',
+        medium: 'min-h-7 text-sm',
+        small: 'min-h-6 text-xs',
       },
       placement: {
         top: 'left-1/2 -translate-x-1/2',
@@ -103,14 +102,9 @@ const tooltipVariants = cva(
         class: 'after:-left-[0.95rem] after:top-1/2 after:-translate-y-1/2',
       },
       {
-        size: 'large',
-        placement: 'top',
-        class: 'top-[-3.25rem]',
-      },
-      {
         size: 'medium',
         placement: 'top',
-        class: 'top-[-2.75rem]',
+        class: 'top-[-2.5rem]',
       },
       {
         size: 'small',
@@ -118,14 +112,9 @@ const tooltipVariants = cva(
         class: 'top-[-2.25rem]',
       },
       {
-        size: 'large',
-        placement: 'bottom',
-        class: 'bottom-[-3.25rem]',
-      },
-      {
         size: 'medium',
         placement: 'bottom',
-        class: 'bottom-[-2.75rem]',
+        class: 'bottom-[-2.5rem]',
       },
       {
         size: 'small',
