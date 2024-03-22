@@ -38,8 +38,8 @@ const dividerVariants = cva('bg-slate-300', {
 });
 
 export interface DividerVariants {
-  size: 'thin' | 'thick';
-  direction: 'horizontal' | 'vertical';
+  size?: 'thin' | 'thick';
+  direction?: 'horizontal' | 'vertical';
 }
 
 export interface DividerProps extends HTMLAttributes<HTMLDivElement>, DividerVariants {}
