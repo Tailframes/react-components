@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.1.0](https://github.com/Tailframes/tailframes-components/compare/v0.0.8...v0.1.0) (2024-03-22)
+
+
+### Features
+
+* **storybook:** create components stories ([#2](https://github.com/Tailframes/tailframes-components/issues/2)) ([3663730](https://github.com/Tailframes/tailframes-components/commit/366373063101f75b3906a3b6fd372b1d8fc7fea4))
+
 ### [0.0.8](https://github.com/Tailframes/tailframes-components/compare/v0.0.7...v0.0.8) (2024-03-11)
 
 ### [0.0.7](https://github.com/Tailframes/tailframes-components/compare/v0.0.6...v0.0.7) (2024-03-10)
