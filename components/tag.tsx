@@ -27,7 +27,7 @@ const tagVariants = cva(
 );
 
 export interface TagVariants {
-  variant: 'primary' | 'secondary' | 'outlined' | 'success' | 'error' | 'warning';
+  variant?: 'primary' | 'secondary' | 'outlined' | 'success' | 'error' | 'warning';
   startIcon: boolean;
   endIcon: boolean;
 }
