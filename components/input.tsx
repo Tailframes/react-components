@@ -1,43 +1,10 @@
 import { clsxMerge } from '../utils';
 import { type ForwardedRef, forwardRef, type InputHTMLAttributes, type ReactNode } from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
+import { cva } from 'class-variance-authority';
 import { Label } from './label';
 
-const inputVariants = cva(
-  'w-full rounded-lg border-slate-300 px-3 text-sm font-medium placeholder-slate-400 outline-none transition-all duration-300 ease-out ' +
-    'focus:border-blue-600 ' +
-    'disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400 disabled:placeholder-slate-400',
-  {
-    variants: {
-      variant: {
-        default: '',
-      },
-      size: {
-        large: 'py-2.5',
-        medium: 'py-2',
-      },
-      error: {
-        true: 'border-2 border-red-500 text-red-500 focus:border-red-500 focus:text-black focus:outline-none focus:ring-0 focus:ring-offset-0',
-        false: '',
-      },
-      startIcon: {
-        true: 'pl-10',
-        false: '',
-      },
-      endIcon: {
-        true: 'pr-10',
-        false: '',
-      },
-    },
-    defaultVariants: {
-      variant: 'default',
-      size: 'medium',
-    },
-  }
-);
-
 const inputContainerVariants = cva(
-  'inline-flex w-full max-w-sm flex-col items-start gap-2 stroke-black transition-colors duration-300 ease-out focus-within:stroke-blue-700',
+  'inline-flex w-full max-w-sm flex-col items-start gap-2 stroke-black transition-colors duration-300 ease-in-out focus-within:stroke-blue-700',
   {
     variants: {
       error: {
@@ -49,49 +16,97 @@ const inputContainerVariants = cva(
         false: '',
       },
     },
-    defaultVariants: {
-      error: false,
-      disabled: false,
+  }
+);
+
+const inputVariants = cva(
+  'w-full rounded-lg border border-slate-300 px-3 text-sm font-medium placeholder-slate-400 outline-none transition-all duration-300 ease-in-out ' +
+    'disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400 disabled:placeholder-slate-400' +
+    'focus:border-blue-600 ',
+  {
+    variants: {
+      size: {
+        large: 'py-2.5',
+        medium: 'py-2',
+      },
+      error: {
+        true: 'border-red-500 text-red-500 ring-1 ring-red-500 focus:border-red-500 focus:text-black focus:ring-red-500 focus:ring-offset-0',
+        false: '',
+      },
+      startIcon: {
+        true: 'pl-10',
+        false: '',
+      },
+      endIcon: {
+        true: 'pr-10',
+        false: '',
+      },
     },
   }
 );
 
-const inputHelperTextVariants = cva('max-w-full text-xs font-medium leading-none text-slate-400', {
-  variants: {
-    error: {
-      true: 'text-red-500',
-      false: '',
+const inputHelperTextVariants = cva(
+  'max-w-full text-xs font-medium leading-none text-slate-400 transition-colors duration-300 ease-in-out',
+  {
+    variants: {
+      error: {
+        true: 'text-red-500',
+        false: '',
+      },
     },
-  },
-  defaultVariants: {
-    error: false,
+  }
+);
+
+const inputLabelVariants = cva('whitespace-nowrap', {
+  variants: {
+    disabled: {
+      true: 'text-slate-400',
+      false: 'text-black',
+    },
   },
 });
 
-export interface InputVariants extends VariantProps<typeof inputVariants> {}
+export interface InputVariants {
+  disabled?: boolean;
+  endIcon?: boolean;
+  error?: boolean;
+  size?: 'medium' | 'large';
+  startIcon?: boolean;
+}
 
 export interface InputProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'id'>,
     Required<Pick<InputHTMLAttributes<HTMLInputElement>, 'id'>>,
-    Omit<InputVariants, 'disabled' | 'startIcon' | 'endIcon'> {
+    Omit<InputVariants, 'startIcon' | 'endIcon'> {
   containerClassName?: string;
-  label?: string;
-  helperText?: string;
-  startIcon?: ReactNode;
+  disabled?: boolean;
   endIcon?: ReactNode;
+  helperText?: string;
+  label?: string;
+  placeholder?: string;
+  startIcon?: ReactNode;
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   (
-    { className, containerClassName, variant, size, label, startIcon, endIcon, helperText, error, ...rest }: InputProps,
+    {
+      size = 'medium',
+      error = false,
+      disabled = false,
+      className,
+      containerClassName,
+      label,
+      startIcon,
+      endIcon,
+      helperText,
+      ...rest
+    }: InputProps,
     ref: ForwardedRef<HTMLInputElement>
   ) => {
     return (
-      <div
-        className={clsxMerge(inputContainerVariants({ error, disabled: Boolean(rest?.disabled) }), containerClassName)}
-      >
+      <div className={clsxMerge(inputContainerVariants({ error, disabled }), containerClassName)}>
         {label && (
-          <Label htmlFor={rest.id} size='small'>
+          <Label htmlFor={rest.id} size='small' className={clsxMerge(inputLabelVariants({ disabled }))}>
             {label}
           </Label>
         )}
@@ -104,9 +119,10 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           <input
             ref={ref}
             className={clsxMerge(
-              inputVariants({ error, variant, size, startIcon: Boolean(startIcon), endIcon: Boolean(endIcon) }),
+              inputVariants({ error, size, startIcon: Boolean(startIcon), endIcon: Boolean(endIcon) }),
               className
             )}
+            disabled={disabled}
             {...rest}
           />
           {endIcon && <div className='absolute right-0 top-1/2 w-5 -translate-x-1/2 -translate-y-1/2'>{endIcon}</div>}

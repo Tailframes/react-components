@@ -1,6 +1,6 @@
 import { clsxMerge } from '../utils';
-import { cva, type VariantProps } from 'class-variance-authority';
-import { type HTMLAttributes, type ReactNode } from 'react';
+import { cva } from 'class-variance-authority';
+import { type HTMLAttributes, type SVGProps } from 'react';
 
 const spinnerContainerVariants = cva('relative', {
   variants: {
@@ -12,34 +12,53 @@ const spinnerContainerVariants = cva('relative', {
       xlarge: 'size-10',
     },
   },
-  defaultVariants: {
-    size: 'medium',
-  },
 });
 
-const spinnerVariants = cva('absolute rounded-full border-2 border-blue-100', {
+const spinnerVariants = cva('absolute rounded-full border-blue-100', {
   variants: {
     size: {
-      xsmall: 'size-3',
-      small: 'size-4',
-      medium: 'size-6',
-      large: 'size-8',
-      xlarge: 'size-10',
+      xsmall: 'size-3 border',
+      small: 'size-4 border',
+      medium: 'size-6 border-2',
+      large: 'size-8 border-2',
+      xlarge: 'size-10 border-[3px]',
     },
-  },
-  defaultVariants: {
-    size: 'medium',
   },
 });
 
-export interface SpinnerVariants extends VariantProps<typeof spinnerVariants> {}
+const spinSVGProps: Record<NonNullable<SpinnerVariants['size']>, SVGProps<never>> = {
+  xsmall: {
+    strokeWidth: 2,
+    viewBox: '0.5 0 24 24',
+  },
+  small: {
+    strokeWidth: 1.5,
+    viewBox: '1 0.25 23 23.5',
+  },
+  medium: {
+    strokeWidth: 2,
+    viewBox: '0.5 0 24 24',
+  },
+  large: {
+    strokeWidth: 1.5,
+    viewBox: '1 0.25 23 23.5',
+  },
+  xlarge: {
+    strokeWidth: 1.75,
+    viewBox: '1 0.125 23 23.75',
+  },
+};
+
+export interface SpinnerVariants {
+  size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
+}
 
 export interface SpinnerProps extends HTMLAttributes<HTMLDivElement>, SpinnerVariants {
-  label?: ReactNode;
+  label?: string;
   labelProps?: HTMLAttributes<HTMLSpanElement>;
 }
 
-export function Spinner({ children, className, label, size, labelProps = {}, ...rest }: SpinnerProps) {
+export function Spinner({ size = 'medium', children, className, label, labelProps = {}, ...rest }: SpinnerProps) {
   const { className: labelClassName, ...labelRest } = labelProps;
 
   return (
@@ -49,16 +68,12 @@ export function Spinner({ children, className, label, size, labelProps = {}, ...
         <svg
           width='100%'
           height='100%'
-          viewBox='0 0 25 24'
           fill='none'
           className='absolute animate-spin stroke-blue-700'
           xmlns='http://www.w3.org/2000/svg'
+          {...spinSVGProps[size]}
         >
-          <path
-            d='M12.5 23C18.5751 23 23.5 18.0751 23.5 12C23.5 5.92487 18.5751 1 12.5 1C6.42487 1 1.5 5.92487 1.5 12'
-            strokeWidth='2'
-            strokeLinecap='round'
-          />
+          <path d='M12.5 23c6.075 0 11-4.925 11-11s-4.925-11-11-11-11 4.925-11 11' strokeLinecap='round' />
         </svg>
       </div>
       {label && (

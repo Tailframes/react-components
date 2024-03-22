@@ -1,13 +1,8 @@
 import { clsxMerge, kebabCase } from '../utils';
 import { Badge, type BadgeProps } from './badge';
 import { Button } from './button';
-import { cva, type VariantProps } from 'class-variance-authority';
+import { cva } from 'class-variance-authority';
 import { type HTMLAttributes, type ReactNode, useState } from 'react';
-
-const tabsContainerVariants = cva('mb-4 border-b border-gray-200', {
-  variants: {},
-  defaultVariants: {},
-});
 
 const tabVariants = cva(
   'box-content rounded-none border-b-2 border-b-transparent p-0 font-normal transition-all duration-100 ease-in-out',
@@ -22,14 +17,13 @@ const tabVariants = cva(
         false: '',
       },
     },
-    defaultVariants: {
-      active: false,
-      disabled: false,
-    },
   }
 );
 
-export interface TabVariants extends VariantProps<typeof tabsContainerVariants> {}
+export interface TabVariants {
+  active?: boolean;
+  disabled?: boolean;
+}
 
 export interface TabItem {
   label: string;
@@ -50,7 +44,7 @@ export function Tabs({ name, className, items, ...rest }: TabProps) {
 
   return (
     <div className='w-full'>
-      <div className={clsxMerge(tabsContainerVariants({}))} {...rest}>
+      <div className={clsxMerge('mb-4 border-b border-gray-200', className)} {...rest}>
         <ul className='-mb-px flex space-x-6 overflow-auto text-center text-sm font-medium' role='tablist'>
           {items.map(({ label, disabled, startIcon, badge }, index) => {
             const isActive = label === activeTab;
@@ -59,7 +53,7 @@ export function Tabs({ name, className, items, ...rest }: TabProps) {
               <li key={index} role='presentation'>
                 <Button
                   variant='text-default'
-                  className={clsxMerge(tabVariants({ active: isActive, disabled }), className)}
+                  className={clsxMerge(tabVariants({ active: isActive, disabled }))}
                   id={`${name ? `${name}-` : ''}tab-${index}`}
                   role='tab'
                   aria-controls={kebabCase(`${name ? `${name}-` : ''}tab-panel-${index}`)}

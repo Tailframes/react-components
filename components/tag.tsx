@@ -1,6 +1,6 @@
 import { clsxMerge } from '../utils';
 import { type HTMLAttributes, type ReactNode } from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
+import { cva } from 'class-variance-authority';
 
 const tagVariants = cva(
   'inline-flex h-6 max-w-max cursor-default items-center justify-start gap-1 rounded-[64px] px-2 py-1 text-center text-xs font-semibold leading-relaxed',
@@ -23,20 +23,21 @@ const tagVariants = cva(
         false: '',
       },
     },
-    defaultVariants: {
-      variant: 'primary',
-    },
   }
 );
 
-export interface TagVariants extends VariantProps<typeof tagVariants> {}
+export interface TagVariants {
+  variant: 'primary' | 'secondary' | 'outlined' | 'success' | 'error' | 'warning';
+  startIcon: boolean;
+  endIcon: boolean;
+}
 
 export interface TagProps extends HTMLAttributes<HTMLSpanElement>, Omit<TagVariants, 'startIcon' | 'endIcon'> {
   startIcon?: ReactNode;
   endIcon?: ReactNode;
 }
 
-export function Tag({ className, startIcon, endIcon, variant, children, ...rest }: TagProps) {
+export function Tag({ variant = 'primary', className, startIcon, endIcon, children, ...rest }: TagProps) {
   return (
     <div
       className={clsxMerge(

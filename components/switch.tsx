@@ -1,22 +1,24 @@
 import { clsxMerge } from '../utils';
 import { Label } from './label';
-import { cva, type VariantProps } from 'class-variance-authority';
+import { cva } from 'class-variance-authority';
 import { type InputHTMLAttributes, type ReactNode } from 'react';
 
-const switchVariants = cva('', {
-  variants: {
-    size: {
-      medium: '',
-      small: '',
-    },
-  },
-  defaultVariants: {
-    size: 'medium',
-  },
-});
-
 const switchDotVariants = cva(
-  'block cursor-pointer rounded-full border border-slate-200 bg-slate-50 transition ' +
+  'absolute top-0.5 cursor-pointer rounded-full border border-slate-50 bg-blue-700 transition duration-300 ' +
+    'peer-checked:translate-x-5 peer-checked:border-blue-700 peer-checked:bg-white ' +
+    'peer-disabled:cursor-not-allowed peer-disabled:border-slate-100 peer-disabled:bg-slate-400',
+  {
+    variants: {
+      size: {
+        medium: 'left-[3px] size-5 peer-checked:left-[5px]',
+        small: 'left-[2px] size-4',
+      },
+    },
+  }
+);
+
+const switchContainerVariants = cva(
+  'block cursor-pointer rounded-full border border-slate-200 bg-slate-50 transition duration-300 ' +
     'peer-checked:border-blue-700 peer-checked:bg-blue-700 ' +
     'peer-disabled:cursor-not-allowed peer-disabled:border-slate-100 peer-disabled:bg-slate-100',
   {
@@ -26,35 +28,74 @@ const switchDotVariants = cva(
         small: 'h-5 w-10',
       },
     },
-    defaultVariants: {
-      size: 'medium',
-    },
   }
 );
 
-const switchContainerVariants = cva(
-  'absolute top-0.5 cursor-pointer rounded-full border border-slate-200 bg-blue-700 transition ' +
-    'peer-checked:translate-x-5 peer-checked:border-blue-700 peer-checked:bg-white ' +
-    'peer-disabled:cursor-not-allowed peer-disabled:border-slate-400 peer-disabled:bg-slate-400',
+const switchIconVariants = cva(
+  'pointer-events-none absolute top-1/2 flex size-[18px] -translate-y-1/2 items-center justify-center overflow-hidden transition duration-300 peer-disabled:stroke-slate-400',
   {
     variants: {
+      checked: {
+        true: 'invisible left-3 -translate-x-1/2 stroke-white peer-checked:visible',
+        false: 'right-1 stroke-blue-700 peer-checked:invisible',
+      },
       size: {
-        medium: 'left-[3px] size-5 peer-checked:left-[5px]',
-        small: 'left-[2px] size-4',
+        medium: '',
+        small: '',
       },
     },
-    defaultVariants: {
-      size: 'medium',
-    },
+    compoundVariants: [
+      {
+        size: 'small',
+        checked: true,
+        class: 'left-2.5',
+      },
+      {
+        size: 'small',
+        checked: false,
+        class: 'right-0.5',
+      },
+    ],
   }
 );
 
-export interface SwitchVariants extends VariantProps<typeof switchVariants> {}
+const switchTextVariants = cva(
+  'pointer-events-none absolute top-1/2 -translate-y-1/2 overflow-hidden text-xs font-semibold transition duration-300 peer-disabled:text-slate-400',
+  {
+    variants: {
+      checked: {
+        true: 'invisible left-3 -translate-x-1/2 text-white peer-checked:visible',
+        false: 'right-2.5 text-blue-700 peer-checked:invisible',
+      },
+      size: {
+        medium: '',
+        small: '',
+      },
+    },
+    compoundVariants: [
+      {
+        size: 'small',
+        checked: true,
+        class: 'left-2.5',
+      },
+      {
+        size: 'small',
+        checked: false,
+        class: 'right-1.5',
+      },
+    ],
+  }
+);
+
+export interface SwitchVariants {
+  size?: 'medium' | 'small';
+}
 
 export interface SwitchProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'id' | 'name' | 'type' | 'size'>,
     Required<Pick<InputHTMLAttributes<HTMLInputElement>, 'id' | 'name'>>,
     SwitchVariants {
+  disabled?: boolean;
   label?: string;
   checkedIcon?: ReactNode;
   uncheckedIcon?: ReactNode;
@@ -63,10 +104,10 @@ export interface SwitchProps
 }
 
 export function Switch({
+  size = 'medium',
   children,
   className,
   label,
-  size,
   id,
   checkedIcon,
   uncheckedIcon,
@@ -79,27 +120,19 @@ export function Switch({
       <Label htmlFor={id} size='small' className='flex items-center'>
         <div className='relative'>
           <input type='checkbox' id={id} className='peer sr-only' {...rest} />
-          <div className={clsxMerge(switchDotVariants({ size }))} />
-          <div className={clsxMerge(switchContainerVariants({ size }))}></div>
-          {checkedIcon && (
-            <div className='pointer-events-none invisible absolute left-3 top-1/2 size-[18px] -translate-x-1/2 -translate-y-1/2 cursor-pointer overflow-hidden stroke-white peer-checked:visible peer-disabled:cursor-not-allowed peer-disabled:stroke-slate-400'>
-              {checkedIcon}
-            </div>
+          <div className={clsxMerge(switchContainerVariants({ size }))} />
+          <div className={clsxMerge(switchDotVariants({ size }))}></div>
+          {checkedIcon && !checkedText && (
+            <div className={clsxMerge(switchIconVariants({ checked: true, size }))}>{checkedIcon}</div>
           )}
-          {checkedText && (
-            <div className='pointer-events-none invisible absolute left-3 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer overflow-hidden text-xs font-semibold text-white peer-checked:visible peer-disabled:cursor-not-allowed peer-disabled:text-slate-400'>
-              {checkedText}
-            </div>
+          {checkedText && !checkedIcon && (
+            <div className={clsxMerge(switchTextVariants({ checked: true, size }))}>{checkedText}</div>
           )}
-          {uncheckedIcon && (
-            <div className='absolute right-1 top-1/2 size-[18px] -translate-y-1/2 cursor-pointer overflow-hidden stroke-blue-700 peer-checked:invisible peer-disabled:cursor-not-allowed peer-disabled:stroke-slate-400'>
-              {uncheckedIcon}
-            </div>
+          {uncheckedIcon && !uncheckedText && (
+            <div className={clsxMerge(switchIconVariants({ checked: false, size }))}>{uncheckedIcon}</div>
           )}
-          {uncheckedText && (
-            <div className='absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer overflow-hidden text-xs font-semibold text-blue-700 peer-checked:invisible peer-disabled:cursor-not-allowed peer-disabled:text-slate-400'>
-              {uncheckedText}
-            </div>
+          {uncheckedText && !uncheckedIcon && (
+            <div className={clsxMerge(switchTextVariants({ checked: false, size }))}>{uncheckedText}</div>
           )}
         </div>
         <span className='ml-2 whitespace-nowrap text-xs font-medium leading-none text-black'>{label}</span>

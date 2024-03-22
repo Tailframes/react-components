@@ -1,5 +1,5 @@
 import { clsxMerge } from '../utils';
-import { cva, type VariantProps } from 'class-variance-authority';
+import { cva } from 'class-variance-authority';
 import { type HTMLAttributes } from 'react';
 
 const tooltipVariants = cva(
@@ -25,12 +25,6 @@ const tooltipVariants = cva(
         true: 'after:absolute after:block after:size-0 after:border-8 after:border-transparent',
         false: '',
       },
-    },
-    defaultVariants: {
-      variant: 'primary',
-      size: 'medium',
-      placement: 'top',
-      showArrow: true,
     },
     compoundVariants: [
       {
@@ -125,25 +119,25 @@ const tooltipVariants = cva(
   }
 );
 
-export interface TooltipVariants extends VariantProps<typeof tooltipVariants> {}
+export interface TooltipVariants {
+  variant?: 'primary' | 'secondary';
+  size?: 'medium' | 'small';
+  placement?: 'top' | 'bottom' | 'left' | 'right';
+  showArrow?: boolean;
+}
 
-interface TooltipProps extends HTMLAttributes<HTMLDivElement>, TooltipVariants {
+export interface TooltipProps extends HTMLAttributes<HTMLDivElement>, TooltipVariants {
   value: string;
-  width?: number;
-  height?: number;
 }
 
 export function Tooltip({
+  placement = 'top',
+  size = 'medium',
+  variant = 'primary',
+  showArrow = true,
   children,
   className,
-  placement,
   value,
-  width,
-  height,
-  size,
-  variant,
-  showArrow,
-  style,
   ...rest
 }: TooltipProps) {
   return (
@@ -152,7 +146,6 @@ export function Tooltip({
       <span
         role='tooltip'
         className={clsxMerge(tooltipVariants({ placement, size, variant, showArrow }), className)}
-        style={{ width, height, ...style }}
         {...rest}
       >
         {value}
