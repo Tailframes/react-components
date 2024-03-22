@@ -1,17 +1,18 @@
 import { clsxMerge } from '../utils';
 import { type ButtonHTMLAttributes, forwardRef, type ReactNode } from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
+import { cva } from 'class-variance-authority';
 
 const buttonVariants = cva(
-  'group inline-flex items-center justify-center whitespace-nowrap rounded-lg py-2 align-middle text-sm font-semibold leading-none transition-all duration-300 ease-in-out disabled:cursor-not-allowed',
+  'group inline-flex items-center justify-center whitespace-nowrap rounded-lg py-2 align-middle text-sm font-semibold leading-none transition-all duration-300 ease-in-out ' +
+    'disabled:cursor-not-allowed',
   {
     variants: {
       variant: {
         primary: 'bg-blue-700 stroke-white px-6 text-white hover:bg-blue-950',
         secondary: 'bg-blue-50 stroke-blue-700 px-6 text-blue-700 hover:bg-blue-100',
         outlined: 'border border-blue-700 bg-transparent stroke-blue-700 px-6 text-blue-700 hover:bg-blue-50',
-        text: 'stroke-blue-700 px-2 text-blue-600',
-        'text-default': 'stroke-black px-2 text-black',
+        text: 'stroke-blue-700 px-2 text-blue-700',
+        'text-default': 'stroke-slate-500 px-2 text-black',
       },
       size: {
         large: 'h-[42px] min-w-[42px] gap-2',
@@ -43,11 +44,6 @@ const buttonVariants = cva(
         true: 'w-full',
         false: '',
       },
-    },
-    defaultVariants: {
-      variant: 'primary',
-      size: 'medium',
-      iconOnly: false,
     },
     compoundVariants: [
       {
@@ -95,7 +91,16 @@ const buttonVariants = cva(
   }
 );
 
-export interface ButtonVariants extends VariantProps<typeof buttonVariants> {}
+export interface ButtonVariants {
+  disabled?: boolean;
+  endIcon?: boolean;
+  fullWidth?: boolean;
+  href?: boolean;
+  iconOnly?: boolean;
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
+  startIcon?: boolean;
+  variant?: 'primary' | 'secondary' | 'outlined' | 'text' | 'text-default';
+}
 
 export interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement>,
@@ -108,7 +113,18 @@ export interface ButtonProps
 
 export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
   (
-    { href, className, variant, size, children, iconOnly, startIcon, endIcon, fullWidth, ...rest }: ButtonProps,
+    {
+      variant = 'primary',
+      size = 'medium',
+      iconOnly = false,
+      fullWidth = false,
+      href,
+      className,
+      children,
+      startIcon,
+      endIcon,
+      ...rest
+    }: ButtonProps,
     ref
   ) => {
     const Component = href && !rest.disabled ? 'a' : 'button';

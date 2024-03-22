@@ -1,6 +1,6 @@
 import { clsxMerge } from '../utils';
-import { type HTMLAttributes, type ReactNode } from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
+import { type HTMLAttributes } from 'react';
+import { cva } from 'class-variance-authority';
 
 const badgeVariants = cva(
   'inline-flex rounded-[64px] border text-center font-semibold transition-all duration-300 ease-in-out',
@@ -15,21 +15,16 @@ const badgeVariants = cva(
         medium: 'h-5 px-2 py-0.5 text-xs leading-tight',
       },
       variant: {
-        primary: 'border-blue-600 bg-blue-600 text-white',
+        primary: 'border-blue-700 bg-blue-700 text-white',
         secondary: 'border-blue-300 bg-blue-50 text-blue-600',
         success: 'border-green-600 bg-green-50 text-green-700',
         error: 'border-red-600 bg-red-50 text-red-700',
         warning: 'border-amber-600 bg-amber-50 text-amber-600',
       },
-      labelled: {
+      label: {
         true: 'mr-2',
         false: '',
       },
-    },
-    defaultVariants: {
-      variant: 'primary',
-      size: 'medium',
-      dotOnly: false,
     },
     compoundVariants: [
       {
@@ -74,10 +69,6 @@ const badgeLabelVariants = cva('text-xs font-medium text-black', {
       warning: '',
     },
   },
-  defaultVariants: {
-    variant: 'primary',
-    dotOnly: false,
-  },
   compoundVariants: [
     {
       dotOnly: true,
@@ -102,15 +93,29 @@ const badgeLabelVariants = cva('text-xs font-medium text-black', {
   ],
 });
 
-export interface BadgeVariants extends VariantProps<typeof badgeVariants> {}
+export interface BadgeVariants {
+  dotOnly?: boolean;
+  label?: boolean;
+  size?: 'medium' | 'large';
+  variant?: 'primary' | 'secondary' | 'success' | 'error' | 'warning';
+}
 
-export interface BadgeProps extends HTMLAttributes<HTMLSpanElement>, Omit<BadgeVariants, 'labelled'> {
-  label?: ReactNode;
+export interface BadgeProps extends HTMLAttributes<HTMLSpanElement>, Omit<BadgeVariants, 'label'> {
+  label?: string;
   dotOnly?: boolean;
 }
 
-const Root = ({ className, variant, label, color, dotOnly, size, children, ...rest }: BadgeProps) => (
-  <span className={clsxMerge(badgeVariants({ variant, labelled: Boolean(label), size, dotOnly }), className)} {...rest}>
+const Root = ({
+  variant = 'primary',
+  size = 'medium',
+  dotOnly = false,
+  className,
+  label,
+  color,
+  children,
+  ...rest
+}: BadgeProps) => (
+  <span className={clsxMerge(badgeVariants({ variant, label: Boolean(label), size, dotOnly }), className)} {...rest}>
     {dotOnly ? null : children}
   </span>
 );

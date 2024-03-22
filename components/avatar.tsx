@@ -1,6 +1,6 @@
 import { clsxMerge } from '../utils';
 import { Badge, type BadgeProps } from './badge';
-import { cva, type VariantProps } from 'class-variance-authority';
+import { cva } from 'class-variance-authority';
 import { type HTMLAttributes, type ReactNode } from 'react';
 
 const avatarVariants = cva('relative box-content flex items-center justify-center overflow-hidden', {
@@ -33,11 +33,6 @@ const avatarVariants = cva('relative box-content flex items-center justify-cente
       true: 'bg-blue-700',
       false: '',
     },
-  },
-  defaultVariants: {
-    shape: 'circle',
-    size: 'medium',
-    elevated: false,
   },
   compoundVariants: [
     {
@@ -77,47 +72,47 @@ const avatarIconVariants = cva('flex items-center justify-center', {
       small: 'size-3.5',
     },
   },
-  defaultVariants: {
-    size: 'medium',
-  },
 });
 
-const avatarTextVariants = cva('flex items-center justify-center font-semibold text-white', {
-  variants: {
-    size: {
-      medium: 'text-sm',
-      small: 'text-xs',
+const avatarTextVariants = cva(
+  'flex max-w-full items-center justify-start whitespace-nowrap font-semibold text-white',
+  {
+    variants: {
+      size: {
+        medium: 'text-sm',
+        small: 'text-xs',
+      },
     },
-  },
-  defaultVariants: {
-    size: 'medium',
-  },
-});
+  }
+);
 
-export interface AvatarVariants extends Omit<VariantProps<typeof avatarVariants>, 'badge' | 'image' | 'icon' | 'text'> {
+export interface AvatarVariants {
   badge?: true | BadgeProps;
-  src?: string;
+  elevated?: boolean;
   icon?: ReactNode;
+  shape?: 'circle' | 'square';
+  size?: 'small' | 'medium';
+  src?: string;
   text?: string;
 }
 
-type Type = { src: string } | { icon: ReactNode } | { text: string };
+type AvatarType = { src: string } | { icon: ReactNode } | { text: string };
 
 export type AvatarProps = (HTMLAttributes<HTMLDivElement> & AvatarVariants) &
-  Type & {
+  AvatarType & {
     imgProps?: Omit<HTMLAttributes<HTMLImageElement>, 'src'>;
   };
 
 const Root = ({
+  size = 'medium',
+  shape = 'circle',
+  elevated = false,
   children,
   className,
-  size,
-  shape,
   badge,
   src,
   icon,
   text,
-  elevated,
   imgProps = {},
   ...rest
 }: AvatarProps) => (
@@ -137,8 +132,8 @@ const Root = ({
     {...rest}
   >
     {!icon && !text && <img src={src} alt='' className='aspect-square' {...imgProps} />}
-    {icon && <div className={avatarIconVariants({ size })}>{children}</div>}
-    {text && <span className={avatarTextVariants({ size })}>{text}</span>}
+    {icon && !text && <div className={avatarIconVariants({ size })}>{icon}</div>}
+    {text && !icon && <span className={avatarTextVariants({ size })}>{text}</span>}
   </div>
 );
 
