@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.2](https://github.com/Tailframes/tailframes-components/compare/v0.1.1...v0.1.2) (2024-03-22)
+
+
+### Bug Fixes
+
+* **tag:** make tag variant prop optional ([dbc3c3e](https://github.com/Tailframes/tailframes-components/commit/dbc3c3e838dff9d7207f205f3bc3f90899d890f7))
+
 ### [0.1.1](https://github.com/Tailframes/tailframes-components/compare/v0.1.0...v0.1.1) (2024-03-22)
 
 ## [0.1.0](https://github.com/Tailframes/tailframes-components/compare/v0.0.8...v0.1.0) (2024-03-22)
