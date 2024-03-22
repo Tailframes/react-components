@@ -1,20 +1,6 @@
-import { StarIcon } from '../assets/star-icon';
+import { IconArgType } from '../.storybook/arg-types';
 import { Button } from '../components/button';
-import type { ArgTypes, Meta, StoryObj } from '@storybook/react';
-
-const Icons = {
-  StarIcon: <StarIcon className='fill-inherit stroke-inherit' />,
-};
-const IconsKeys = Object.keys(Icons);
-const IconArgType: ArgTypes = {
-  options: [null, ...IconsKeys],
-  mapping: {
-    ...Icons,
-    null: null,
-  },
-};
-
-///
+import type { Meta, StoryObj } from '@storybook/react';
 
 const meta = {
   title: 'Components/Button',
@@ -26,12 +12,14 @@ const meta = {
   tags: ['autodocs'],
   args: {
     children: 'Button',
+    fullWidth: false,
+    iconOnly: false,
     size: 'medium',
     variant: 'primary',
   },
   argTypes: {
     iconOnly: {
-      description: 'removing the horizontal padding for icon only buttons',
+      description: 'removes the horizontal padding from the button',
       control: { type: 'boolean' },
     },
     fullWidth: {
@@ -40,8 +28,8 @@ const meta = {
     disabled: {
       control: { type: 'boolean' },
     },
-    startIcon: IconArgType,
-    endIcon: IconArgType,
+    startIcon: IconArgType({}),
+    endIcon: IconArgType({}),
   },
 } satisfies Meta<typeof Button>;
 

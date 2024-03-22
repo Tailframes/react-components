@@ -1,5 +1,6 @@
-import { Avatar } from '../components/avatar';
 import type { Meta, StoryObj } from '@storybook/react';
+import { IconArgType, IconKey } from '../.storybook/arg-types';
+import { Avatar } from '../components/avatar';
 
 const meta = {
   title: 'Components/Avatar',
@@ -11,13 +12,14 @@ const meta = {
   tags: ['autodocs'],
   args: {
     src: 'https://tailframes.com/images/avatar.webp',
+    size: 'medium',
+    shape: 'circle',
+    elevated: false,
   },
   argTypes: {
-    icon: {
-      control: { type: 'boolean' },
-    },
+    icon: IconArgType({ stroke: 'white', fill: 'white' }, [IconKey.StarIcon]),
     elevated: {
-      control: { type: 'boolean' },
+      description: 'available only for circle shape without badge',
     },
   },
 } satisfies Meta<typeof Avatar>;
@@ -27,3 +29,33 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Circle: Story = {};
+
+export const Elevated: Story = {
+  args: {
+    elevated: true,
+  },
+};
+
+export const Text: Story = {
+  args: {
+    text: 'Aa',
+  },
+};
+
+export const Icon: Story = {
+  args: {
+    icon: 'StarIcon',
+  },
+};
+
+export const Badge: Story = {
+  args: {
+    badge: true,
+  },
+};
+
+export const Square: Story = {
+  args: {
+    shape: 'square',
+  },
+};

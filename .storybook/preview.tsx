@@ -1,6 +1,5 @@
-import 'tailwindcss/tailwind.css';
-import { Controls, Description, Primary, Stories, Subtitle, Title } from '@storybook/blocks';
 import type { Preview } from '@storybook/react';
+import './styles.css';
 
 const preview: Preview = {
   parameters: {
