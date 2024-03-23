@@ -10,7 +10,7 @@ const meta = {
   component: Badge,
   tags: ['autodocs'],
   args: {
-    variant: 'primary',
+    variant: 'default',
     dotOnly: false,
     size: 'medium',
     children: 100,
@@ -20,6 +20,12 @@ const meta = {
 export default meta;
 
 type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  args: {
+    variant: 'default',
+  },
+};
 
 export const Primary: Story = {
   args: {
@@ -54,6 +60,6 @@ export const Warning: Story = {
 export const Dot: Story = {
   args: {
     dotOnly: true,
-    label: 'Primary',
+    label: 'Default',
   },
 };

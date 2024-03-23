@@ -15,6 +15,7 @@ const badgeVariants = cva(
         medium: 'h-5 px-2 py-0.5 text-xs leading-tight',
       },
       variant: {
+        default: 'border-slate-300 text-black',
         primary: 'border-blue-700 bg-blue-700 text-white',
         secondary: 'border-blue-300 bg-blue-50 text-blue-600',
         success: 'border-green-600 bg-green-50 text-green-700',
@@ -62,6 +63,7 @@ const badgeLabelVariants = cva('text-xs font-medium text-black', {
       false: '',
     },
     variant: {
+      default: '',
       primary: '',
       secondary: '',
       success: '',
@@ -97,7 +99,7 @@ export interface BadgeVariants {
   dotOnly?: boolean;
   label?: boolean;
   size?: 'medium' | 'large';
-  variant?: 'primary' | 'secondary' | 'success' | 'error' | 'warning';
+  variant?: 'default' | 'primary' | 'secondary' | 'success' | 'error' | 'warning';
 }
 
 export interface BadgeProps extends HTMLAttributes<HTMLSpanElement>, Omit<BadgeVariants, 'label'> {
@@ -106,7 +108,7 @@ export interface BadgeProps extends HTMLAttributes<HTMLSpanElement>, Omit<BadgeV
 }
 
 const Root = ({
-  variant = 'primary',
+  variant = 'default',
   size = 'medium',
   dotOnly = false,
   className,
