@@ -18,7 +18,7 @@ const switchDotVariants = cva(
 );
 
 const switchContainerVariants = cva(
-  'block cursor-pointer rounded-full border border-slate-200 bg-slate-50 transition duration-300 ' +
+  'block cursor-pointer rounded-full border border-slate-300 bg-slate-50 transition duration-300 ' +
     'peer-checked:border-blue-700 peer-checked:bg-blue-700 ' +
     'peer-disabled:cursor-not-allowed peer-disabled:border-slate-100 peer-disabled:bg-slate-100',
   {
@@ -135,7 +135,13 @@ export function Switch({
             <div className={clsxMerge(switchTextVariants({ checked: false, size }))}>{uncheckedText}</div>
           )}
         </div>
-        <span className='ml-2 whitespace-nowrap text-xs font-medium leading-none text-black'>{label}</span>
+        <span
+          className={clsxMerge('ml-2 cursor-pointer whitespace-nowrap text-xs font-medium leading-none text-black', {
+            'cursor-not-allowed text-slate-400': rest.disabled,
+          })}
+        >
+          {label}
+        </span>
       </Label>
     </div>
   );
