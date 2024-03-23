@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.3](https://github.com/Tailframes/tailframes-components/compare/v0.1.2...v0.1.3) (2024-03-23)
+
+
+### Features
+
+* **badge:** add default badge variant ([f51b93d](https://github.com/Tailframes/tailframes-components/commit/f51b93d8a7de21ecb75ae575da17a8e0dde29f46))
+
+
+### Bug Fixes
+
+* **button:** fix xsmall button border radius ([0c98c87](https://github.com/Tailframes/tailframes-components/commit/0c98c873f5bfdba12fb39a3eb11bf2efb8b6281f))
+* **switch:** adjust inactive switch border color; fix label style for disabled state ([a82c3c4](https://github.com/Tailframes/tailframes-components/commit/a82c3c4d26ecee275866dd926418c231bf2b690d))
+* **tooltip:** fix tooltip border radius ([7b98ee0](https://github.com/Tailframes/tailframes-components/commit/7b98ee0692c3b942ccd44a5fde4d292a76e632a7))
+
 ### [0.1.2](https://github.com/Tailframes/tailframes-components/compare/v0.1.1...v0.1.2) (2024-03-22)
 
 
