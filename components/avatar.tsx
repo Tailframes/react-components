@@ -146,7 +146,7 @@ export function Avatar(props: AvatarProps) {
   const { children, className, size, shape, badge, src, icon, text, imgProps = {}, ...rest } = props;
 
   return (
-    <div className='relative w-min' {...rest}>
+    <div className='relative size-min' {...rest}>
       <Root {...props} />
       <div className='absolute bottom-0 right-0 translate-y-2 rounded-full'>
         <Badge
