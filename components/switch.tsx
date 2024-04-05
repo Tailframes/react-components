@@ -4,7 +4,7 @@ import { cva } from 'class-variance-authority';
 import { type InputHTMLAttributes, type ReactNode } from 'react';
 
 const switchDotVariants = cva(
-  'absolute top-0.5 cursor-pointer rounded-full border border-slate-50 bg-blue-700 transition duration-300 ' +
+  'absolute top-0.5 z-10 cursor-pointer rounded-full border border-slate-50 bg-blue-700 transition duration-300 ' +
     'peer-checked:translate-x-5 peer-checked:border-blue-700 peer-checked:bg-white ' +
     'peer-disabled:cursor-not-allowed peer-disabled:border-slate-100 peer-disabled:bg-slate-400',
   {
