@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.4](https://github.com/Tailframes/tailframes-components/compare/v0.1.3...v0.1.4) (2024-04-05)
+
+
+### Features
+
+* **avatar:** update size class to 'size-min' ([5ad0663](https://github.com/Tailframes/tailframes-components/commit/5ad066311e439ca0daef8280344cb926adcaa59d))
+* **badge:** add white background to default variant ([461fdef](https://github.com/Tailframes/tailframes-components/commit/461fdef31e2b00aa4bdcea64f9aa316ef3ff61db))
+* **switch:** add z-index property to switch dot component ([a8adcfc](https://github.com/Tailframes/tailframes-components/commit/a8adcfc9ea45ed71cdd277140ec10292d7a84c0c))
+
 ### [0.1.3](https://github.com/Tailframes/tailframes-components/compare/v0.1.2...v0.1.3) (2024-03-23)
 
 
