@@ -9,6 +9,13 @@ const meta = {
       'Input fields play a pivotal role in user interface design by enabling users to input unconventional responses. These essential components find application in diverse contexts, with common instances being the input of personal details and shipping addresses in e-commerce web forms or the submission of online inquiries.',
   },
   component: Input,
+  decorators: [
+    Story => (
+      <div style={{ maxWidth: '24rem' }}>
+        <Story />
+      </div>
+    ),
+  ],
   tags: ['autodocs'],
   args: {
     placeholder: 'Text Field',
