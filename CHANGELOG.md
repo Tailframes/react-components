@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://github.com/Tailframes/tailframes-components/compare/v0.1.4...v0.1.5) (2024-04-22)
+
+
+### Features
+
+* **components:** update Input components style ([5caeaa5](https://github.com/Tailframes/tailframes-components/commit/5caeaa5460135096c135b0bf13b0079bdce261a1))
+* **textarea:** add Textarea component ([#4](https://github.com/Tailframes/tailframes-components/issues/4)) ([e73cf60](https://github.com/Tailframes/tailframes-components/commit/e73cf60bb491fbc091e0e5e72f99bec005f594d7))
+
+
+### Bug Fixes
+
+* **textarea:** Textarea scrollbar styles ([1e3d9f4](https://github.com/Tailframes/tailframes-components/commit/1e3d9f46980876d987028b4f92f0a3e7879c9b7c))
+
 ### [0.1.4](https://github.com/Tailframes/tailframes-components/compare/v0.1.3...v0.1.4) (2024-04-05)
 
 
