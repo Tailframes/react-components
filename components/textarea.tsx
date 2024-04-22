@@ -114,7 +114,10 @@ const Root = ({
           </span>
         )}
         {maxLength !== undefined && maxLength >= 0 ? (
-          <span className={clsxMerge('text-slate-500', textareaHelperTextVariants({ error }))}>
+          <span
+            id={`${rest.id}-character-count`}
+            className={clsxMerge('text-slate-500', textareaHelperTextVariants({ error }))}
+          >
             {currentLength}/{maxLength}
           </span>
         ) : null}
