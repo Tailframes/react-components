@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7](https://github.com/Tailframes/tailframes-components/compare/v0.1.6...v0.1.7) (2024-04-22)
+
+
+### Features
+
+* **textarea:** adjust scrollbar thickness ([9e61ec0](https://github.com/Tailframes/tailframes-components/commit/9e61ec07043ad2b26e58189feb9f068aebd9dd31))
+
 ### [0.1.6](https://github.com/Tailframes/tailframes-components/compare/v0.1.5...v0.1.6) (2024-04-22)
 
 
