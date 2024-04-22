@@ -22,7 +22,7 @@ const textareaContainerVariants = cva(
 
 const textareaVariants = cva(
   'w-full resize rounded-lg border border-slate-200 p-3 pb-5 text-xs font-normal placeholder-slate-500 outline-none transition-colors duration-300 ease-in-out ' +
-    'scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar scrollbar-track-transparent scrollbar-thumb-slate-700 scrollbar-corner-sky-500 ' +
+    'scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar scrollbar-track-transparent scrollbar-thumb-blue-700 ' +
     'disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400 disabled:placeholder-slate-400 ' +
     'focus:border-blue-600',
   {
@@ -52,9 +52,6 @@ const textareaLabelVariants = cva('whitespace-nowrap', {
     },
   },
 });
-
-const scrollbarClassName =
-  'scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar scrollbar-thumb-blue-700';
 
 export interface TextareaVariants {
   disabled?: boolean;
@@ -103,7 +100,7 @@ const Root = ({
       )}
       <textarea
         ref={ref}
-        className={clsxMerge(textareaVariants({ error }), scrollbarClassName, className)}
+        className={clsxMerge(textareaVariants({ error }), className)}
         disabled={disabled}
         readOnly={readOnly}
         maxLength={maxLength}
