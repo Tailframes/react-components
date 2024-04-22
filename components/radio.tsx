@@ -51,7 +51,7 @@ export function Radio({ size = 'medium', children, className, label, labelProps 
         htmlFor={rest.id}
         size='small'
         className={clsxMerge(
-          'whitespace-nowrap hover:cursor-pointer peer-disabled:cursor-not-allowed peer-disabled:text-slate-400',
+          'whitespace-nowrap peer-disabled:cursor-not-allowed peer-disabled:text-slate-400 hover:cursor-pointer',
           labelClassName
         )}
         {...labelRest}
