@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.6](https://github.com/Tailframes/tailframes-components/compare/v0.1.5...v0.1.6) (2024-04-22)
+
+
+### Features
+
+* **textarea:** add character count span element id ([2853d45](https://github.com/Tailframes/tailframes-components/commit/2853d451a7ec799fcfb032932f8fb9ca191add0a))
+
 ### [0.1.5](https://github.com/Tailframes/tailframes-components/compare/v0.1.4...v0.1.5) (2024-04-22)
 
 
