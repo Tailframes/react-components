@@ -19,7 +19,6 @@ const buttonVariants = cva(
         large: 'h-[42px] min-w-[42px] gap-2',
         medium: 'h-[38px] min-w-[38px] gap-2',
         small: 'h-8 min-w-[32px] gap-1.5 text-xs',
-        xsmall: 'h-6 min-w-[24px] gap-1.5 rounded-md text-xs',
       },
       disabled: {
         true: '',
@@ -71,7 +70,7 @@ const buttonVariants = cva(
       {
         variant: ['primary', 'secondary', 'outlined'],
         iconOnly: false,
-        size: ['small', 'xsmall'],
+        size: ['small'],
         class: 'px-2',
       },
       {
@@ -98,7 +97,7 @@ export interface ButtonVariants {
   fullWidth?: boolean;
   href?: boolean;
   iconOnly?: boolean;
-  size?: 'xsmall' | 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large';
   startIcon?: boolean;
   variant?: 'primary' | 'secondary' | 'outlined' | 'text' | 'text-default';
 }
