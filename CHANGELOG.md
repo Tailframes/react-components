@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.8](https://github.com/Tailframes/tailframes-components/compare/v0.1.7...v0.1.8) (2024-04-25)
+
+
+### Features
+
+* **components/button:** update outlined button styles ([ccf906d](https://github.com/Tailframes/tailframes-components/commit/ccf906d193c9aa6694bc21331193c244383b4c70))
+
 ### [0.1.7](https://github.com/Tailframes/tailframes-components/compare/v0.1.6...v0.1.7) (2024-04-22)
 
 
