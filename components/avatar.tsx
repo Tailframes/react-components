@@ -74,17 +74,14 @@ const avatarIconVariants = cva('flex items-center justify-center', {
   },
 });
 
-const avatarTextVariants = cva(
-  'flex max-w-full items-center justify-start whitespace-nowrap font-semibold text-white',
-  {
-    variants: {
-      size: {
-        medium: 'text-sm',
-        small: 'text-xs',
-      },
+const avatarTextVariants = cva('flex max-w-full items-center justify-start whitespace-nowrap font-medium text-white', {
+  variants: {
+    size: {
+      medium: 'text-sm',
+      small: 'text-xs',
     },
-  }
-);
+  },
+});
 
 export interface AvatarVariants {
   badge?: true | BadgeProps;
