@@ -1,13 +1,14 @@
 import { cva } from 'class-variance-authority';
 import { useState } from 'react';
+import { clsxMerge } from '../utils';
 import { Button, type ButtonProps } from './button';
 import { Tooltip, type TooltipProps } from './tooltip';
 
 const segmentedControlVariants = cva('h-7 text-slate-950', {
   variants: {
     active: {
-      true: 'rounded-md bg-white px-0 shadow md:w-auto md:px-3',
-      false: 'bg-transparent md:w-auto md:px-3',
+      true: 'w-full rounded-md bg-white px-3 shadow sm:w-auto',
+      false: 'w-full bg-transparent px-3 sm:w-auto',
     },
   },
   compoundVariants: [],
@@ -21,7 +22,7 @@ export function SegmentedControl({ items }: SegmentedControlProps) {
   const [activeItem, setActiveItem] = useState(0);
 
   return (
-    <div className='hidden h-9 items-baseline justify-start rounded-lg bg-gray-100 p-1 md:inline-flex'>
+    <div className='inline-flex h-9 w-full items-baseline justify-start rounded-lg bg-gray-100 p-1 sm:w-auto'>
       {items.map(({ tooltip, ...buttonProps }, index) => {
         const root = (
           <Button
@@ -37,7 +38,11 @@ export function SegmentedControl({ items }: SegmentedControlProps) {
         );
 
         return tooltip ? (
-          <Tooltip key={tooltip.value} {...tooltip}>
+          <Tooltip
+            key={tooltip.value}
+            {...tooltip}
+            containerClassName={clsxMerge(tooltip.containerClassName, 'w-full sm:w-auto')}
+          >
             {root}
           </Tooltip>
         ) : (
