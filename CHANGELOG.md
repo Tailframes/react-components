@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.11](https://github.com/Tailframes/tailframes-components/compare/v0.1.10...v0.1.11) (2024-05-07)
+
+
+### Bug Fixes
+
+* **segmented-control:** add useEffect to update activeItem state ([a192b4a](https://github.com/Tailframes/tailframes-components/commit/a192b4a6348441dc12828adb45a73eb1a12ccb6c))
+
 ### [0.1.10](https://github.com/Tailframes/tailframes-components/compare/v0.1.9...v0.1.10) (2024-05-07)
 
 
