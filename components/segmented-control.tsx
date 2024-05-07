@@ -1,5 +1,5 @@
 import { cva } from 'class-variance-authority';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { clsxMerge } from '../utils';
 import { Button, type ButtonProps } from './button';
 import { Tooltip, type TooltipProps } from './tooltip';
@@ -19,9 +19,7 @@ export interface SegmentedControlProps {
 }
 
 export function SegmentedControl({ items, onChange, value }: SegmentedControlProps) {
-  const [activeItem, setActiveItem] = useState(
-    items.findIndex(item => item.value === value || item.children === value) || 0
-  );
+  const [activeItem, setActiveItem] = useState(0);
 
   const handleChange = (index: number, value?: string) => {
     if (index === activeItem) {
@@ -35,9 +33,17 @@ export function SegmentedControl({ items, onChange, value }: SegmentedControlPro
     setActiveItem(index);
   };
 
+  useEffect(() => {
+    if (value && onChange) {
+      onChange(value);
+    }
+
+    setActiveItem(items.findIndex(item => item.value === value || item.children === value));
+  }, [items, onChange, value]);
+
   return (
     <div className='inline-flex h-9 w-full items-baseline justify-start rounded-lg bg-gray-100 p-1 sm:w-auto'>
-      {items.map(({ value, tooltip, ...buttonProps }, index) => {
+      {items.map(({ value, tooltip, onClick, ...buttonProps }, index) => {
         const root = (
           <Button
             key={index}
@@ -45,7 +51,8 @@ export function SegmentedControl({ items, onChange, value }: SegmentedControlPro
             variant='text'
             className={segmentedControlVariants({ active: activeItem === index })}
             aria-selected={activeItem === index}
-            onClick={() => {
+            onClick={e => {
+              onClick?.(e);
               handleChange(index, value);
             }}
             {...buttonProps}
