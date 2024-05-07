@@ -13,12 +13,13 @@ const segmentedControlVariants = cva('h-7 text-slate-950', {
   },
 });
 export interface SegmentedControlProps {
+  className?: string;
   value?: string;
   onChange?: (value: string) => void;
   items: Array<ButtonProps & { value?: string; tooltip?: TooltipProps }>;
 }
 
-export function SegmentedControl({ items, onChange, value }: SegmentedControlProps) {
+export function SegmentedControl({ items, onChange, value, className }: SegmentedControlProps) {
   const [activeItem, setActiveItem] = useState(
     items.findIndex(item => item.value === value || item.children === value) || 0
   );
@@ -38,9 +39,13 @@ export function SegmentedControl({ items, onChange, value }: SegmentedControlPro
   useEffect(() => {
     setActiveItem(items.findIndex(item => item.value === value || item.children === value));
   }, [value]);
-
   return (
-    <div className='inline-flex h-9 w-full items-baseline justify-start rounded-lg bg-gray-100 p-1 sm:w-auto'>
+    <div
+      className={clsxMerge(
+        'inline-flex h-9 w-full items-baseline justify-start rounded-lg bg-gray-100 p-1 sm:w-auto',
+        className
+      )}
+    >
       {items.map(({ value, tooltip, onClick, ...buttonProps }, index) => {
         const root = (
           <Button
