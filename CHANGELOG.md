@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.12](https://github.com/Tailframes/tailframes-components/compare/v0.1.11...v0.1.12) (2024-05-07)
+
+
+### Bug Fixes
+
+* **segmented-control:** set active item based on value ([b510523](https://github.com/Tailframes/tailframes-components/commit/b510523f1eab2711f3f6940d569989130b5adf39))
+
 ### [0.1.11](https://github.com/Tailframes/tailframes-components/compare/v0.1.10...v0.1.11) (2024-05-07)
 
 
