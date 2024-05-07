@@ -44,6 +44,7 @@ export function SegmentedControl({ items, onChange, value }: SegmentedControlPro
             size='small'
             variant='text'
             className={segmentedControlVariants({ active: activeItem === index })}
+            aria-selected={activeItem === index}
             onClick={() => {
               handleChange(index, value);
             }}
