@@ -19,7 +19,9 @@ export interface SegmentedControlProps {
 }
 
 export function SegmentedControl({ items, onChange, value }: SegmentedControlProps) {
-  const [activeItem, setActiveItem] = useState(0);
+  const [activeItem, setActiveItem] = useState(
+    items.findIndex(item => item.value === value || item.children === value) || 0
+  );
 
   const handleChange = (index: number, value?: string) => {
     if (index === activeItem) {
@@ -34,12 +36,8 @@ export function SegmentedControl({ items, onChange, value }: SegmentedControlPro
   };
 
   useEffect(() => {
-    if (value && onChange) {
-      onChange(value);
-    }
-
     setActiveItem(items.findIndex(item => item.value === value || item.children === value));
-  }, [items, onChange, value]);
+  }, [value]);
 
   return (
     <div className='inline-flex h-9 w-full items-baseline justify-start rounded-lg bg-gray-100 p-1 sm:w-auto'>
