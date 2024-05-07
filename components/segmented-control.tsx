@@ -11,19 +11,33 @@ const segmentedControlVariants = cva('h-7 text-slate-950', {
       false: 'w-full bg-transparent px-3 sm:w-auto',
     },
   },
-  compoundVariants: [],
 });
-
 export interface SegmentedControlProps {
-  items: Array<ButtonProps & { tooltip?: TooltipProps }>;
+  value?: string;
+  onChange?: (value: string) => void;
+  items: Array<ButtonProps & { value?: string; tooltip?: TooltipProps }>;
 }
 
-export function SegmentedControl({ items }: SegmentedControlProps) {
-  const [activeItem, setActiveItem] = useState(0);
+export function SegmentedControl({ items, onChange, value }: SegmentedControlProps) {
+  const [activeItem, setActiveItem] = useState(
+    items.findIndex(item => item.children === value || item.value === value) || 0
+  );
+
+  const handleChange = (index: number, value?: string) => {
+    if (index === activeItem) {
+      return;
+    }
+
+    if (value) {
+      onChange?.(value);
+    }
+
+    setActiveItem(index);
+  };
 
   return (
     <div className='inline-flex h-9 w-full items-baseline justify-start rounded-lg bg-gray-100 p-1 sm:w-auto'>
-      {items.map(({ tooltip, ...buttonProps }, index) => {
+      {items.map(({ value, tooltip, ...buttonProps }, index) => {
         const root = (
           <Button
             key={index}
@@ -31,7 +45,7 @@ export function SegmentedControl({ items }: SegmentedControlProps) {
             variant='text'
             className={segmentedControlVariants({ active: activeItem === index })}
             onClick={() => {
-              setActiveItem(index);
+              handleChange(index, value);
             }}
             {...buttonProps}
           />

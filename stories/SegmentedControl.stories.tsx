@@ -99,3 +99,43 @@ export const IconWithTooltip: Story = {
     ],
   },
 };
+
+export const Disabled: Story = {
+  args: {
+    items: [
+      {
+        children: 'GitHub',
+      },
+      {
+        children: 'Dribble',
+      },
+      {
+        children: 'Youtube',
+        disabled: true,
+      },
+    ],
+  },
+};
+
+export const ControlledValue: Story = {
+  args: {
+    value: 'Dribble',
+    onChange: value => {
+      alert(`Selected item: ${value}`);
+    },
+    items: [
+      {
+        children: 'GitHub',
+        value: 'GitHub',
+      },
+      {
+        children: 'Dribble',
+        value: 'Dribble',
+      },
+      {
+        children: 'Youtube',
+        value: 'Youtube',
+      },
+    ],
+  },
+};
