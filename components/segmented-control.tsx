@@ -20,7 +20,7 @@ export interface SegmentedControlProps {
 
 export function SegmentedControl({ items, onChange, value }: SegmentedControlProps) {
   const [activeItem, setActiveItem] = useState(
-    items.findIndex(item => item.children === value || item.value === value) || 0
+    items.findIndex(item => item.value === value || item.children === value) || 0
   );
 
   const handleChange = (index: number, value?: string) => {
