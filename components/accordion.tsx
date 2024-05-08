@@ -5,7 +5,7 @@ import { cva } from 'class-variance-authority';
 import { Button } from './button';
 
 const accordionItemVariants = cva(
-  'flex flex-col items-center justify-start rounded-lg border border-slate-200 bg-white p-3 hover:cursor-pointer hover:bg-gray-50',
+  'flex flex-col items-start justify-start rounded-lg border border-slate-200 bg-white p-3 hover:cursor-pointer hover:bg-gray-50',
   {
     variants: {
       isExpanded: {
@@ -48,7 +48,7 @@ function AccordionItem({
         className='flex h-auto w-full items-center justify-between p-0'
         endIcon={
           <ChevronDownIcon
-            className={clsxMerge('stroke-black transition-transform duration-300 ease-in-out', {
+            className={clsxMerge('size-5 stroke-black transition-transform duration-300 ease-in-out', {
               'rotate-180': isExpanded,
             })}
           />
@@ -56,22 +56,22 @@ function AccordionItem({
       >
         <div className='flex w-full items-center justify-start gap-2'>
           {labelStartIcon && (
-            <div className='inline-flex size-[18px] items-center justify-start overflow-hidden'>{labelStartIcon}</div>
+            <div className='inline-flex size-5 items-center justify-start overflow-hidden'>{labelStartIcon}</div>
           )}
           <p className='font-medium'>{label}</p>
         </div>
       </Button>
       <div
         className={clsxMerge(
-          'w-full overflow-hidden text-xs text-slate-600 transition-all duration-300 ease-in-out',
+          'grid w-full grid-rows-[1fr] pr-7 pt-1 text-xs text-slate-600 opacity-100 transition-[grid-template-rows,opacity] duration-300 ease-out',
           contentClassName,
           {
-            'mt-2 max-h-80 opacity-100 sm:max-h-28': isExpanded, // adjust max-h depending on content for smooth animation
-            'max-h-0 opacity-0': !isExpanded,
+            'pl-7': Boolean(labelStartIcon),
+            'grid-rows-[0fr] pt-0 opacity-0': !isExpanded,
           }
         )}
       >
-        {content}
+        <div className='overflow-hidden'>{content}</div>
       </div>
     </div>
   );
