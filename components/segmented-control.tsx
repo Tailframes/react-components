@@ -53,7 +53,6 @@ export function SegmentedControl({ items, onChange, value, className }: Segmente
             size='small'
             variant='text'
             className={segmentedControlVariants({ active: activeItem === index })}
-            aria-selected={activeItem === index}
             onClick={e => {
               onClick?.(e);
               handleChange(index, value);
