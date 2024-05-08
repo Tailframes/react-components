@@ -45,7 +45,7 @@ function AccordionItem({
     <div className={clsxMerge(accordionItemVariants({ isExpanded }), className)} {...rest}>
       <Button
         variant='text-default'
-        className='flex h-auto w-full items-center justify-between p-0'
+        className={clsxMerge('flex h-auto w-full items-center justify-between p-0', { 'pb-1': isExpanded })}
         endIcon={
           <ChevronDownIcon
             className={clsxMerge('size-5 stroke-black transition-transform duration-300 ease-in-out', {
@@ -63,11 +63,11 @@ function AccordionItem({
       </Button>
       <div
         className={clsxMerge(
-          'grid w-full grid-rows-[1fr] pr-7 pt-1 text-xs text-slate-600 opacity-100 transition-[grid-template-rows,opacity] duration-300 ease-out',
+          'grid w-full grid-rows-[1fr] pr-7 text-xs text-slate-600 opacity-100 transition-[grid-template-rows,opacity] duration-300 ease-out',
           contentClassName,
           {
             'pl-7': Boolean(labelStartIcon),
-            'grid-rows-[0fr] pt-0 opacity-0': !isExpanded,
+            'grid-rows-[0fr] opacity-0': !isExpanded,
           }
         )}
       >

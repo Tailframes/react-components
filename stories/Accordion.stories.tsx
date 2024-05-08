@@ -46,15 +46,15 @@ export const Text: Story = {
   },
 };
 
+export const TextWithIcon: Story = {
+  args: {
+    items: items.map(item => ({ ...item, labelStartIcon: <UserIcon /> })),
+  },
+};
+
 export const SingleItem: Story = {
   args: {
     type: 'single',
     items,
-  },
-};
-
-export const TextWithIcon: Story = {
-  args: {
-    items: items.map(item => ({ ...item, labelStartIcon: <UserIcon /> })),
   },
 };
