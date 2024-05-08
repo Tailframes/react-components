@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.14](https://github.com/Tailframes/tailframes-components/compare/v0.1.13...v0.1.14) (2024-05-08)
+
+
+### Features
+
+* **segmented-control:** add text color to inactive state ([27d3c30](https://github.com/Tailframes/tailframes-components/commit/27d3c30efc1dcd5b5ebea922f88518dc65eb122b))
+
 ### [0.1.13](https://github.com/Tailframes/tailframes-components/compare/v0.1.12...v0.1.13) (2024-05-07)
 
 
