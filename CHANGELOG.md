@@ -2,6 +2,48 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.14](https://github.com/Tailframes/tailframes-components/compare/v0.1.13...v0.1.14) (2024-05-08)
+
+
+### Features
+
+* **segmented-control:** add text color to inactive state ([27d3c30](https://github.com/Tailframes/tailframes-components/commit/27d3c30efc1dcd5b5ebea922f88518dc65eb122b))
+
+### [0.1.13](https://github.com/Tailframes/tailframes-components/compare/v0.1.12...v0.1.13) (2024-05-07)
+
+
+### Features
+
+* **segmented-control:** add className prop ([fa89991](https://github.com/Tailframes/tailframes-components/commit/fa899912c0a0496cb1b584c0b5b0858f76ed9cc2))
+
+### [0.1.12](https://github.com/Tailframes/tailframes-components/compare/v0.1.11...v0.1.12) (2024-05-07)
+
+
+### Bug Fixes
+
+* **segmented-control:** set active item based on value ([b510523](https://github.com/Tailframes/tailframes-components/commit/b510523f1eab2711f3f6940d569989130b5adf39))
+
+### [0.1.11](https://github.com/Tailframes/tailframes-components/compare/v0.1.10...v0.1.11) (2024-05-07)
+
+
+### Bug Fixes
+
+* **segmented-control:** add useEffect to update activeItem state ([a192b4a](https://github.com/Tailframes/tailframes-components/commit/a192b4a6348441dc12828adb45a73eb1a12ccb6c))
+
+### [0.1.10](https://github.com/Tailframes/tailframes-components/compare/v0.1.9...v0.1.10) (2024-05-07)
+
+
+### Bug Fixes
+
+* **segmented-control:** item comparison logic ([805bb10](https://github.com/Tailframes/tailframes-components/commit/805bb1085ae082a775c4b8db04f7480694ef3176))
+
+### [0.1.9](https://github.com/Tailframes/tailframes-components/compare/v0.1.8...v0.1.9) (2024-05-07)
+
+
+### Features
+
+* **segmented-control:** add SegmentedControl component ([#6](https://github.com/Tailframes/tailframes-components/issues/6)) ([69fe3b7](https://github.com/Tailframes/tailframes-components/commit/69fe3b7392830103cb9bb30dc7f36bab494ab9f7))
+
 ### [0.1.8](https://github.com/Tailframes/tailframes-components/compare/v0.1.7...v0.1.8) (2024-04-25)
 
 

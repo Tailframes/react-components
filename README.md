@@ -11,3 +11,7 @@ Documentation can be found on [tailframes.com](https://tailframes.com/getting-st
 ## Storybook
 
 React components Storybook is available on [storybook.tailframes.com](https://storybook.tailframes.com).
+
+## Figma Design System
+
+Get access to the open-source Figma file on [https://www.figma.com/community/file/1368254181288101112/tailframes-open-source-design-system-react-tailwind](https://www.figma.com/community/file/1368254181288101112/tailframes-open-source-design-system-react-tailwind).
