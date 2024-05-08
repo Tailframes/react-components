@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.15](https://github.com/Tailframes/tailframes-components/compare/v0.1.14...v0.1.15) (2024-05-08)
+
+
+### Features
+
+* **accordion:** add Accordion component ([#7](https://github.com/Tailframes/tailframes-components/issues/7)) ([9873c61](https://github.com/Tailframes/tailframes-components/commit/9873c61289f34938a70ba9601b060ee638dd1f14))
+
 ### [0.1.14](https://github.com/Tailframes/tailframes-components/compare/v0.1.13...v0.1.14) (2024-05-08)
 
 
