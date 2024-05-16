@@ -8,7 +8,7 @@ const meta = {
   title: 'Components/Breadcrumbs',
   parameters: {
     componentSubtitle:
-      'Breadcrumbs are integral navigation aids in user interfaces, providing users with clear paths to track their journey through websites or applications. These navigational elements are essential for user experience, particularly in complex websites with deep hierarchies like e-commerce platforms or content-rich portals.',
+      'Breadcrumbs play a crucial role in guiding users through websites or applications, offering clear pathways to trace their progress. They are especially vital for user experience, notably in intricate platforms like e-commerce websites or content-heavy portals, where they significantly improve navigation.',
   },
   component: Breadcrumbs,
   tags: ['autodocs'],
@@ -101,6 +101,7 @@ export const Icon: Story = {
         href: '/settings',
       },
       {
+        label: 'Users',
         icon: <UsersIcon className='size-4' />,
         href: '/settings/users',
       },

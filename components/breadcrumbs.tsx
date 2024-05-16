@@ -86,7 +86,7 @@ const BreadcrumbSeparator = ({ separator }: Pick<BreadcrumbsProps, 'separator'>)
 
 BreadcrumbSeparator.displayName = 'BreadcrumbSeparator';
 
-interface BreadcrumbItemProps {
+export interface BreadcrumbItemProps {
   label?: string;
   icon?: ReactNode;
   href: string;
