@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { DribbleIcon } from '../assets/dribble-icon';
-import { GithubOctocatIcon } from '../assets/github-octocat-icon';
+import { GitHubOctocatIcon } from '../assets/github-octocat-icon';
 import { YoutubeIcon } from '../assets/youtube-icon';
 import { SegmentedControl } from '../components/segmented-control';
 
@@ -39,7 +39,7 @@ export const TextWithIcon: Story = {
     items: [
       {
         children: 'GitHub',
-        startIcon: <GithubOctocatIcon className='size-4' />,
+        startIcon: <GitHubOctocatIcon className='size-4' />,
       },
       {
         children: 'Dribble',
@@ -58,7 +58,7 @@ export const Icon: Story = {
     items: [
       {
         iconOnly: true,
-        children: <GithubOctocatIcon className='size-4' />,
+        children: <GitHubOctocatIcon className='size-4' />,
       },
       {
         iconOnly: true,
@@ -77,7 +77,7 @@ export const IconWithTooltip: Story = {
     items: [
       {
         iconOnly: true,
-        children: <GithubOctocatIcon className='size-4' />,
+        children: <GitHubOctocatIcon className='size-4' />,
         tooltip: {
           value: 'GitHub',
         },

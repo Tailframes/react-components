@@ -1,6 +1,6 @@
 import type { SVGProps } from 'react';
 
-export function GithubOctocatIcon(props: SVGProps<SVGSVGElement>) {
+export function GitHubOctocatIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       width='20'
@@ -28,4 +28,4 @@ export function GithubOctocatIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-GithubOctocatIcon.displayName = 'GitHubOctocatIcon';
+GitHubOctocatIcon.displayName = 'GitHubOctocatIcon';
