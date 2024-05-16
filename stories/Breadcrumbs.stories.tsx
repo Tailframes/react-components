@@ -1,7 +1,7 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import { GearIcon } from '../assets/gear-icon';
 import { HomeIcon } from '../assets/home-icon';
-import { UserIcon } from '../assets/user-icon';
+import { UsersIcon } from '../assets/users-icon';
 import { Breadcrumbs } from '../components/breadcrumbs';
 
 const meta = {
@@ -72,17 +72,17 @@ export const LabelWithIcon: Story = {
     items: [
       {
         label: 'Dashboard',
-        icon: <HomeIcon className='size-3.5' />,
+        icon: <HomeIcon className='size-4' />,
         href: '/',
       },
       {
         label: 'Settings',
-        icon: <GearIcon className='size-3.5' />,
+        icon: <GearIcon className='size-4' />,
         href: '/settings',
       },
       {
         label: 'Users',
-        icon: <UserIcon className='size-3.5' />,
+        icon: <UsersIcon className='size-4' />,
         href: '/settings/users',
       },
     ],
@@ -93,15 +93,15 @@ export const Icon: Story = {
   args: {
     items: [
       {
-        icon: <HomeIcon className='size-3.5' />,
+        icon: <HomeIcon className='size-4' />,
         href: '/',
       },
       {
-        icon: <GearIcon className='size-3.5' />,
+        icon: <GearIcon className='size-4' />,
         href: '/settings',
       },
       {
-        icon: <UserIcon className='size-3.5' />,
+        icon: <UsersIcon className='size-4' />,
         href: '/settings/users',
       },
     ],
@@ -114,17 +114,17 @@ export const Collapsed: Story = {
     items: [
       {
         label: 'Dashboard',
-        icon: <HomeIcon className='size-3.5' />,
+        icon: <HomeIcon className='size-4' />,
         href: '/',
       },
       {
         label: 'Settings',
-        icon: <GearIcon className='size-3.5' />,
+        icon: <GearIcon className='size-4' />,
         href: '/settings',
       },
       {
         label: 'Users',
-        icon: <UserIcon className='size-3.5' />,
+        icon: <UsersIcon className='size-4' />,
         href: '/settings/users',
       },
       {

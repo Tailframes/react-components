@@ -72,7 +72,7 @@ export function Breadcrumbs({ items, separator = 'chevron', maxItems = 6 }: Brea
 Breadcrumbs.displayName = 'Breadcrumbs';
 
 const DefaultSeparator: Record<string, ReactNode> = {
-  chevron: <ChevronIcon className='size-4 -rotate-90 stroke-slate-400 ' />,
+  chevron: <ChevronIcon className='size-3 -rotate-90 stroke-slate-400 ' />,
   slash: '/',
 };
 
