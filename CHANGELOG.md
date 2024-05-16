@@ -2,6 +2,89 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.15](https://github.com/Tailframes/tailframes-components/compare/v0.1.14...v0.1.15) (2024-05-08)
+
+
+### Features
+
+* **accordion:** add Accordion component ([#7](https://github.com/Tailframes/tailframes-components/issues/7)) ([9873c61](https://github.com/Tailframes/tailframes-components/commit/9873c61289f34938a70ba9601b060ee638dd1f14))
+
+### [0.1.14](https://github.com/Tailframes/tailframes-components/compare/v0.1.13...v0.1.14) (2024-05-08)
+
+
+### Features
+
+* **segmented-control:** add text color to inactive state ([27d3c30](https://github.com/Tailframes/tailframes-components/commit/27d3c30efc1dcd5b5ebea922f88518dc65eb122b))
+
+### [0.1.13](https://github.com/Tailframes/tailframes-components/compare/v0.1.12...v0.1.13) (2024-05-07)
+
+
+### Features
+
+* **segmented-control:** add className prop ([fa89991](https://github.com/Tailframes/tailframes-components/commit/fa899912c0a0496cb1b584c0b5b0858f76ed9cc2))
+
+### [0.1.12](https://github.com/Tailframes/tailframes-components/compare/v0.1.11...v0.1.12) (2024-05-07)
+
+
+### Bug Fixes
+
+* **segmented-control:** set active item based on value ([b510523](https://github.com/Tailframes/tailframes-components/commit/b510523f1eab2711f3f6940d569989130b5adf39))
+
+### [0.1.11](https://github.com/Tailframes/tailframes-components/compare/v0.1.10...v0.1.11) (2024-05-07)
+
+
+### Bug Fixes
+
+* **segmented-control:** add useEffect to update activeItem state ([a192b4a](https://github.com/Tailframes/tailframes-components/commit/a192b4a6348441dc12828adb45a73eb1a12ccb6c))
+
+### [0.1.10](https://github.com/Tailframes/tailframes-components/compare/v0.1.9...v0.1.10) (2024-05-07)
+
+
+### Bug Fixes
+
+* **segmented-control:** item comparison logic ([805bb10](https://github.com/Tailframes/tailframes-components/commit/805bb1085ae082a775c4b8db04f7480694ef3176))
+
+### [0.1.9](https://github.com/Tailframes/tailframes-components/compare/v0.1.8...v0.1.9) (2024-05-07)
+
+
+### Features
+
+* **segmented-control:** add SegmentedControl component ([#6](https://github.com/Tailframes/tailframes-components/issues/6)) ([69fe3b7](https://github.com/Tailframes/tailframes-components/commit/69fe3b7392830103cb9bb30dc7f36bab494ab9f7))
+
+### [0.1.8](https://github.com/Tailframes/tailframes-components/compare/v0.1.7...v0.1.8) (2024-04-25)
+
+
+### Features
+
+* **components/button:** update outlined button styles ([ccf906d](https://github.com/Tailframes/tailframes-components/commit/ccf906d193c9aa6694bc21331193c244383b4c70))
+
+### [0.1.7](https://github.com/Tailframes/tailframes-components/compare/v0.1.6...v0.1.7) (2024-04-22)
+
+
+### Features
+
+* **textarea:** adjust scrollbar thickness ([9e61ec0](https://github.com/Tailframes/tailframes-components/commit/9e61ec07043ad2b26e58189feb9f068aebd9dd31))
+
+### [0.1.6](https://github.com/Tailframes/tailframes-components/compare/v0.1.5...v0.1.6) (2024-04-22)
+
+
+### Features
+
+* **textarea:** add character count span element id ([2853d45](https://github.com/Tailframes/tailframes-components/commit/2853d451a7ec799fcfb032932f8fb9ca191add0a))
+
+### [0.1.5](https://github.com/Tailframes/tailframes-components/compare/v0.1.4...v0.1.5) (2024-04-22)
+
+
+### Features
+
+* **components:** update Input components style ([5caeaa5](https://github.com/Tailframes/tailframes-components/commit/5caeaa5460135096c135b0bf13b0079bdce261a1))
+* **textarea:** add Textarea component ([#4](https://github.com/Tailframes/tailframes-components/issues/4)) ([e73cf60](https://github.com/Tailframes/tailframes-components/commit/e73cf60bb491fbc091e0e5e72f99bec005f594d7))
+
+
+### Bug Fixes
+
+* **textarea:** Textarea scrollbar styles ([1e3d9f4](https://github.com/Tailframes/tailframes-components/commit/1e3d9f46980876d987028b4f92f0a3e7879c9b7c))
+
 ### [0.1.4](https://github.com/Tailframes/tailframes-components/compare/v0.1.3...v0.1.4) (2024-04-05)
 
 

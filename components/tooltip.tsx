@@ -128,6 +128,7 @@ export interface TooltipVariants {
 
 export interface TooltipProps extends HTMLAttributes<HTMLDivElement>, TooltipVariants {
   value: string;
+  containerClassName?: string;
 }
 
 export function Tooltip({
@@ -137,11 +138,12 @@ export function Tooltip({
   showArrow = true,
   children,
   className,
+  containerClassName,
   value,
   ...rest
 }: TooltipProps) {
   return (
-    <div className='group relative inline-block whitespace-nowrap'>
+    <div className={clsxMerge('group relative inline-block whitespace-nowrap', containerClassName)}>
       {children}
       <span
         role='tooltip'

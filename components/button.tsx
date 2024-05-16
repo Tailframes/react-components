@@ -10,7 +10,8 @@ const buttonVariants = cva(
       variant: {
         primary: 'bg-blue-700 stroke-white px-6 text-white hover:bg-blue-950',
         secondary: 'bg-blue-50 stroke-blue-700 px-6 text-blue-700 hover:bg-blue-100',
-        outlined: 'border border-blue-700 bg-transparent stroke-blue-700 px-6 text-blue-700 hover:bg-blue-50',
+        outlined:
+          'border border-slate-200 bg-transparent stroke-black px-6 text-black hover:border-blue-700 hover:bg-blue-700 hover:stroke-white hover:text-white',
         text: 'stroke-blue-700 px-2 text-blue-700',
         'text-default': 'stroke-slate-500 px-2 text-black',
       },
@@ -18,7 +19,6 @@ const buttonVariants = cva(
         large: 'h-[42px] min-w-[42px] gap-2',
         medium: 'h-[38px] min-w-[38px] gap-2',
         small: 'h-8 min-w-[32px] gap-1.5 text-xs',
-        xsmall: 'h-6 min-w-[24px] gap-1.5 rounded-md text-xs',
       },
       disabled: {
         true: '',
@@ -70,7 +70,7 @@ const buttonVariants = cva(
       {
         variant: ['primary', 'secondary', 'outlined'],
         iconOnly: false,
-        size: ['small', 'xsmall'],
+        size: ['small'],
         class: 'px-2',
       },
       {
@@ -97,7 +97,7 @@ export interface ButtonVariants {
   fullWidth?: boolean;
   href?: boolean;
   iconOnly?: boolean;
-  size?: 'xsmall' | 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large';
   startIcon?: boolean;
   variant?: 'primary' | 'secondary' | 'outlined' | 'text' | 'text-default';
 }
@@ -150,7 +150,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
         {...rest}
       >
         {startIcon}
-        <span>{children}</span>
+        {children && <span>{children}</span>}
         {endIcon}
       </Component>
     );
