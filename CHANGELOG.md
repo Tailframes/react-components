@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.16](https://github.com/Tailframes/tailframes-components/compare/v0.1.15...v0.1.16) (2024-05-16)
+
+
+### Features
+
+* **breadcrumbs:** add Breadcrumbs component ([#5](https://github.com/Tailframes/tailframes-components/issues/5)) ([161dfb4](https://github.com/Tailframes/tailframes-components/commit/161dfb4a649716877d0afae5ff27a4fff81f7175))
+
+
+### Bug Fixes
+
+* **components:** remove unnecessary aria-selected attribute ([3a52e3c](https://github.com/Tailframes/tailframes-components/commit/3a52e3ccab6e1487373d551bcfb07ce30ab77117))
+
 ### [0.1.15](https://github.com/Tailframes/tailframes-components/compare/v0.1.14...v0.1.15) (2024-05-08)
 
 
