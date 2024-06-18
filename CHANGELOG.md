@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.17](https://github.com/Tailframes/tailframes-components/compare/v0.1.16...v0.1.17) (2024-06-18)
+
+
+### Features
+
+* **toast:** add Toast component ([#11](https://github.com/Tailframes/tailframes-components/issues/11)) ([bff69e5](https://github.com/Tailframes/tailframes-components/commit/bff69e5a724116ecd15dddba039d22ef55a18680))
+
 ### [0.1.16](https://github.com/Tailframes/tailframes-components/compare/v0.1.15...v0.1.16) (2024-05-16)
 
 
