@@ -8,7 +8,7 @@ const segmentedControlVariants = cva('h-7 text-slate-950', {
   variants: {
     active: {
       true: 'w-full rounded-md bg-white px-3 shadow sm:w-auto',
-      false: 'w-full bg-transparent px-3 text-slate-500 sm:w-auto',
+      false: 'w-full bg-transparent px-3 text-slate-600 sm:w-auto',
     },
   },
 });

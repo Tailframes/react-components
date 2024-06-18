@@ -14,13 +14,6 @@ const meta = {
     variant: 'primary',
   },
   argTypes: {
-    variant: {
-      table: {
-        defaultValue: {
-          summary: 'primary',
-        },
-      },
-    },
     startIcon: IconArgType({ className: 'size-[18px] stroke-inherit' }, [IconKey.CheckIcon, IconKey.CloseIcon]),
     endIcon: IconArgType({ className: 'size-[18px] stroke-inherit' }, [IconKey.CheckIcon, IconKey.CloseIcon]),
   },
