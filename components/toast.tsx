@@ -1,5 +1,5 @@
 import { cva } from 'class-variance-authority';
-import { createContext, type HTMLAttributes, type ReactNode, useContext, useEffect, useState } from 'react';
+import { createContext, type HTMLAttributes, type ReactNode, useEffect, useState } from 'react';
 import { CloseIcon } from '../assets/close-icon';
 import { clsxMerge } from '../utils';
 
@@ -79,6 +79,7 @@ export interface ToastVariants {
 
 export interface ToastProps extends Omit<HTMLAttributes<HTMLDivElement>, 'color'>, Omit<ToastVariants, 'startIcon'> {
   startIcon?: ReactNode;
+  onClose?: () => void;
 }
 
 export function Toast({
@@ -89,18 +90,9 @@ export function Toast({
   startIcon,
   children,
   className,
+  onClose,
   ...rest
 }: ToastProps) {
-  const toastContext = useContext(ToastContext);
-
-  if (!toastContext) {
-    throw new Error('ToastProvider is not provided');
-  }
-
-  const handleClose = () => {
-    toastContext.setToast(null);
-  };
-
   return (
     <div
       className={clsxMerge(
@@ -113,7 +105,8 @@ export function Toast({
       <div className='inline-flex flex-1 items-center justify-start overflow-hidden'>{children}</div>
       <CloseIcon
         className='size-4 cursor-pointer transition-all duration-200 ease-in-out group-hover:visible group-hover:opacity-100 lg:invisible lg:opacity-0'
-        onClick={handleClose}
+        onClick={onClose}
+        aria-label='Close'
       />
     </div>
   );
@@ -132,45 +125,49 @@ export const ToastContext = createContext<ToastContextProps | null>(null);
 
 export function ToastProvider({ children }: { children: ReactNode }) {
   const [toastTimeout, setToastTimeout] = useState<NodeJS.Timeout>();
-  const [toast, setToast] = useState<(ToastProps & { id: string }) | null>(null);
+  const [toastProps, setToastProps] = useState<(ToastProps & { id: string }) | null>(null);
   const [visible, setVisible] = useState<boolean>(false);
 
-  const showToast = (props: ToastProps | null) => {
+  const setToast = (props: ToastProps | null) => {
     if (props === null) {
       setVisible(false);
       // setTimeout used for smooth transition
       const timeout = setTimeout(() => {
-        setToast(props);
+        setToastProps(props);
       }, 500);
 
       setToastTimeout(timeout);
     } else {
       clearTimeout(toastTimeout);
-      setToast({ id: Date.now().toString(), ...props });
+      setToastProps({ id: Date.now().toString(), ...props });
       setVisible(true);
     }
+  };
+
+  const handleClose = () => {
+    setToast(null);
   };
 
   // auto closing
   useEffect(() => {
     let timeout: NodeJS.Timeout;
 
-    if (visible && toast?.autoClose !== false) {
+    if (visible && toastProps?.autoClose !== false) {
       timeout = setTimeout(() => {
         setVisible(false);
-      }, toast?.autoCloseTimeout ?? 3000);
+      }, toastProps?.autoCloseTimeout ?? 3000);
     }
 
     return () => {
       clearTimeout(toastTimeout);
       clearTimeout(timeout);
     };
-  }, [toast?.autoClose, toast?.autoCloseTimeout, toast?.id, toastTimeout, visible]);
+  }, [toastProps?.autoClose, toastProps?.autoCloseTimeout, toastProps?.id, toastTimeout, visible]);
 
   return (
-    <ToastContext.Provider value={{ toast, setToast: showToast }}>
+    <ToastContext.Provider value={{ toast: toastProps, setToast }}>
       {children}
-      <Toast {...toast} visible={visible} />
+      <Toast {...toastProps} visible={visible} onClose={handleClose} />
     </ToastContext.Provider>
   );
 }
