@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.18](https://github.com/Tailframes/tailframes-components/compare/v0.1.17...v0.1.18) (2024-06-19)
+
+
+### Bug Fixes
+
+* audit ([e628daa](https://github.com/Tailframes/tailframes-components/commit/e628daac77b3a9e923d9e769e00b9127f1ebab15))
+
 ### [0.1.17](https://github.com/Tailframes/tailframes-components/compare/v0.1.16...v0.1.17) (2024-06-18)
 
 
