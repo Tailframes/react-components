@@ -12,7 +12,7 @@ const DecoratorBody = ({ props }: { props: ToastProps }) => {
       toastContext.setToast(props);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [props]);
 
   if (!toastContext) {
     throw new Error('Component must be wrapped in ToastProvider');
