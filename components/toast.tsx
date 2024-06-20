@@ -2,9 +2,10 @@ import { cva } from 'class-variance-authority';
 import { createContext, type HTMLAttributes, type ReactNode, useEffect, useState } from 'react';
 import { CloseIcon } from '../assets/close-icon';
 import { clsxMerge } from '../utils';
+import { Button } from './button';
 
 const toastVariants = cva(
-  'group fixed right-1/2 z-[1000] inline-flex w-full max-w-xs translate-x-1/2 cursor-pointer items-center justify-between gap-2 rounded-lg border border-slate-200 bg-white p-3 text-sm font-medium leading-tight shadow transition-all duration-500 ease-in-out lg:translate-x-0',
+  'group fixed right-1/2 z-[1000] inline-flex w-full max-w-xs translate-x-1/2 items-center justify-between gap-2 rounded-lg border border-slate-200 bg-white p-3 text-sm font-medium leading-tight shadow transition-all duration-500 ease-in-out lg:translate-x-0',
   {
     variants: {
       variant: {
@@ -23,10 +24,6 @@ const toastVariants = cva(
         'bottom-right': 'bottom-5 lg:right-5',
         'bottom-left': 'bottom-5 lg:left-5',
       },
-      startIcon: {
-        true: '',
-        false: '',
-      },
       visible: {
         true: 'translate-y-0 opacity-100',
         false: 'invisible opacity-0',
@@ -36,22 +33,22 @@ const toastVariants = cva(
       {
         variant: 'filled',
         color: 'default',
-        class: 'border border-blue-400 bg-blue-50 text-blue-700',
+        class: 'border border-blue-400 bg-blue-50 text-blue-700 [&>svg]:stroke-blue-700',
       },
       {
         variant: 'filled',
         color: 'success',
-        class: 'border border-green-500 bg-green-50 text-green-600',
+        class: 'border border-green-500 bg-green-50 text-green-600 [&>svg]:stroke-green-600',
       },
       {
         variant: 'filled',
         color: 'error',
-        class: 'border border-red-400 bg-red-50 text-red-600',
+        class: 'border border-red-400 bg-red-50 text-red-600 [&>svg]:stroke-red-600',
       },
       {
         variant: 'filled',
         color: 'warning',
-        class: 'border border-orange-400 bg-orange-50 text-orange-600',
+        class: 'border border-orange-400 bg-orange-50 text-orange-600 [&>svg]:stroke-orange-500',
       },
       {
         placement: ['bottom-left', 'bottom-right'],
@@ -74,10 +71,9 @@ export interface ToastVariants {
   visible?: boolean;
   autoClose?: boolean;
   autoCloseTimeout?: number;
-  startIcon: boolean;
 }
 
-export interface ToastProps extends Omit<HTMLAttributes<HTMLDivElement>, 'color'>, Omit<ToastVariants, 'startIcon'> {
+export interface ToastProps extends Omit<HTMLAttributes<HTMLDivElement>, 'color'>, ToastVariants {
   startIcon?: ReactNode;
   onClose?: () => void;
 }
@@ -94,20 +90,21 @@ export function Toast({
   ...rest
 }: ToastProps) {
   return (
-    <div
-      className={clsxMerge(
-        toastVariants({ variant, color, startIcon: Boolean(startIcon), visible, placement }),
-        className
-      )}
-      {...rest}
-    >
+    <div className={clsxMerge(toastVariants({ variant, color, visible, placement }), className)} {...rest}>
       {startIcon && <div className='inline-flex size-5 items-center justify-start'>{startIcon}</div>}
       <div className='inline-flex flex-1 items-center justify-start overflow-hidden'>{children}</div>
-      <CloseIcon
-        className='size-4 cursor-pointer transition-all duration-200 ease-in-out group-hover:visible group-hover:opacity-100 lg:invisible lg:opacity-0'
-        onClick={onClose}
-        aria-label='Close'
-      />
+      {onClose && (
+        <Button
+          variant='text'
+          size='small'
+          className='h-auto text-slate-500 group-hover:visible group-hover:opacity-100 lg:invisible lg:opacity-0'
+          aria-label='Close'
+          title='Close'
+          iconOnly
+        >
+          <CloseIcon className='size-4' onClick={onClose} />
+        </Button>
+      )}
     </div>
   );
 }
