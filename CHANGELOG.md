@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.19](https://github.com/Tailframes/tailframes-components/compare/v0.1.18...v0.1.19) (2024-06-20)
+
+
+### Features
+
+* **alert:** add Alert component ([76de54d](https://github.com/Tailframes/tailframes-components/commit/76de54d4d40512cbe05bbd68e133722f29ef760d))
+
 ### [0.1.18](https://github.com/Tailframes/tailframes-components/compare/v0.1.17...v0.1.18) (2024-06-19)
 
 
