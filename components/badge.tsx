@@ -20,7 +20,7 @@ const badgeVariants = cva(
         secondary: 'border-blue-300 bg-blue-50 text-blue-600',
         success: 'border-green-600 bg-green-50 text-green-700',
         error: 'border-red-600 bg-red-50 text-red-700',
-        warning: 'border-amber-600 bg-amber-50 text-amber-600',
+        warning: 'border-amber-600 bg-amber-50 text-amber-700',
       },
       label: {
         true: 'mr-2',
