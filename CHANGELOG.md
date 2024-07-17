@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.19](https://github.com/Tailframes/tailframes-components/compare/v0.1.18...v0.1.19) (2024-07-17)
+
+
+### Features
+
+* **accordion:** improve accessibility ([0755bf4](https://github.com/Tailframes/tailframes-components/commit/0755bf4fa54ee8c90c7f6af8b5c0bf16329512ea))
+* **alert:** add Alert component ([#12](https://github.com/Tailframes/tailframes-components/issues/12)) ([e2b408b](https://github.com/Tailframes/tailframes-components/commit/e2b408b530fe4511953ded95bc80314380b40202))
+* **alert:** improve accessibility ([dce6640](https://github.com/Tailframes/tailframes-components/commit/dce664043608c439f33153e3cf456cfabcd6eea6))
+* **avatar:** add default src ([7999f4b](https://github.com/Tailframes/tailframes-components/commit/7999f4b43b4c2df2dec25586bbbcdf30a6514638))
+* **badge:** improve accessibility ([117272f](https://github.com/Tailframes/tailframes-components/commit/117272fac0152dfb7fc89df1acd9c4a3926677c1))
+* **components:** remove unnecessary Avatar & Badge props ([ab21b63](https://github.com/Tailframes/tailframes-components/commit/ab21b637e28f79e2717bcf8f53e4f3cfe3778f28))
+
+
+### Bug Fixes
+
+* **styles:** change "shadow" to "drop-shadow" ([be2fae1](https://github.com/Tailframes/tailframes-components/commit/be2fae1c1704f09fc93b7a92eed3d3670c59228e))
+
 ### [0.1.18](https://github.com/Tailframes/tailframes-components/compare/v0.1.17...v0.1.18) (2024-06-19)
 
 
