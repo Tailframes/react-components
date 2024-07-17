@@ -1,5 +1,5 @@
 import { cva } from 'class-variance-authority';
-import { type HTMLAttributes, type ReactNode } from 'react';
+import { type HTMLAttributes, type ReactNode, useId } from 'react';
 import { CloseIcon } from '../assets/close-icon';
 import { clsxMerge } from '../utils';
 import { Avatar, type AvatarProps } from './avatar';
@@ -41,8 +41,17 @@ export function Alert({
   onClose,
   ...rest
 }: AlertProps) {
+  const labelId = useId();
+  const contentId = useId();
+
   return (
-    <div className={clsxMerge(alertVariants({ fullWidth }), className)} {...rest}>
+    <div
+      role='alert'
+      aria-describedby={description ? contentId : undefined}
+      aria-labelledby={title ? labelId : undefined}
+      className={clsxMerge(alertVariants({ fullWidth }), className)}
+      {...rest}
+    >
       {(startIcon ?? avatar) && (
         <div className='inline-flex items-start justify-start'>
           {!avatar && startIcon}
@@ -50,8 +59,16 @@ export function Alert({
         </div>
       )}
       <div className='flex flex-1 flex-col items-start justify-center gap-3 overflow-hidden'>
-        {title && <p className='text-sm font-medium leading-tight text-black'>{title}</p>}
-        {description && <p className='text-xs font-normal leading-none text-slate-600'>{description}</p>}
+        {title && (
+          <p id={labelId} className='text-sm font-medium leading-tight text-black'>
+            {title}
+          </p>
+        )}
+        {description && (
+          <p id={contentId} className='text-xs font-normal leading-none text-slate-600'>
+            {description}
+          </p>
+        )}
         <div>{children}</div>
       </div>
       {onClose && (
