@@ -104,7 +104,6 @@ const Root = ({
   size = 'medium',
   shape = 'circle',
   elevated = false,
-  children,
   className,
   badge,
   src,

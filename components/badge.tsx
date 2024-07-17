@@ -113,7 +113,6 @@ const Root = ({
   dotOnly = false,
   className,
   label,
-  color,
   children,
   ...rest
 }: BadgeProps) => (

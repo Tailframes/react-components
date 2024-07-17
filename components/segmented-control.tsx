@@ -38,7 +38,9 @@ export function SegmentedControl({ items, onChange, value, className }: Segmente
 
   useEffect(() => {
     setActiveItem(items.findIndex(item => item.value === value || item.children === value));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);
+
   return (
     <div
       className={clsxMerge(
