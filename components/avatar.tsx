@@ -39,7 +39,7 @@ const avatarVariants = cva('relative box-content flex items-center justify-cente
       shape: 'circle',
       elevated: true,
       badge: false,
-      class: 'border-white shadow-md',
+      class: 'border-white drop-shadow-md',
     },
     {
       shape: 'circle',
