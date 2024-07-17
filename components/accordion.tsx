@@ -1,6 +1,6 @@
 import { ChevronDownIcon } from '../assets/chevron-down-icon';
 import { clsxMerge } from '../utils';
-import { type HTMLAttributes, type ReactNode, useState, type MouseEvent } from 'react';
+import { type HTMLAttributes, type ReactNode, useState, type MouseEvent, useId } from 'react';
 import { cva } from 'class-variance-authority';
 import { Button } from './button';
 
@@ -41,9 +41,13 @@ function AccordionItem({
   className,
   ...rest
 }: AccordionItemProps) {
+  const buttonId = useId();
+  const contentId = useId();
+
   return (
     <div className={clsxMerge(accordionItemVariants({ isExpanded }), className)} {...rest}>
       <Button
+        id={buttonId}
         variant='text-default'
         className={clsxMerge('flex h-auto w-full items-center justify-between p-0', { 'pb-1': isExpanded })}
         endIcon={
@@ -53,6 +57,8 @@ function AccordionItem({
             })}
           />
         }
+        aria-expanded={isExpanded}
+        aria-controls={contentId}
       >
         <div className='flex w-full items-center justify-start gap-2'>
           {labelStartIcon && (
@@ -62,6 +68,10 @@ function AccordionItem({
         </div>
       </Button>
       <div
+        id={contentId}
+        role='region'
+        aria-hidden={!isExpanded}
+        aria-labelledby={buttonId}
         className={clsxMerge(
           'grid w-full grid-rows-[1fr] pr-7 text-xs text-slate-600 opacity-100 transition-[grid-template-rows,opacity] duration-300 ease-out',
           contentClassName,
