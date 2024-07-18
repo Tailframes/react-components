@@ -2,6 +2,7 @@ import { Fragment, type ReactNode, useState } from 'react';
 import { ChevronIcon } from '../assets/chevron-icon';
 import { MoreHorizontalIcon } from '../assets/more-horizontal-icon';
 import { clsxMerge } from '../utils';
+import { Button } from './button';
 
 export interface BreadcrumbsProps {
   items: BreadcrumbItemProps[];
@@ -21,7 +22,7 @@ export function Breadcrumbs({ items, separator = 'chevron', maxItems = 6 }: Brea
   const itemsAfter = isMaxItemsLimitExceeded ? items.slice(itemsAfterThreshold, items.length) : items;
 
   return (
-    <nav aria-label='breadcrumb'>
+    <nav aria-label='Breadcrumbs'>
       <ol className='inline-flex items-center gap-1.5'>
         {itemsBefore.map((props, index) => (
           <Fragment key={props.label ?? index}>
@@ -32,16 +33,18 @@ export function Breadcrumbs({ items, separator = 'chevron', maxItems = 6 }: Brea
 
         {isCollapsed && hiddenItems.length > 0 && (
           <>
-            <li
-              role='presentation'
-              aria-hidden
-              className='flex cursor-pointer items-center gap-1 text-slate-400 transition-colors duration-300 ease-in-out hover:text-blue-700'
-              onClick={isCollapsed => {
-                setIsCollapsed(!isCollapsed);
-              }}
-            >
-              <MoreHorizontalIcon />
-              <span className='sr-only'>Show more</span>
+            <li className='flex items-center'>
+              <Button
+                size='small'
+                variant='text-default'
+                className='h-auto min-w-0 stroke-inherit p-0 text-slate-400 hover:text-blue-700'
+                onClick={isCollapsed => {
+                  setIsCollapsed(!isCollapsed);
+                }}
+              >
+                <MoreHorizontalIcon />
+                <span className='sr-only'>Show more</span>
+              </Button>
             </li>
             {itemsAfter.length > 0 && <BreadcrumbSeparator separator={separator} />}
           </>
@@ -78,7 +81,7 @@ const DefaultSeparator: Record<string, ReactNode> = {
 
 const BreadcrumbSeparator = ({ separator }: Pick<BreadcrumbsProps, 'separator'>) => {
   return (
-    <li aria-hidden className='inline-flex items-center text-slate-400'>
+    <li role='presentation' aria-hidden className='inline-flex items-center text-slate-400'>
       {DefaultSeparator[separator?.toString() ?? 'chevron'] ?? separator}
     </li>
   );
@@ -95,14 +98,14 @@ export interface BreadcrumbItemProps {
 
 function BreadcrumbsItem({ label, icon, href, isLast }: BreadcrumbItemProps) {
   return (
-    <li className='inline-flex items-center'>
+    <li className='inline-flex items-center' aria-current={isLast ? 'page' : undefined}>
       <a
         href={href}
         className={clsxMerge(
           'inline-flex cursor-pointer items-center gap-1.5 stroke-slate-400 text-xs leading-none transition-colors duration-300 ease-in-out hover:text-blue-700',
           {
             'font-medium text-black': isLast,
-            'font-normal text-slate-400': !isLast,
+            'font-normal text-slate-500': !isLast,
           }
         )}
       >
