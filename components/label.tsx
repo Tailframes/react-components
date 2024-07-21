@@ -19,7 +19,10 @@ export interface LabelVariants {
   size?: 'small' | 'medium' | 'large';
 }
 
-export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement>, LabelVariants {}
+export interface LabelProps
+  extends Omit<LabelHTMLAttributes<HTMLLabelElement>, 'htmlFor'>,
+    Required<Pick<LabelHTMLAttributes<HTMLLabelElement>, 'htmlFor'>>,
+    LabelVariants {}
 
 export function Label({ size = 'medium', className, htmlFor, ...rest }: LabelProps) {
   return <label className={clsxMerge(labelVariants({ size }), className)} htmlFor={htmlFor} {...rest} />;

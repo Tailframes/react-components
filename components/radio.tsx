@@ -38,7 +38,7 @@ export interface RadioProps
     RadioVariants {
   disabled?: boolean;
   label: string;
-  labelProps?: LabelProps;
+  labelProps?: Omit<LabelProps, 'htmlFor'>;
 }
 
 export function Radio({ size = 'medium', children, className, label, labelProps = {}, ...rest }: RadioProps) {
