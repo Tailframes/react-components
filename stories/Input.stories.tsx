@@ -61,14 +61,12 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    id: 'default',
     label: 'Default',
   },
 };
 
 export const Disabled: Story = {
   args: {
-    id: 'disabled',
     label: 'Disabled',
     disabled: true,
   },
@@ -76,7 +74,6 @@ export const Disabled: Story = {
 
 export const Error: Story = {
   args: {
-    id: 'error',
     label: 'Error',
     defaultValue: 'Invalid value',
     error: true,
@@ -85,7 +82,6 @@ export const Error: Story = {
 
 export const Icons: Story = {
   args: {
-    id: 'icons',
     label: 'Icons',
     startIcon: IconKey.UserIcon,
     endIcon: IconKey.CloseIcon,

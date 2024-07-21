@@ -1,5 +1,5 @@
 import { clsxMerge } from '../utils';
-import { type ForwardedRef, forwardRef, type InputHTMLAttributes, type ReactNode } from 'react';
+import { type ForwardedRef, forwardRef, type InputHTMLAttributes, type ReactNode, useId } from 'react';
 import { cva } from 'class-variance-authority';
 import { Label } from './label';
 
@@ -103,10 +103,13 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     }: InputProps,
     ref: ForwardedRef<HTMLInputElement>
   ) => {
+    const inputId = useId();
+    const helperTextId = useId();
+
     return (
       <div className={clsxMerge(inputContainerVariants({ error, disabled }), containerClassName)}>
         {label && (
-          <Label htmlFor={rest.id} size='small' className={clsxMerge(inputLabelVariants({ disabled }))}>
+          <Label htmlFor={rest.id ?? inputId} size='small' className={clsxMerge(inputLabelVariants({ disabled }))}>
             {label}
           </Label>
         )}
@@ -122,12 +125,19 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               inputVariants({ error, size, startIcon: Boolean(startIcon), endIcon: Boolean(endIcon) }),
               className
             )}
-            disabled={disabled}
             {...rest}
+            disabled={disabled}
+            aria-disabled={disabled}
+            aria-describedby={helperText ? helperTextId : undefined}
+            id={rest.id ?? inputId}
           />
           {endIcon && <div className='absolute right-0 top-1/2 w-5 -translate-x-1/2 -translate-y-1/2'>{endIcon}</div>}
         </div>
-        {helperText && <p className={clsxMerge(inputHelperTextVariants({ error }))}>{helperText}</p>}
+        {helperText && (
+          <p id={helperTextId} className={clsxMerge(inputHelperTextVariants({ error }))}>
+            {helperText}
+          </p>
+        )}
       </div>
     );
   }
