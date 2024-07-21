@@ -134,6 +134,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
         ref={ref as never}
         type='button'
         href={href}
+        aria-disabled={rest?.disabled}
         className={clsxMerge(
           buttonVariants({
             href: Boolean(href),
