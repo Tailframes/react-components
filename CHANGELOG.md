@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.21](https://github.com/Tailframes/tailframes-components/compare/v0.1.20...v0.1.21) (2024-07-21)
+
+
+### Features
+
+* **button:** improve accessibility ([3acbc62](https://github.com/Tailframes/tailframes-components/commit/3acbc62477a4a3a9c28db900704807895c81e256))
+* **checkbox:** improve accessibility ([1f8000e](https://github.com/Tailframes/tailframes-components/commit/1f8000e7a0725eee429abd31f2f55cfbc358c0b5))
+* **divider:** improve accessibility ([91b7391](https://github.com/Tailframes/tailframes-components/commit/91b7391055b8e3297e4a196e2dffb52d935c6159))
+* **input:** improve accessibility ([6017b9c](https://github.com/Tailframes/tailframes-components/commit/6017b9c5c69a5d9073a757a51031074687b064cb))
+* **label:** improve typing ([b97657b](https://github.com/Tailframes/tailframes-components/commit/b97657b144c5aba32a54d3f8e9f54e72a5d1df38))
+
 ### [0.1.20](https://github.com/Tailframes/tailframes-components/compare/v0.1.18...v0.1.20) (2024-07-17)
 
 
