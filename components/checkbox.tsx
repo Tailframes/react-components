@@ -1,7 +1,16 @@
 import { clsxMerge } from '../utils';
 import { Label } from './label';
 import { cva } from 'class-variance-authority';
-import { forwardRef, type InputHTMLAttributes, useEffect, useImperativeHandle, useRef } from 'react';
+import {
+  type ChangeEvent,
+  forwardRef,
+  type InputHTMLAttributes,
+  useEffect,
+  useId,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from 'react';
 
 const checkboxVariants = cva(
   'peer cursor-pointer rounded border-2 border-slate-400 transition-colors duration-300 ease-in-out ' +
@@ -32,10 +41,7 @@ export interface CheckboxVariants {
   size?: 'small' | 'medium';
 }
 
-export interface CheckboxProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'id' | 'name' | 'type' | 'size'>,
-    Required<Pick<InputHTMLAttributes<HTMLInputElement>, 'id' | 'name'>>,
-    CheckboxVariants {
+export interface CheckboxProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'size'>, CheckboxVariants {
   label?: string;
   indeterminate?: boolean;
   disabled?: boolean;
@@ -43,7 +49,9 @@ export interface CheckboxProps
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   ({ size = 'medium', children, className, label, indeterminate, ...rest }: CheckboxProps, ref) => {
+    const id = useId();
     const innerRef = useRef<HTMLInputElement>(null);
+    const [checked, setChecked] = useState(rest.checked ?? false);
 
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     useImperativeHandle(ref, () => innerRef.current!, [innerRef]);
@@ -54,12 +62,25 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       }
     }, [innerRef, indeterminate]);
 
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+      setChecked(event.target.checked);
+      rest.onChange?.(event);
+    };
+
     return (
       <div className={clsxMerge(checkboxContainerVariants({ size }), className)}>
-        <input ref={innerRef} type='checkbox' className={clsxMerge(checkboxVariants({ size }), className)} {...rest} />
+        <input
+          id={rest.id ?? id}
+          ref={innerRef}
+          type='checkbox'
+          aria-checked={indeterminate ? 'mixed' : checked}
+          onChange={handleChange}
+          className={clsxMerge(checkboxVariants({ size }), className)}
+          {...rest}
+        />
         {label && (
           <Label
-            htmlFor={rest.id}
+            htmlFor={rest.id ?? id}
             size='small'
             className='whitespace-nowrap peer-disabled:cursor-not-allowed peer-disabled:text-slate-400 hover:cursor-pointer'
           >

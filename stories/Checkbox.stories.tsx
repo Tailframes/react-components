@@ -38,7 +38,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    id: 'default',
     name: 'default',
     label: 'Default',
   },
@@ -46,7 +45,6 @@ export const Default: Story = {
 
 export const Checked: Story = {
   args: {
-    id: 'checked',
     name: 'checked',
     label: 'Checked',
     defaultChecked: true,
@@ -55,7 +53,6 @@ export const Checked: Story = {
 
 export const Indeterminate: Story = {
   args: {
-    id: 'indeterminate',
     name: 'indeterminate',
     label: 'Indeterminate',
     indeterminate: true,
