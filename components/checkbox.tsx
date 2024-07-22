@@ -51,7 +51,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   ({ size = 'medium', children, className, label, indeterminate, ...rest }: CheckboxProps, ref) => {
     const id = useId();
     const innerRef = useRef<HTMLInputElement>(null);
-    const [checked, setChecked] = useState(rest.checked ?? false);
+    const [checked, setChecked] = useState(rest.defaultChecked ?? false);
 
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     useImperativeHandle(ref, () => innerRef.current!, [innerRef]);
