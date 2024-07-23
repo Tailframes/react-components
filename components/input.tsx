@@ -75,8 +75,7 @@ export interface InputVariants {
 }
 
 export interface InputProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'id'>,
-    Required<Pick<InputHTMLAttributes<HTMLInputElement>, 'id'>>,
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>,
     Omit<InputVariants, 'startIcon' | 'endIcon'> {
   containerClassName?: string;
   disabled?: boolean;
