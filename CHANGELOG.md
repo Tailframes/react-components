@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.22](https://github.com/Tailframes/tailframes-components/compare/v0.1.21...v0.1.22) (2024-07-25)
+
+
+### Features
+
+* **breadcrumbs:** improve accessibility ([d9e721a](https://github.com/Tailframes/tailframes-components/commit/d9e721a06cfe4aa601621a320fedf668ffc179c6))
+* **radio:** improve accessibility; add RadioGroup component ([8f20702](https://github.com/Tailframes/tailframes-components/commit/8f207029f24f6014426be247f0dee5593b1e4ba6))
+
+
+### Bug Fixes
+
+* **input:** typing ([5d50ea2](https://github.com/Tailframes/tailframes-components/commit/5d50ea285e475c8e8e91bd4cb8a4e9070705a943))
+* **storybook:** tailwind config ([635dc21](https://github.com/Tailframes/tailframes-components/commit/635dc21b24195ea99940f42e680f46f5aa29ad92))
+
 ### [0.1.21](https://github.com/Tailframes/tailframes-components/compare/v0.1.20...v0.1.21) (2024-07-21)
 
 
