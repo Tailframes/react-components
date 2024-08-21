@@ -2,7 +2,7 @@ import { clsxMerge } from '../utils';
 import { cva } from 'class-variance-authority';
 import { type HTMLAttributes } from 'react';
 
-const dividerVariants = cva('bg-slate-300', {
+const dividerVariants = cva('bg-slate-200', {
   variants: {
     size: {
       thin: '',
