@@ -1,5 +1,5 @@
 import { clsxMerge } from '../utils';
-import { type ChangeEvent, type ForwardedRef, forwardRef, type TextareaHTMLAttributes, useState } from 'react';
+import { type ChangeEvent, type ForwardedRef, forwardRef, type TextareaHTMLAttributes, useId, useState } from 'react';
 import { cva } from 'class-variance-authority';
 import { Avatar, type AvatarProps } from './avatar';
 import { Label } from './label';
@@ -35,7 +35,7 @@ const textareaVariants = cva(
   }
 );
 
-const textareaHelperTextVariants = cva('transition-colors duration-300 ease-in-out', {
+const textareaHelperTextVariants = cva('text-slate-500 transition-colors duration-300 ease-in-out', {
   variants: {
     error: {
       true: 'text-red-500',
@@ -58,10 +58,7 @@ export interface TextareaVariants {
   error?: boolean;
 }
 
-export interface TextareaProps
-  extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'id'>,
-    Required<Pick<TextareaHTMLAttributes<HTMLTextAreaElement>, 'id'>>,
-    TextareaVariants {
+export interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement>, TextareaVariants {
   avatar?: AvatarProps;
   containerClassName?: string;
   disabled?: boolean;
@@ -84,6 +81,8 @@ const Root = ({
   helperText,
   ...rest
 }: Omit<TextareaProps, 'avatar'> & { ref: ForwardedRef<HTMLTextAreaElement> }) => {
+  const inputId = useId();
+  const helperTextId = useId();
   const [currentLength, setCurrentLength] = useState(0);
 
   const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
@@ -94,7 +93,7 @@ const Root = ({
   return (
     <div className={clsxMerge(textareaContainerVariants({ error, disabled }), containerClassName)}>
       {label && (
-        <Label htmlFor={rest.id} size='small' className={clsxMerge(textareaLabelVariants({ disabled }))}>
+        <Label htmlFor={rest.id ?? inputId} size='small' className={clsxMerge(textareaLabelVariants({ disabled }))}>
           {label}
         </Label>
       )}
@@ -102,21 +101,24 @@ const Root = ({
         ref={ref}
         className={clsxMerge(textareaVariants({ error }), className)}
         disabled={disabled}
+        aria-disabled={disabled}
         readOnly={readOnly}
         maxLength={maxLength}
         onChange={handleChange}
+        id={rest.id ?? inputId}
+        aria-describedby={helperText ? helperTextId : undefined}
         {...rest}
       />
       <p className='flex w-full items-center justify-between text-xs'>
         {helperText && (
-          <span className={clsxMerge('font-medium text-slate-400', textareaHelperTextVariants({ error }))}>
+          <span id={helperTextId} className={clsxMerge('font-medium', textareaHelperTextVariants({ error }))}>
             {helperText}
           </span>
         )}
         {maxLength !== undefined && maxLength >= 0 ? (
           <span
-            id={`${rest.id}-character-count`}
-            className={clsxMerge('text-slate-500', textareaHelperTextVariants({ error }))}
+            id={`${rest.id ?? inputId}-character-count`}
+            className={clsxMerge(textareaHelperTextVariants({ error }))}
           >
             {currentLength}/{maxLength}
           </span>

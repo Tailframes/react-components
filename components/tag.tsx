@@ -12,7 +12,7 @@ const tagVariants = cva(
         outlined: 'border border-blue-700 text-blue-700 [&>div>svg]:stroke-blue-700',
         success: 'border border-green-600 bg-green-50 text-green-700 [&>div>svg]:stroke-green-700',
         error: 'border border-red-600 bg-red-50 text-red-700 [&>div>svg]:stroke-red-700',
-        warning: 'border border-amber-600 bg-amber-50 text-amber-600 [&>div>svg]:stroke-amber-600',
+        warning: 'border border-amber-600 bg-amber-50 text-amber-700 [&>div>svg]:stroke-amber-600',
       },
       startIcon: {
         true: '',

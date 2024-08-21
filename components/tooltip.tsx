@@ -1,6 +1,6 @@
 import { clsxMerge } from '../utils';
 import { cva } from 'class-variance-authority';
-import { type HTMLAttributes } from 'react';
+import { type HTMLAttributes, useId } from 'react';
 
 const tooltipVariants = cva(
   'pointer-events-none absolute z-50 inline-flex items-center justify-center rounded-md px-3 py-1 font-semibold opacity-0 transition-opacity duration-300 ease-in-out ' +
@@ -142,10 +142,13 @@ export function Tooltip({
   value,
   ...rest
 }: TooltipProps) {
+  const id = useId();
+
   return (
     <div className={clsxMerge('group relative inline-block whitespace-nowrap', containerClassName)}>
-      {children}
+      <div aria-describedby={id}>{children}</div>
       <span
+        id={id}
         role='tooltip'
         className={clsxMerge(tooltipVariants({ placement, size, variant, showArrow }), className)}
         {...rest}

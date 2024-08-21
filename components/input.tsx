@@ -46,7 +46,7 @@ const inputVariants = cva(
 );
 
 const inputHelperTextVariants = cva(
-  'max-w-full text-xs font-medium leading-none text-slate-400 transition-colors duration-300 ease-in-out',
+  'max-w-full text-xs font-medium leading-none text-slate-500 transition-colors duration-300 ease-in-out',
   {
     variants: {
       error: {
@@ -124,11 +124,11 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               inputVariants({ error, size, startIcon: Boolean(startIcon), endIcon: Boolean(endIcon) }),
               className
             )}
-            {...rest}
             disabled={disabled}
             aria-disabled={disabled}
             aria-describedby={helperText ? helperTextId : undefined}
             id={rest.id ?? inputId}
+            {...rest}
           />
           {endIcon && <div className='absolute right-0 top-1/2 w-5 -translate-x-1/2 -translate-y-1/2'>{endIcon}</div>}
         </div>

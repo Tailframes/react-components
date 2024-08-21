@@ -60,6 +60,7 @@ export function Radio({ size = 'medium', children, className, label, labelProps 
         tabIndex={checked ? 0 : -1}
         aria-checked={checked}
         onChange={handleChange}
+        checked={checked}
         className={clsxMerge(radioVariants({ size }), className)}
         {...rest}
       />

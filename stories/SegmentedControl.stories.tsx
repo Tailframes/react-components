@@ -10,6 +10,13 @@ const meta = {
     componentSubtitle:
       "The Segmented Control is a user-friendly interface element allowing easy selection between multiple options. It's commonly used in apps and websites for switching views or modes efficiently. This control enhances user experience by offering clear choices within a compact space, ideal for settings, filtering, or tabbed navigation.",
   },
+  decorators: [
+    Story => (
+      <div className='mx-4 my-6'>
+        <Story />
+      </div>
+    ),
+  ],
   component: SegmentedControl,
   tags: ['autodocs'],
 } satisfies Meta<typeof SegmentedControl>;
@@ -59,14 +66,20 @@ export const Icon: Story = {
       {
         iconOnly: true,
         children: <GitHubOctocatIcon className='size-4' />,
+        title: 'GitHub',
+        'aria-label': 'GitHub',
       },
       {
         iconOnly: true,
         children: <DribbleIcon className='size-4' />,
+        title: 'Dribble',
+        'aria-label': 'Dribble',
       },
       {
         iconOnly: true,
         children: <YoutubeIcon className='size-4' />,
+        title: 'Youtube',
+        'aria-label': 'Youtube',
       },
     ],
   },
@@ -78,6 +91,7 @@ export const IconWithTooltip: Story = {
       {
         iconOnly: true,
         children: <GitHubOctocatIcon className='size-4' />,
+        'aria-label': 'GitHub',
         tooltip: {
           value: 'GitHub',
         },
@@ -85,6 +99,7 @@ export const IconWithTooltip: Story = {
       {
         iconOnly: true,
         children: <DribbleIcon className='size-4' />,
+        'aria-label': 'Dribble',
         tooltip: {
           value: 'Dribble',
         },
@@ -92,6 +107,7 @@ export const IconWithTooltip: Story = {
       {
         iconOnly: true,
         children: <YoutubeIcon className='size-4' />,
+        'aria-label': 'Youtube',
         tooltip: {
           value: 'Youtube',
         },

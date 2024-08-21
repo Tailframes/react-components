@@ -38,17 +38,17 @@ const toastVariants = cva(
       {
         variant: 'filled',
         color: 'success',
-        class: 'border border-green-500 bg-green-50 text-green-600 [&>svg]:stroke-green-600',
+        class: 'border border-green-500 bg-green-50 text-green-700 [&>svg]:stroke-green-600',
       },
       {
         variant: 'filled',
         color: 'error',
-        class: 'border border-red-400 bg-red-50 text-red-600 [&>svg]:stroke-red-600',
+        class: 'border border-red-400 bg-red-50 text-red-700 [&>svg]:stroke-red-600',
       },
       {
         variant: 'filled',
         color: 'warning',
-        class: 'border border-orange-400 bg-orange-50 text-orange-600 [&>svg]:stroke-orange-500',
+        class: 'border border-orange-400 bg-orange-50 text-orange-700 [&>svg]:stroke-orange-500',
       },
       {
         placement: ['bottom-left', 'bottom-right'],
@@ -90,7 +90,7 @@ export function Toast({
   ...rest
 }: ToastProps) {
   return (
-    <div className={clsxMerge(toastVariants({ variant, color, visible, placement }), className)} {...rest}>
+    <div role='alert' className={clsxMerge(toastVariants({ variant, color, visible, placement }), className)} {...rest}>
       {startIcon && <div className='inline-flex size-5 items-center justify-start'>{startIcon}</div>}
       <div className='inline-flex flex-1 items-center justify-start overflow-hidden'>{children}</div>
       {onClose && (

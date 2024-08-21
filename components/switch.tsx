@@ -1,7 +1,7 @@
 import { clsxMerge } from '../utils';
 import { Label } from './label';
 import { cva } from 'class-variance-authority';
-import { type InputHTMLAttributes, type ReactNode } from 'react';
+import { type ChangeEvent, type InputHTMLAttributes, type ReactNode, useId, useState } from 'react';
 
 const switchDotVariants = cva(
   'absolute top-0.5 z-10 cursor-pointer rounded-full border border-slate-50 bg-blue-700 transition duration-300 ' +
@@ -92,8 +92,8 @@ export interface SwitchVariants {
 }
 
 export interface SwitchProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'id' | 'name' | 'type' | 'size'>,
-    Required<Pick<InputHTMLAttributes<HTMLInputElement>, 'id' | 'name'>>,
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'name' | 'type' | 'size'>,
+    Required<Pick<InputHTMLAttributes<HTMLInputElement>, 'name'>>,
     SwitchVariants {
   disabled?: boolean;
   label?: string;
@@ -108,18 +108,34 @@ export function Switch({
   children,
   className,
   label,
-  id,
   checkedIcon,
   uncheckedIcon,
   checkedText,
   uncheckedText,
   ...rest
 }: SwitchProps) {
+  const id = useId();
+  const [checked, setChecked] = useState(rest.defaultChecked ?? false);
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setChecked(event.target.checked);
+    rest.onChange?.(event);
+  };
+
   return (
     <div className='inline-flex items-center justify-center'>
       <Label htmlFor={id} size='small' className='flex items-center'>
         <div className='relative'>
-          <input type='checkbox' id={id} className='peer sr-only' {...rest} />
+          <input
+            type='checkbox'
+            role='switch'
+            id={rest.id ?? id}
+            onChange={handleChange}
+            className='peer sr-only'
+            aria-label={label}
+            checked={checked}
+            {...rest}
+          />
           <div className={clsxMerge(switchContainerVariants({ size }))} />
           <div className={clsxMerge(switchDotVariants({ size }))}></div>
           {checkedIcon && !checkedText && (
