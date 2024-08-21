@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.25](https://github.com/Tailframes/tailframes-components/compare/v0.1.24...v0.1.25) (2024-08-21)
+
+
+### Bug Fixes
+
+* **switch:** fix switch component label id assignment ([9d0150a](https://github.com/Tailframes/tailframes-components/commit/9d0150ac24549c0356a447fc9bd8492d9ea9a406))
+
 ### [0.1.24](https://github.com/Tailframes/tailframes-components/compare/v0.1.23...v0.1.24) (2024-08-21)
 
 ### [0.1.23](https://github.com/Tailframes/tailframes-components/compare/v0.1.22...v0.1.23) (2024-08-21)
