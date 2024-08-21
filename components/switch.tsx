@@ -133,7 +133,7 @@ export function Switch({
             onChange={handleChange}
             className='peer sr-only'
             aria-label={label}
-            checked={checked}
+            aria-checked={checked}
             {...rest}
           />
           <div className={clsxMerge(switchContainerVariants({ size }))} />

@@ -55,8 +55,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-expect-error
   args: {
     name: 'default',
     label: 'Default',
@@ -64,8 +62,6 @@ export const Default: Story = {
 };
 
 export const Disabled: Story = {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-expect-error
   args: {
     name: 'disabled',
     label: 'Disabled',
@@ -74,8 +70,6 @@ export const Disabled: Story = {
 };
 
 export const Icon: Story = {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-expect-error
   args: {
     name: 'icon',
     label: 'Icon',
@@ -85,8 +79,6 @@ export const Icon: Story = {
 };
 
 export const Text: Story = {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-expect-error
   args: {
     name: 'text',
     label: 'Text',
