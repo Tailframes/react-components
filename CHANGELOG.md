@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.23](https://github.com/Tailframes/tailframes-components/compare/v0.1.22...v0.1.23) (2024-08-21)
+
+
+### Features
+
+* **components:** improve accessibility ([6e3e6be](https://github.com/Tailframes/tailframes-components/commit/6e3e6be97a3a9bb15551898727c13bd1eabac4f3))
+
 ### [0.1.22](https://github.com/Tailframes/tailframes-components/compare/v0.1.21...v0.1.22) (2024-07-25)
 
 
