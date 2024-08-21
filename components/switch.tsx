@@ -124,7 +124,7 @@ export function Switch({
 
   return (
     <div className='inline-flex items-center justify-center'>
-      <Label htmlFor={id} size='small' className='flex items-center'>
+      <Label htmlFor={rest.id ?? id} size='small' className='flex items-center'>
         <div className='relative'>
           <input
             type='checkbox'
