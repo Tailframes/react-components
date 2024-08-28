@@ -94,6 +94,7 @@ export const StartIcon: Story = {
 
 export const Checkboxes: Story = {
   args: {
+    multiple: true,
     checkboxes: true,
   },
 };
