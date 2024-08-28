@@ -10,6 +10,11 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+    docs: {
+      controls: {
+        sort: 'alpha',
+      },
+    },
   },
 };
 
