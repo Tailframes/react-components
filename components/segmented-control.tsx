@@ -78,3 +78,5 @@ export function SegmentedControl({ items, onChange, value, className }: Segmente
     </div>
   );
 }
+
+SegmentedControl.displayName = 'SegmentedControl';

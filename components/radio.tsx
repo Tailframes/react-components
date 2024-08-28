@@ -38,6 +38,9 @@ export interface RadioProps
     RadioVariants {
   disabled?: boolean;
   label: string;
+  /**
+   * HTML attributes for the label element
+   */
   labelProps?: Omit<LabelProps, 'htmlFor'>;
 }
 

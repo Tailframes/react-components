@@ -11,8 +11,8 @@ const badgeVariants = cva(
         false: '',
       },
       size: {
-        large: 'h-7 px-3 py-1 text-sm leading-tight',
-        medium: 'h-5 px-2 py-0.5 text-xs leading-tight',
+        large: 'h-7 px-3 py-1 text-sm',
+        medium: 'h-5 px-2 py-0.5 text-xs',
       },
       variant: {
         default: 'border-slate-300 bg-white text-black',

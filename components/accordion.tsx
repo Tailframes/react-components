@@ -27,11 +27,6 @@ interface AccordionItemProps extends Omit<HTMLAttributes<HTMLDivElement>, 'conte
   contentClassName?: string;
 }
 
-export interface AccordionProps extends HTMLAttributes<HTMLDivElement> {
-  items: Array<Omit<AccordionItemProps, 'isExpanded'>>;
-  type?: 'single' | 'multiple';
-}
-
 function AccordionItem({
   label,
   labelStartIcon,
@@ -85,6 +80,11 @@ function AccordionItem({
       </div>
     </div>
   );
+}
+
+export interface AccordionProps extends HTMLAttributes<HTMLDivElement> {
+  items: Array<Omit<AccordionItemProps, 'isExpanded'>>;
+  type?: 'single' | 'multiple';
 }
 
 export function Accordion({ children, items = [], type = 'multiple', className, ...rest }: AccordionProps) {

@@ -109,6 +109,8 @@ export interface ButtonProps
   href?: string;
   startIcon?: ReactNode;
   endIcon?: ReactNode;
+  disabled?: boolean;
+  fullWidth?: boolean;
 }
 
 export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
@@ -118,6 +120,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
       size = 'medium',
       iconOnly = false,
       fullWidth = false,
+      disabled = false,
       href,
       className,
       children,
@@ -127,14 +130,14 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
     }: ButtonProps,
     ref
   ) => {
-    const Component = href && !rest.disabled ? 'a' : 'button';
+    const Component = href && !disabled ? 'a' : 'button';
 
     return (
       <Component
         ref={ref as never}
         type='button'
         href={href}
-        aria-disabled={rest?.disabled}
+        aria-disabled={disabled}
         className={clsxMerge(
           buttonVariants({
             href: Boolean(href),
@@ -143,11 +146,12 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
             iconOnly,
             startIcon: Boolean(startIcon),
             endIcon: Boolean(endIcon),
-            disabled: Boolean(rest?.disabled),
+            disabled,
             fullWidth,
           }),
           className
         )}
+        disabled={disabled}
         {...rest}
       >
         {startIcon}

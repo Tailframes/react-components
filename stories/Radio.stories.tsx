@@ -19,9 +19,6 @@ const meta = {
         disable: true,
       },
     },
-    labelProps: {
-      description: 'HTML attributes for the label element',
-    },
     name: {
       table: {
         disable: true,

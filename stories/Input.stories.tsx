@@ -25,11 +25,6 @@ const meta = {
     disabled: false,
   },
   argTypes: {
-    containerClassName: {
-      table: {
-        disable: true,
-      },
-    },
     endIcon: IconArgType({ className: 'size-5', stroke: 'inherit' }, [IconKey.CloseIcon]),
     id: {
       table: {
@@ -47,11 +42,6 @@ const meta = {
       },
     },
     startIcon: IconArgType({ className: 'size-5', stroke: 'inherit' }, [IconKey.UserIcon]),
-    value: {
-      table: {
-        disable: true,
-      },
-    },
   },
 } satisfies Meta<typeof Input>;
 

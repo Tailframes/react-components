@@ -105,6 +105,7 @@ export interface SwitchProps
 
 export function Switch({
   size = 'medium',
+  disabled = false,
   children,
   className,
   label,
@@ -134,6 +135,7 @@ export function Switch({
             className='peer sr-only'
             aria-label={label}
             aria-checked={checked}
+            disabled={disabled}
             {...rest}
           />
           <div className={clsxMerge(switchContainerVariants({ size }))} />
@@ -153,7 +155,7 @@ export function Switch({
         </div>
         <span
           className={clsxMerge('ml-2 cursor-pointer whitespace-nowrap text-xs font-medium leading-none text-black', {
-            'cursor-not-allowed text-slate-400': rest.disabled,
+            'cursor-not-allowed text-slate-400': disabled,
           })}
         >
           {label}

@@ -4,7 +4,8 @@ import { cva } from 'class-variance-authority';
 import { Label } from './label';
 
 const inputContainerVariants = cva(
-  'inline-flex w-full flex-col items-start gap-1.5 stroke-black transition-colors duration-300 ease-in-out focus-within:stroke-blue-700',
+  'inline-flex w-full flex-col items-start gap-1.5 stroke-black transition-colors duration-300 ease-in-out ' +
+    'focus-within:stroke-blue-700',
   {
     variants: {
       error: {
@@ -20,7 +21,7 @@ const inputContainerVariants = cva(
 );
 
 const inputVariants = cva(
-  'mb-0.5 w-full rounded-lg border border-slate-200 px-3 text-sm font-medium placeholder-slate-400 outline-none transition-all duration-300 ease-in-out ' +
+  'w-full rounded-lg border border-slate-200 px-3 text-sm font-medium placeholder-slate-400 outline-none transition-all duration-300 ease-in-out ' +
     'disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400 disabled:placeholder-slate-400' +
     'focus:border-blue-600',
   {
@@ -39,6 +40,10 @@ const inputVariants = cva(
       },
       endIcon: {
         true: 'pr-10',
+        false: '',
+      },
+      helperText: {
+        true: 'mb-0.5',
         false: '',
       },
     },
@@ -121,7 +126,13 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           <input
             ref={ref}
             className={clsxMerge(
-              inputVariants({ error, size, startIcon: Boolean(startIcon), endIcon: Boolean(endIcon) }),
+              inputVariants({
+                error,
+                size,
+                startIcon: Boolean(startIcon),
+                endIcon: Boolean(endIcon),
+                helperText: Boolean(helperText),
+              }),
               className
             )}
             disabled={disabled}

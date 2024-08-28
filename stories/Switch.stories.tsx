@@ -31,21 +31,6 @@ const meta = {
       control: {
         type: 'inline-radio',
       },
-      table: {
-        defaultValue: {
-          summary: 'medium',
-        },
-      },
-    },
-    disabled: {
-      control: {
-        type: 'boolean',
-      },
-      table: {
-        defaultValue: {
-          summary: false,
-        },
-      },
     },
   },
 } satisfies Meta<typeof Switch>;

@@ -19,13 +19,7 @@ const meta = {
   },
   argTypes: {
     iconOnly: {
-      description: 'removes the horizontal padding from the button',
-      control: { type: 'boolean' },
-    },
-    fullWidth: {
-      control: { type: 'boolean' },
-    },
-    disabled: {
+      description: 'Removes the horizontal padding from the button',
       control: { type: 'boolean' },
     },
     startIcon: IconArgType({}),

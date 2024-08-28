@@ -77,7 +77,7 @@ export function Spinner({ size = 'medium', children, className, label, labelProp
         </svg>
       </div>
       {label && (
-        <span className={clsxMerge('text-xs font-semibold leading-tight text-blue-700', labelClassName)} {...labelRest}>
+        <span className={clsxMerge('text-xs font-semibold text-blue-700', labelClassName)} {...labelRest}>
           {label}
         </span>
       )}

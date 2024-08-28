@@ -5,7 +5,7 @@ import { clsxMerge } from '../utils';
 import { Button } from './button';
 
 const toastVariants = cva(
-  'group fixed right-1/2 z-[1000] inline-flex w-full max-w-xs translate-x-1/2 items-center justify-between gap-2 rounded-lg border border-slate-200 bg-white p-3 text-sm font-medium leading-tight drop-shadow-sm transition-all duration-500 ease-in-out lg:translate-x-0',
+  'group fixed right-1/2 z-[1000] inline-flex w-full max-w-xs translate-x-1/2 items-center justify-between gap-2 rounded-lg border border-slate-200 bg-white p-3 text-sm font-medium drop-shadow-sm transition-all duration-500 ease-in-out lg:translate-x-0',
   {
     variants: {
       variant: {
@@ -90,7 +90,7 @@ export function Toast({
   ...rest
 }: ToastProps) {
   return (
-    <div role='alert' className={clsxMerge(toastVariants({ variant, color, visible, placement }), className)} {...rest}>
+    <div className={clsxMerge(toastVariants({ variant, color, visible, placement }), className)} {...rest}>
       {startIcon && <div className='inline-flex size-5 items-center justify-start'>{startIcon}</div>}
       <div className='inline-flex flex-1 items-center justify-start overflow-hidden'>{children}</div>
       {onClose && (

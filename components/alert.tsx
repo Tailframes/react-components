@@ -6,7 +6,7 @@ import { Avatar, type AvatarProps } from './avatar';
 import { Button } from './button';
 
 const alertVariants = cva(
-  'inline-flex min-w-[300px] items-start justify-start gap-2 rounded-lg border border-slate-200 bg-white p-3 text-sm font-medium leading-tight drop-shadow transition-all duration-500 ease-in-out',
+  'inline-flex min-w-[300px] items-start justify-start gap-2 rounded-lg border border-slate-200 bg-white p-3 text-sm font-medium drop-shadow transition-all duration-500 ease-in-out',
   {
     variants: {
       fullWidth: {
@@ -60,7 +60,7 @@ export function Alert({
       )}
       <div className='flex flex-1 flex-col items-start justify-center gap-3 overflow-hidden'>
         {title && (
-          <p id={labelId} className='text-sm font-medium leading-tight text-black'>
+          <p id={labelId} className='text-sm font-medium text-black'>
             {title}
           </p>
         )}

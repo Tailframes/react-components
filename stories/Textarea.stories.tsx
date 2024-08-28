@@ -19,32 +19,12 @@ const meta = {
     cols: 50,
   },
   argTypes: {
-    containerClassName: {
-      table: {
-        disable: true,
-      },
-    },
     id: {
       table: {
         disable: true,
       },
     },
     name: {
-      table: {
-        disable: true,
-      },
-    },
-    value: {
-      table: {
-        disable: true,
-      },
-    },
-    rows: {
-      table: {
-        disable: true,
-      },
-    },
-    cols: {
       table: {
         disable: true,
       },
