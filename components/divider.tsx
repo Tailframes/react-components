@@ -17,7 +17,7 @@ const dividerVariants = cva('bg-slate-200', {
     {
       direction: 'horizontal',
       size: 'thin',
-      class: 'h-[1px]',
+      class: 'h-px',
     },
     {
       direction: 'horizontal',

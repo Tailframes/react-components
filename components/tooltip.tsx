@@ -98,22 +98,22 @@ const tooltipVariants = cva(
       {
         size: 'medium',
         placement: 'top',
-        class: 'top-[-2.5rem]',
+        class: '-top-10',
       },
       {
         size: 'small',
         placement: 'top',
-        class: 'top-[-2.25rem]',
+        class: '-top-9',
       },
       {
         size: 'medium',
         placement: 'bottom',
-        class: 'bottom-[-2.5rem]',
+        class: '-bottom-10',
       },
       {
         size: 'small',
         placement: 'bottom',
-        class: 'bottom-[-2.25rem]',
+        class: '-bottom-9',
       },
     ],
   }
