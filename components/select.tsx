@@ -113,7 +113,7 @@ function SelectOption({ option, handleSelect, checkboxes, isSelected }: SelectOp
         }
       }}
     >
-      <p className='flex w-full items-center justify-start gap-2'>
+      <div className='flex w-full items-center justify-start gap-2'>
         {checkboxes && <Checkbox size='small' disabled={option.disabled} checked={isSelected} />}
         {!checkboxes && option.startIcon && (
           <span className='inline-flex size-[18px] items-center justify-center overflow-hidden'>
@@ -121,8 +121,8 @@ function SelectOption({ option, handleSelect, checkboxes, isSelected }: SelectOp
           </span>
         )}
         {option.label && <span className='truncate'>{option.label}</span>}
-      </p>
-      {option.endText && <span className='ml-3 overflow-hidden'>{option.endText}</span>}
+      </div>
+      {option.endText && <span className='ml-3'>{option.endText}</span>}
     </li>
   );
 }
@@ -152,7 +152,7 @@ export interface SelectProps
 
 export function Select({
   checkboxes = false,
-  clearable = true,
+  clearable = false,
   disabled = false,
   error = false,
   multiple = false,
@@ -171,7 +171,7 @@ export function Select({
   ...rest
 }: SelectProps) {
   const buttonId = useId();
-  const [isOpened, setIsOpened] = useState(false);
+  const [opened, setOpened] = useState(true);
   const [selected, setSelected] = useState<SelectOptionType[]>(
     options.filter(o => (Array.isArray(value) ? value.includes(o.value) : o.value === value))
   );
@@ -185,15 +185,15 @@ export function Select({
   });
 
   useEffect(() => {
-    if (isOpened) {
+    if (opened) {
       setShowDropdown(true);
     }
-  }, [isOpened]);
+  }, [opened]);
 
   useEffect(() => {
     if (!showDropdown) {
       const timer = setTimeout(() => {
-        setIsOpened(false);
+        setOpened(false);
       }, 300);
 
       return () => {
@@ -204,7 +204,7 @@ export function Select({
 
   useLayoutEffect(() => {
     const updateDropdownPosition = () => {
-      if (isOpened && buttonRef.current) {
+      if (opened && buttonRef.current) {
         const buttonRect = buttonRef.current.getBoundingClientRect();
         setDropdownPosition({
           top: buttonRect.bottom + window.scrollY + 8,
@@ -220,7 +220,7 @@ export function Select({
     return () => {
       window.removeEventListener('resize', updateDropdownPosition);
     };
-  }, [isOpened]);
+  }, [opened]);
 
   const handleSelect = (option: SelectOptionType) => {
     if (!multiple) {
@@ -245,11 +245,11 @@ export function Select({
   };
 
   const handleDropdownOpen = () => {
-    if (!isOpened) {
+    if (!opened) {
       onDropdownOpen?.();
     }
 
-    setIsOpened(true);
+    setOpened(true);
   };
 
   const handleDropdownClose = () => {
@@ -261,7 +261,7 @@ export function Select({
   };
 
   const toggleDropdown = () => {
-    if (isOpened) {
+    if (opened) {
       handleDropdownClose();
     } else {
       handleDropdownOpen();
@@ -293,7 +293,7 @@ export function Select({
         onClick={toggleDropdown}
         className={clsxMerge(selectButtonVariants({ error, size, isOpened: showDropdown }), buttonClassName)}
         aria-haspopup='listbox'
-        aria-expanded={isOpened}
+        aria-expanded={opened}
         disabled={disabled}
         {...rest}
       >
@@ -313,7 +313,7 @@ export function Select({
           )}
         </span>
       </button>
-      {isOpened && (
+      {opened && (
         <Portal>
           <ul
             ref={dropdownRef}

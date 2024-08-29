@@ -16,7 +16,7 @@ const meta = {
   component: Select,
   decorators: [
     Story => (
-      <div style={{ maxWidth: '24rem' }}>
+      <div className='max-w-[240px]'>
         <Story />
       </div>
     ),
