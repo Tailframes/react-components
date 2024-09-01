@@ -19,10 +19,6 @@ import { Checkbox } from './checkbox';
 import { Label } from './label';
 import { Portal } from './portal';
 
-const selectContainerVariants = cva('inline-flex w-full flex-col items-start gap-1.5', {
-  variants: {},
-});
-
 const selectButtonVariants = cva(
   'relative w-full truncate rounded-lg border border-slate-200 bg-white stroke-black px-3 py-2.5 pr-10 text-left text-sm font-medium text-black transition-all duration-300 ease-in-out ' +
     'disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400 disabled:placeholder-slate-400',
@@ -67,15 +63,15 @@ const selectDropdownVariants = cva(
 );
 
 const selectOptionVariants = cva(
-  'relative mx-1 flex cursor-pointer select-none items-center justify-between rounded px-2 py-1.5 text-sm hover:bg-blue-50 hover:text-blue-700',
+  'relative mx-1 flex cursor-pointer select-none items-center justify-between rounded px-2 py-1.5 text-sm font-normal text-slate-700 hover:bg-blue-50 hover:text-blue-700',
   {
     variants: {
-      isSelected: {
-        true: 'bg-blue-50 font-medium text-blue-700',
-        false: 'font-normal text-slate-700',
-      },
       isFocused: {
         true: 'bg-blue-50 text-blue-700',
+        false: '',
+      },
+      isSelected: {
+        true: 'bg-blue-50 font-medium text-blue-700',
         false: '',
       },
     },
@@ -107,7 +103,7 @@ function SelectOption({ handleSelect, checkboxes, isSelected, isFocused, ...opti
 
   return (
     <li
-      className={selectOptionVariants({ isSelected, isFocused })}
+      className={clsxMerge(selectOptionVariants({ isSelected, isFocused }))}
       role='option'
       tabIndex={-1}
       onClick={() => {
@@ -335,7 +331,10 @@ export function Select({
   };
 
   return (
-    <div className={clsxMerge(selectContainerVariants(), containerClassName)} onBlur={handleBlur}>
+    <div
+      className={clsxMerge('inline-flex w-full flex-col items-start gap-1.5', containerClassName)}
+      onBlur={handleBlur}
+    >
       {label && (
         <Label
           id={labelId}
