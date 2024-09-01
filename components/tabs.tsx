@@ -29,7 +29,7 @@ export interface TabItem {
   label: string;
   content: ReactNode;
   disabled?: boolean;
-  startIcon?: ReactNode;
+  startAdornment?: ReactNode;
   badge?: BadgeProps;
 }
 
@@ -46,7 +46,7 @@ export function Tabs({ name, className, items, ...rest }: TabProps) {
     <div className='w-full'>
       <div className={clsxMerge('mb-4 border-b border-gray-200', className)} {...rest}>
         <ul className='-mb-px flex space-x-6 overflow-auto text-center text-sm font-medium' role='tablist'>
-          {items.map(({ label, disabled, startIcon, badge }, index) => {
+          {items.map(({ label, disabled, startAdornment, badge }, index) => {
             const isActive = label === activeTab;
 
             return (
@@ -62,8 +62,8 @@ export function Tabs({ name, className, items, ...rest }: TabProps) {
                     setActiveTab(label);
                   }}
                   disabled={disabled}
-                  startIcon={startIcon}
-                  endIcon={
+                  startAdornment={startAdornment}
+                  endAdornment={
                     badge ? (
                       <Badge
                         variant={isActive ? 'primary' : 'secondary'}

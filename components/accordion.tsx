@@ -22,14 +22,14 @@ export interface AccordionVariants {
 
 interface AccordionItemProps extends Omit<HTMLAttributes<HTMLDivElement>, 'content'>, AccordionVariants {
   label: string;
-  labelStartIcon?: ReactNode;
+  labelStartAdornment?: ReactNode;
   content: ReactNode;
   contentClassName?: string;
 }
 
 function AccordionItem({
   label,
-  labelStartIcon,
+  labelStartAdornment,
   content,
   contentClassName,
   isExpanded,
@@ -45,7 +45,7 @@ function AccordionItem({
         id={buttonId}
         variant='text-default'
         className={clsxMerge('flex h-auto w-full items-center justify-between p-0', { 'pb-1': isExpanded })}
-        endIcon={
+        endAdornment={
           <ChevronDownIcon
             className={clsxMerge('size-5 stroke-black transition-transform duration-300 ease-in-out', {
               'rotate-180': isExpanded,
@@ -56,8 +56,8 @@ function AccordionItem({
         aria-controls={contentId}
       >
         <div className='flex w-full items-center justify-start gap-2'>
-          {labelStartIcon && (
-            <div className='inline-flex size-5 items-center justify-start overflow-hidden'>{labelStartIcon}</div>
+          {labelStartAdornment && (
+            <div className='inline-flex size-5 items-center justify-start overflow-hidden'>{labelStartAdornment}</div>
           )}
           <p className='font-medium'>{label}</p>
         </div>
@@ -71,7 +71,7 @@ function AccordionItem({
           'grid w-full grid-rows-[1fr] pr-7 text-xs text-slate-600 opacity-100 transition-[grid-template-rows,opacity] duration-300 ease-out',
           contentClassName,
           {
-            'pl-7': Boolean(labelStartIcon),
+            'pl-7': Boolean(labelStartAdornment),
             'grid-rows-[0fr] opacity-0': !isExpanded,
           }
         )}

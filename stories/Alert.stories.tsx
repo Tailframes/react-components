@@ -23,7 +23,7 @@ const meta = {
     ),
   },
   argTypes: {
-    startIcon: IconArgType({ className: 'stroke-blue-700' }, [
+    startAdornment: IconArgType({ className: 'stroke-blue-700' }, [
       IconKey.CircleExclamationMarkIcon,
       IconKey.CircleCloseIcon,
       IconKey.CheckboxIcon,
@@ -39,7 +39,7 @@ export const TextOnly: Story = {};
 
 export const WithIcon: Story = {
   args: {
-    startIcon: IconKey.CircleExclamationMarkIcon,
+    startAdornment: IconKey.CircleExclamationMarkIcon,
   },
 };
 

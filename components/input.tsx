@@ -34,11 +34,11 @@ const inputVariants = cva(
         true: 'border-red-500 text-red-500 ring-1 ring-red-500 focus:border-red-500 focus:text-black focus:ring-red-500 focus:ring-offset-0',
         false: '',
       },
-      startIcon: {
+      startAdornment: {
         true: 'pl-10',
         false: '',
       },
-      endIcon: {
+      endAdornment: {
         true: 'pr-10',
         false: '',
       },
@@ -73,22 +73,22 @@ const inputLabelVariants = cva('whitespace-nowrap', {
 
 export interface InputVariants {
   disabled?: boolean;
-  endIcon?: boolean;
+  endAdornment?: boolean;
   error?: boolean;
   size?: 'medium' | 'large';
-  startIcon?: boolean;
+  startAdornment?: boolean;
 }
 
 export interface InputProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>,
-    Omit<InputVariants, 'startIcon' | 'endIcon'> {
+    Omit<InputVariants, 'startAdornment' | 'endAdornment'> {
   containerClassName?: string;
   disabled?: boolean;
-  endIcon?: ReactNode;
+  endAdornment?: ReactNode;
   helperText?: string;
   label?: string;
   placeholder?: string;
-  startIcon?: ReactNode;
+  startAdornment?: ReactNode;
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -100,8 +100,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       className,
       containerClassName,
       label,
-      startIcon,
-      endIcon,
+      startAdornment,
+      endAdornment,
       helperText,
       ...rest
     }: InputProps,
@@ -118,9 +118,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           </Label>
         )}
         <div className='relative w-full'>
-          {startIcon && (
+          {startAdornment && (
             <div className='pointer-events-none absolute left-6 top-1/2 w-5 -translate-x-1/2 -translate-y-1/2'>
-              {startIcon}
+              {startAdornment}
             </div>
           )}
           <input
@@ -129,8 +129,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               inputVariants({
                 error,
                 size,
-                startIcon: Boolean(startIcon),
-                endIcon: Boolean(endIcon),
+                startAdornment: Boolean(startAdornment),
+                endAdornment: Boolean(endAdornment),
                 helperText: Boolean(helperText),
               }),
               className
@@ -141,7 +141,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             id={rest.id ?? inputId}
             {...rest}
           />
-          {endIcon && <div className='absolute right-0 top-1/2 w-5 -translate-x-1/2 -translate-y-1/2'>{endIcon}</div>}
+          {endAdornment && (
+            <div className='absolute right-0 top-1/2 w-5 -translate-x-1/2 -translate-y-1/2'>{endAdornment}</div>
+          )}
         </div>
         {helperText && (
           <p id={helperTextId} className={clsxMerge(inputHelperTextVariants({ error }))}>

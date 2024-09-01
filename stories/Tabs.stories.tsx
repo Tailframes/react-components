@@ -18,7 +18,7 @@ const meta = {
     },
     items: {
       description:
-        'an array of tab items with allowed properties: **label**, **content**, **badge**, **disabled**, **startIcon**\n',
+        'an array of tab items with allowed properties: **label**, **content**, **badge**, **disabled**, **startAdornment**\n',
     },
   },
 } satisfies Meta<typeof Tabs>;
@@ -27,7 +27,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const startIcon = <UserIcon stroke='inherit' />;
+const startAdornment = <UserIcon stroke='inherit' />;
 
 export const TextOnly: Story = {
   args: {
@@ -63,27 +63,27 @@ export const Icon: Story = {
       {
         label: 'Tab 1',
         content: 'Content of tab 1',
-        startIcon,
+        startAdornment,
       },
       {
         label: 'Tab 2',
         content: 'Content of tab 2',
-        startIcon,
+        startAdornment,
       },
       {
         label: 'Tab 3',
         content: 'Content of tab 3',
-        startIcon,
+        startAdornment,
       },
       {
         label: 'Tab 4',
         content: 'Content of tab 4',
-        startIcon,
+        startAdornment,
       },
       {
         label: 'Tab 5',
         content: 'Content of tab 5',
-        startIcon,
+        startAdornment,
         disabled: true,
       },
     ],

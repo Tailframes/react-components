@@ -26,7 +26,7 @@ export interface AlertProps extends Omit<HTMLAttributes<HTMLDivElement>, 'color'
   children?: ReactNode;
   description?: string;
   onClose?: () => void;
-  startIcon?: ReactNode;
+  startAdornment?: ReactNode;
   title?: string;
 }
 
@@ -35,7 +35,7 @@ export function Alert({
   title,
   description,
   children,
-  startIcon,
+  startAdornment,
   avatar,
   className,
   onClose,
@@ -52,10 +52,10 @@ export function Alert({
       className={clsxMerge(alertVariants({ fullWidth }), className)}
       {...rest}
     >
-      {(startIcon ?? avatar) && (
+      {(startAdornment ?? avatar) && (
         <div className='inline-flex items-start justify-start'>
-          {!avatar && startIcon}
-          {!startIcon && avatar && <Avatar {...avatar} />}
+          {!avatar && startAdornment}
+          {!startAdornment && avatar && <Avatar {...avatar} />}
         </div>
       )}
       <div className='flex flex-1 flex-col items-start justify-center gap-3 overflow-hidden'>

@@ -22,8 +22,8 @@ const meta = {
       description: 'Removes the horizontal padding from the button',
       control: { type: 'boolean' },
     },
-    startIcon: IconArgType({}),
-    endIcon: IconArgType({}),
+    startAdornment: IconArgType({}),
+    endAdornment: IconArgType({}),
   },
 } satisfies Meta<typeof Button>;
 

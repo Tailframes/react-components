@@ -14,11 +14,11 @@ const tagVariants = cva(
         error: 'border border-red-600 bg-red-50 text-red-700 [&>div>svg]:stroke-red-700',
         warning: 'border border-amber-600 bg-amber-50 text-amber-700 [&>div>svg]:stroke-amber-600',
       },
-      startIcon: {
+      startAdornment: {
         true: '',
         false: '',
       },
-      endIcon: {
+      endAdornment: {
         true: '',
         false: '',
       },
@@ -28,28 +28,32 @@ const tagVariants = cva(
 
 export interface TagVariants {
   variant?: 'primary' | 'secondary' | 'outlined' | 'success' | 'error' | 'warning';
-  startIcon: boolean;
-  endIcon: boolean;
+  startAdornment: boolean;
+  endAdornment: boolean;
 }
 
-export interface TagProps extends HTMLAttributes<HTMLSpanElement>, Omit<TagVariants, 'startIcon' | 'endIcon'> {
-  startIcon?: ReactNode;
-  endIcon?: ReactNode;
+export interface TagProps
+  extends HTMLAttributes<HTMLSpanElement>,
+    Omit<TagVariants, 'startAdornment' | 'endAdornment'> {
+  startAdornment?: ReactNode;
+  endAdornment?: ReactNode;
 }
 
-export function Tag({ variant = 'primary', className, startIcon, endIcon, children, ...rest }: TagProps) {
+export function Tag({ variant = 'primary', className, startAdornment, endAdornment, children, ...rest }: TagProps) {
   return (
     <div
       className={clsxMerge(
-        tagVariants({ variant, startIcon: Boolean(startIcon), endIcon: Boolean(endIcon) }),
+        tagVariants({ variant, startAdornment: Boolean(startAdornment), endAdornment: Boolean(endAdornment) }),
         className
       )}
     >
-      {startIcon && (
-        <div className='inline-flex size-[18px] items-center justify-start overflow-hidden'>{startIcon}</div>
+      {startAdornment && (
+        <div className='inline-flex size-[18px] items-center justify-start overflow-hidden'>{startAdornment}</div>
       )}
       <span {...rest}>{children}</span>
-      {endIcon && <div className='inline-flex size-[18px] items-center justify-end overflow-hidden'>{endIcon}</div>}
+      {endAdornment && (
+        <div className='inline-flex size-[18px] items-center justify-end overflow-hidden'>{endAdornment}</div>
+      )}
     </div>
   );
 }

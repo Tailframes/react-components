@@ -32,11 +32,11 @@ const buttonVariants = cva(
         true: 'p-0',
         false: '',
       },
-      startIcon: {
+      startAdornment: {
         true: '',
         false: '',
       },
-      endIcon: {
+      endAdornment: {
         true: '',
         false: '',
       },
@@ -58,13 +58,13 @@ const buttonVariants = cva(
       {
         variant: ['primary', 'secondary', 'outlined'],
         iconOnly: false,
-        startIcon: true,
+        startAdornment: true,
         class: 'px-4',
       },
       {
         variant: ['primary', 'secondary', 'outlined'],
         iconOnly: false,
-        endIcon: true,
+        endAdornment: true,
         class: 'px-4',
       },
       {
@@ -93,22 +93,22 @@ const buttonVariants = cva(
 
 export interface ButtonVariants {
   disabled?: boolean;
-  endIcon?: boolean;
+  endAdornment?: boolean;
   fullWidth?: boolean;
   href?: boolean;
   iconOnly?: boolean;
   size?: 'small' | 'medium' | 'large';
-  startIcon?: boolean;
+  startAdornment?: boolean;
   variant?: 'primary' | 'secondary' | 'outlined' | 'text' | 'text-default';
 }
 
 export interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement>,
-    Omit<ButtonVariants, 'disabled' | 'href' | 'startIcon' | 'endIcon'>,
+    Omit<ButtonVariants, 'disabled' | 'href' | 'startAdornment' | 'endAdornment'>,
     Partial<Pick<HTMLAnchorElement, 'target'>> {
   href?: string;
-  startIcon?: ReactNode;
-  endIcon?: ReactNode;
+  startAdornment?: ReactNode;
+  endAdornment?: ReactNode;
   disabled?: boolean;
   fullWidth?: boolean;
 }
@@ -124,8 +124,8 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
       href,
       className,
       children,
-      startIcon,
-      endIcon,
+      startAdornment,
+      endAdornment,
       ...rest
     }: ButtonProps,
     ref
@@ -144,8 +144,8 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
             variant,
             size,
             iconOnly,
-            startIcon: Boolean(startIcon),
-            endIcon: Boolean(endIcon),
+            startAdornment: Boolean(startAdornment),
+            endAdornment: Boolean(endAdornment),
             disabled,
             fullWidth,
           }),
@@ -154,9 +154,9 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
         disabled={disabled}
         {...rest}
       >
-        {startIcon}
+        {startAdornment}
         {children && <span>{children}</span>}
-        {endIcon}
+        {endAdornment}
       </Component>
     );
   }

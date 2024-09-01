@@ -74,7 +74,7 @@ export interface ToastVariants {
 }
 
 export interface ToastProps extends Omit<HTMLAttributes<HTMLDivElement>, 'color'>, ToastVariants {
-  startIcon?: ReactNode;
+  startAdornment?: ReactNode;
   onClose?: () => void;
 }
 
@@ -83,7 +83,7 @@ export function Toast({
   color = 'default',
   placement = 'bottom-right',
   visible,
-  startIcon,
+  startAdornment,
   children,
   className,
   onClose,
@@ -91,7 +91,7 @@ export function Toast({
 }: ToastProps) {
   return (
     <div className={clsxMerge(toastVariants({ variant, color, visible, placement }), className)} {...rest}>
-      {startIcon && <div className='inline-flex size-5 items-center justify-start'>{startIcon}</div>}
+      {startAdornment && <div className='inline-flex size-5 items-center justify-start'>{startAdornment}</div>}
       <div className='inline-flex flex-1 items-center justify-start overflow-hidden'>{children}</div>
       {onClose && (
         <Button

@@ -46,15 +46,15 @@ export const TextWithIcon: Story = {
     items: [
       {
         children: 'GitHub',
-        startIcon: <GitHubOctocatIcon className='size-4' />,
+        startAdornment: <GitHubOctocatIcon className='size-4' />,
       },
       {
         children: 'Dribble',
-        startIcon: <DribbleIcon className='size-4' />,
+        startAdornment: <DribbleIcon className='size-4' />,
       },
       {
         children: 'Youtube',
-        startIcon: <YoutubeIcon className='size-4' />,
+        startAdornment: <YoutubeIcon className='size-4' />,
       },
     ],
   },

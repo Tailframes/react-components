@@ -25,7 +25,7 @@ const meta = {
     disabled: false,
   },
   argTypes: {
-    endIcon: IconArgType({ className: 'size-5', stroke: 'inherit' }, [IconKey.CloseIcon]),
+    endAdornment: IconArgType({ className: 'size-5', stroke: 'inherit' }, [IconKey.CloseIcon]),
     id: {
       table: {
         disable: true,
@@ -41,7 +41,7 @@ const meta = {
         type: 'inline-radio',
       },
     },
-    startIcon: IconArgType({ className: 'size-5', stroke: 'inherit' }, [IconKey.UserIcon]),
+    startAdornment: IconArgType({ className: 'size-5', stroke: 'inherit' }, [IconKey.UserIcon]),
   },
 } satisfies Meta<typeof Input>;
 
@@ -73,7 +73,7 @@ export const Error: Story = {
 export const Icons: Story = {
   args: {
     label: 'Icons',
-    startIcon: IconKey.UserIcon,
-    endIcon: IconKey.CloseIcon,
+    startAdornment: IconKey.UserIcon,
+    endAdornment: IconKey.CloseIcon,
   },
 };

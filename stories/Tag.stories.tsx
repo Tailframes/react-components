@@ -14,8 +14,8 @@ const meta = {
     variant: 'primary',
   },
   argTypes: {
-    startIcon: IconArgType({ className: 'size-[18px] stroke-inherit' }, [IconKey.CheckIcon, IconKey.CloseIcon]),
-    endIcon: IconArgType({ className: 'size-[18px] stroke-inherit' }, [IconKey.CheckIcon, IconKey.CloseIcon]),
+    startAdornment: IconArgType({ className: 'size-[18px] stroke-inherit' }, [IconKey.CheckIcon, IconKey.CloseIcon]),
+    endAdornment: IconArgType({ className: 'size-[18px] stroke-inherit' }, [IconKey.CheckIcon, IconKey.CloseIcon]),
   },
 } satisfies Meta<typeof Tag>;
 
@@ -64,16 +64,16 @@ export const Warning: Story = {
   },
 };
 
-export const StartIcon: Story = {
+export const StartAdornment: Story = {
   args: {
-    startIcon: IconKey.CheckIcon,
+    startAdornment: IconKey.CheckIcon,
     children: 'Primary',
   },
 };
 
-export const EndIcon: Story = {
+export const EndAdornment: Story = {
   args: {
-    endIcon: IconKey.CloseIcon,
+    endAdornment: IconKey.CloseIcon,
     children: 'Primary',
   },
 };

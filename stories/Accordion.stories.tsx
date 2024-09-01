@@ -48,7 +48,7 @@ export const Text: Story = {
 
 export const TextWithIcon: Story = {
   args: {
-    items: items.map(item => ({ ...item, labelStartIcon: <UserIcon /> })),
+    items: items.map(item => ({ ...item, labelStartAdornment: <UserIcon /> })),
   },
 };
 
