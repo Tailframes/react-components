@@ -6,6 +6,7 @@ import React, {
   type FocusEvent,
   type ReactNode,
   type SyntheticEvent,
+  type KeyboardEvent,
   useEffect,
   useId,
   useRef,
@@ -13,7 +14,7 @@ import React, {
 } from 'react';
 import { ChevronDownIcon } from '../assets/chevron-down-icon';
 import { CloseIcon } from '../assets/close-icon';
-import { clsxMerge } from '../utils';
+import { clsxMerge, handleKeyboardEvent } from '../utils';
 import { Checkbox } from './checkbox';
 import { Label } from './label';
 import { Portal } from './portal';
@@ -73,6 +74,10 @@ const selectOptionVariants = cva(
         true: 'bg-blue-50 font-medium text-blue-700',
         false: 'font-normal text-slate-700',
       },
+      isFocused: {
+        true: 'bg-blue-50 text-blue-700',
+        false: '',
+      },
     },
   }
 );
@@ -85,44 +90,49 @@ export interface SelectVariants {
 
 export interface SelectOptionType {
   disabled?: boolean;
-  endText?: string;
+  endAdornment?: string;
   label: string;
-  startIcon?: ReactNode;
+  startAdornment?: ReactNode;
   value: string | number | boolean;
 }
 
-interface SelectOptionProps extends Pick<SelectProps, 'checkboxes'> {
-  option: SelectOptionType;
+interface SelectOptionProps extends Pick<SelectProps, 'checkboxes'>, SelectOptionType {
   handleSelect: (option: SelectOptionType) => void;
   isSelected?: boolean;
+  isFocused?: boolean;
 }
 
-function SelectOption({ option, handleSelect, checkboxes, isSelected }: SelectOptionProps) {
+function SelectOption({ handleSelect, checkboxes, isSelected, isFocused, ...option }: SelectOptionProps) {
+  const id = useId();
+
   return (
     <li
-      className={selectOptionVariants({ isSelected })}
-      id={`select-option-${option.value}`}
+      className={selectOptionVariants({ isSelected, isFocused })}
       role='option'
-      aria-selected={isSelected}
+      tabIndex={-1}
       onClick={() => {
         handleSelect(option);
       }}
-      onKeyDown={e => {
-        if (e.key === 'Enter') {
-          handleSelect(option);
-        }
-      }}
+      onKeyDown={handleKeyboardEvent('Enter', () => {
+        handleSelect(option);
+      })}
+      aria-selected={isSelected}
+      aria-labelledby={option.label ? id : undefined}
     >
       <div className='flex w-full items-center justify-start gap-2'>
         {checkboxes && <Checkbox size='small' disabled={option.disabled} checked={isSelected} />}
-        {!checkboxes && option.startIcon && (
+        {!checkboxes && option.startAdornment && (
           <span className='inline-flex size-[18px] items-center justify-center overflow-hidden'>
-            {option.startIcon}
+            {option.startAdornment}
           </span>
         )}
-        {option.label && <span className='truncate'>{option.label}</span>}
+        {option.label && (
+          <span id={id} className='truncate'>
+            {option.label}
+          </span>
+        )}
       </div>
-      {option.endText && <span className='ml-3'>{option.endText}</span>}
+      {option.endAdornment && <span className='ml-3'>{option.endAdornment}</span>}
     </li>
   );
 }
@@ -132,7 +142,7 @@ export interface SelectProps
     SelectVariants {
   buttonClassName?: string;
   /**
-   * Whether the option should be displayed as a checkbox, requires **multiple** to be true
+   * Whether the option should be displayed as a checkbox, requires `multiple` prop to be true
    */
   checkboxes?: boolean;
   clearable?: boolean;
@@ -171,7 +181,10 @@ export function Select({
   ...rest
 }: SelectProps) {
   const buttonId = useId();
-  const [opened, setOpened] = useState(true);
+  const labelId = useId();
+
+  const [focusedOption, setFocusedOption] = useState<SelectOptionType | null>(null);
+  const [opened, setOpened] = useState(false);
   const [selected, setSelected] = useState<SelectOptionType[]>(
     options.filter(o => (Array.isArray(value) ? value.includes(o.value) : o.value === value))
   );
@@ -281,16 +294,62 @@ export function Select({
     onClear?.();
   };
 
+  const handleKeyboardEvents = (e: KeyboardEvent<HTMLButtonElement>) => {
+    if (!opened) {
+      return;
+    }
+
+    handleKeyboardEvent<HTMLButtonElement>('Enter', () => {
+      if (focusedOption) {
+        handleSelect(focusedOption);
+      }
+    })(e);
+
+    handleKeyboardEvent<HTMLButtonElement>('Escape', handleDropdownClose)(e);
+
+    handleKeyboardEvent<HTMLButtonElement>('ArrowUp', () => {
+      setFocusedOption(prevFocusedOption => {
+        if (prevFocusedOption) {
+          const index = options.findIndex(o => o.value === prevFocusedOption.value);
+          const newIndex = index > 0 ? index - 1 : options.length - 1;
+
+          return options[newIndex];
+        } else {
+          return options[options.length - 1];
+        }
+      });
+    })(e);
+
+    handleKeyboardEvent<HTMLButtonElement>('ArrowDown', () => {
+      setFocusedOption(prevFocusedOption => {
+        if (prevFocusedOption) {
+          const index = options.findIndex(o => o.value === prevFocusedOption.value);
+          const newIndex = index < options.length - 1 ? index + 1 : 0;
+
+          return options[newIndex];
+        } else {
+          return options[0];
+        }
+      });
+    })(e);
+  };
+
   return (
     <div className={clsxMerge(selectContainerVariants(), containerClassName)} onBlur={handleBlur}>
       {label && (
-        <Label htmlFor={rest.id ?? buttonId} size='small' className={clsxMerge(inputLabelVariants({ disabled }))}>
+        <Label
+          id={labelId}
+          htmlFor={rest.id ?? buttonId}
+          size='small'
+          className={clsxMerge(inputLabelVariants({ disabled }))}
+        >
           {label}
         </Label>
       )}
       <button
         ref={buttonRef}
         onClick={toggleDropdown}
+        onKeyDown={handleKeyboardEvents}
         className={clsxMerge(selectButtonVariants({ error, size, isOpened: showDropdown }), buttonClassName)}
         aria-haspopup='listbox'
         aria-expanded={opened}
@@ -319,17 +378,17 @@ export function Select({
             ref={dropdownRef}
             className={clsxMerge(selectDropdownVariants({ isOpened: showDropdown }), dropdownClassName)}
             style={dropdownPosition}
-            tabIndex={-1}
             role='listbox'
-            aria-labelledby='listbox-label'
+            aria-labelledby={labelId}
           >
             {options.map(option => (
               <SelectOption
                 key={option.value.toString()}
-                option={option}
                 handleSelect={handleSelect}
                 isSelected={selected.some(o => o.value === option.value)}
                 checkboxes={multiple && checkboxes}
+                isFocused={focusedOption === option}
+                {...option}
               />
             ))}
           </ul>

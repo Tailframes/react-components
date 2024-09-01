@@ -79,13 +79,13 @@ export const MultipleWithValue: Story = {
   },
 };
 
-export const EndText: Story = {
+export const EndAdornment: Story = {
   args: {
     options: options.map(o => ({ ...o, endText: `⌘${o.value.toString()}` })),
   },
 };
 
-export const StartIcon: Story = {
+export const StartAdornment: Story = {
   args: {
     options: options.map(o => ({ ...o, startIcon: <UserIcon className='size-5' /> })),
     checkboxes: true,
