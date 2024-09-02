@@ -5,7 +5,7 @@ import { clsxMerge } from '../utils';
 import { Button } from './button';
 
 export interface BreadcrumbsProps {
-  items: BreadcrumbItemProps[];
+  items: BreadcrumbsItemProps[];
   separator?: 'chevron' | 'slash' | ReactNode;
   maxItems?: number;
 }
@@ -79,24 +79,24 @@ const DefaultSeparator: Record<string, ReactNode> = {
   slash: '/',
 };
 
-const BreadcrumbSeparator = ({ separator }: Pick<BreadcrumbsProps, 'separator'>) => {
+export function BreadcrumbSeparator({ separator }: Pick<BreadcrumbsProps, 'separator'>) {
   return (
     <li role='presentation' aria-hidden className='inline-flex items-center text-slate-400'>
       {DefaultSeparator[separator?.toString() ?? 'chevron'] ?? separator}
     </li>
   );
-};
+}
 
 BreadcrumbSeparator.displayName = 'BreadcrumbSeparator';
 
-export interface BreadcrumbItemProps {
+export interface BreadcrumbsItemProps {
   label?: string;
   icon?: ReactNode;
   href: string;
   isLast?: boolean;
 }
 
-function BreadcrumbsItem({ label, icon, href, isLast }: BreadcrumbItemProps) {
+export function BreadcrumbsItem({ label, icon, href, isLast }: BreadcrumbsItemProps) {
   return (
     <li className='inline-flex items-center' aria-current={isLast ? 'page' : undefined}>
       <a

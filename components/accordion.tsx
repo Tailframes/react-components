@@ -20,14 +20,14 @@ export interface AccordionVariants {
   isExpanded: boolean;
 }
 
-interface AccordionItemProps extends Omit<HTMLAttributes<HTMLDivElement>, 'content'>, AccordionVariants {
+export interface AccordionItemProps extends Omit<HTMLAttributes<HTMLDivElement>, 'content'>, AccordionVariants {
   label: string;
   labelStartAdornment?: ReactNode;
   content: ReactNode;
   contentClassName?: string;
 }
 
-function AccordionItem({
+export function AccordionItem({
   label,
   labelStartAdornment,
   content,
