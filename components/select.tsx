@@ -267,6 +267,7 @@ export function Select({
     }
 
     setShowDropdown(false);
+    setFocusedOption(null);
   };
 
   const toggleDropdown = () => {
