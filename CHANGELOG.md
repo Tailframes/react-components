@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.27](https://github.com/Tailframes/tailframes-components/compare/v0.1.26...v0.1.27) (2024-09-02)
+
+
+### Features
+
+* add new storybook addons ([773ab0c](https://github.com/Tailframes/tailframes-components/commit/773ab0c8f581566cccb2436d6c0b306d8ee757df))
+* **components:** update class names in tooltip and divider components ([2cde846](https://github.com/Tailframes/tailframes-components/commit/2cde846bc929f3f97b56c758ee325a3732171ac5))
+* **select:** add Select component ([#13](https://github.com/Tailframes/tailframes-components/issues/13)) ([eb00a05](https://github.com/Tailframes/tailframes-components/commit/eb00a050e6b3f1850da502c31c9cd60551e870d4))
+* **storybook:** migrate to storybook v8 ([28b0e60](https://github.com/Tailframes/tailframes-components/commit/28b0e607732ee8d69684b9e67d3abcdb64dd7f5d))
+
+
+### Bug Fixes
+
+* **checkbox:** fix issue with unchecked checkboxes in Checkbox component ([fd9cdef](https://github.com/Tailframes/tailframes-components/commit/fd9cdeff1a8591681430454c729906f1044a0253))
+
 ### [0.1.26](https://github.com/Tailframes/tailframes-components/compare/v0.1.25...v0.1.26) (2024-08-21)
 
 ### [0.1.25](https://github.com/Tailframes/tailframes-components/compare/v0.1.24...v0.1.25) (2024-08-21)
