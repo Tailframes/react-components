@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.28](https://github.com/Tailframes/tailframes-components/compare/v0.1.27...v0.1.28) (2024-09-02)
+
+
+### Features
+
+* **storybook:** add subcomponents ([120550e](https://github.com/Tailframes/tailframes-components/commit/120550ecf38044b65492983b027c88ca00789ed1))
+
 ### [0.1.27](https://github.com/Tailframes/tailframes-components/compare/v0.1.26...v0.1.27) (2024-09-02)
 
 
