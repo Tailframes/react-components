@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { type ComponentType } from 'react';
 import { UserIcon } from '../assets/user-icon';
-import { Select, type SelectOptionType } from '../components/select';
+import { Select, SelectOption, type SelectOptionType } from '../components/select';
 
 const options = Array.from({ length: 3 }, (_, i) => ({
   label: `Label ${i + 1}`,
@@ -14,6 +15,7 @@ const meta = {
       'A select, or a dropdown, is a form control that allows a user to select a value from a list of options. It is used to allow users to choose one or more items from a list of options.',
   },
   component: Select,
+  subcomponents: { SelectOption: SelectOption as ComponentType<unknown> },
   decorators: [
     Story => (
       <div className='max-w-[240px]'>
@@ -48,9 +50,6 @@ const meta = {
       table: {
         disable: true,
       },
-    },
-    options: {
-      control: { type: 'array' },
     },
   },
 } satisfies Meta<typeof Select>;

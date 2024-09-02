@@ -1,4 +1,3 @@
-import { useLayoutEffect } from '@radix-ui/react-use-layout-effect';
 import { cva } from 'class-variance-authority';
 import React, {
   type ButtonHTMLAttributes,
@@ -12,6 +11,7 @@ import React, {
   useRef,
   useState,
   useCallback,
+  useLayoutEffect,
 } from 'react';
 import { ChevronDownIcon } from '../assets/chevron-down-icon';
 import { CloseIcon } from '../assets/close-icon';
@@ -93,13 +93,13 @@ export interface SelectOptionType {
   value: string | number | boolean;
 }
 
-interface SelectOptionProps extends Pick<SelectProps, 'checkboxes'>, SelectOptionType {
+export interface SelectOptionProps extends Pick<SelectProps, 'checkboxes'>, SelectOptionType {
   handleSelect: (option: SelectOptionType) => void;
   isSelected?: boolean;
   isFocused?: boolean;
 }
 
-function SelectOption({ handleSelect, checkboxes, isSelected, isFocused, ...option }: SelectOptionProps) {
+export function SelectOption({ handleSelect, checkboxes, isSelected, isFocused, ...option }: SelectOptionProps) {
   const id = useId();
 
   return (

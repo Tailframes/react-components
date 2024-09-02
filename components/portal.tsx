@@ -1,6 +1,5 @@
-import { forwardRef, type HTMLAttributes, useState } from 'react';
+import { forwardRef, type HTMLAttributes, useState, useLayoutEffect } from 'react';
 import ReactDOM from 'react-dom';
-import { useLayoutEffect } from '@radix-ui/react-use-layout-effect';
 
 interface PortalProps extends HTMLAttributes<HTMLDivElement> {
   container?: Element | null;
