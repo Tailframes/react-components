@@ -21,8 +21,8 @@
     "@tailwindcss/forms": "^0.5.7",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "tailwind-merge": "^2.2.1"
   },
   "devDependencies": {
@@ -34,7 +34,7 @@
     "@storybook/react": "^8.2.9",
     "@storybook/react-vite": "^8.2.9",
     "@storybook/theming": "^8.2.9",
-    "@types/react": "^18.3.4",
+    "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^6.19.1",
     "@typescript-eslint/parser": "^6.19.1",
