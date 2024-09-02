@@ -1,8 +1,9 @@
 import { type Meta, type StoryObj } from '@storybook/react';
+import type { ComponentType } from 'react';
 import { GearIcon } from '../assets/gear-icon';
 import { HomeIcon } from '../assets/home-icon';
 import { UsersIcon } from '../assets/users-icon';
-import { Breadcrumbs } from '../components/breadcrumbs';
+import { Breadcrumbs, BreadcrumbsItem } from '../components/breadcrumbs';
 
 const meta = {
   title: 'Components/Breadcrumbs',
@@ -11,6 +12,9 @@ const meta = {
       'Breadcrumbs play a crucial role in guiding users through websites or applications, offering clear pathways to trace their progress. They are especially vital for user experience, notably in intricate platforms like e-commerce websites or content-heavy portals, where they significantly improve navigation.',
   },
   component: Breadcrumbs,
+  subcomponents: {
+    BreadcrumbsItem: BreadcrumbsItem as ComponentType<unknown>,
+  },
   tags: ['autodocs'],
   args: {
     separator: 'chevron',

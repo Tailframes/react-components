@@ -83,14 +83,14 @@ export const WithEndAdornment: Story = {
 export const MultipleValues: Story = {
   args: {
     multiple: true,
-    placeholder: 'Choose one or more options',
+    placeholder: 'Choose one or more',
   },
 };
 
 export const MultipleValuesSelected: Story = {
   args: {
     multiple: true,
-    placeholder: 'Choose one or more options',
+    placeholder: 'Choose one or more',
     value: [2, 4, 5],
   },
 };
@@ -98,7 +98,7 @@ export const MultipleValuesSelected: Story = {
 export const MultipleValuesWithCheckboxes: Story = {
   args: {
     multiple: true,
-    placeholder: 'Choose one or more options',
+    placeholder: 'Choose one or more',
     checkboxes: true,
   },
 };

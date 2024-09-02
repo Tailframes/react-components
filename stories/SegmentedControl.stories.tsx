@@ -1,8 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import type { ComponentType } from 'react';
 import { DribbleIcon } from '../assets/dribble-icon';
 import { GitHubOctocatIcon } from '../assets/github-octocat-icon';
 import { YoutubeIcon } from '../assets/youtube-icon';
+import { Button } from '../components/button';
 import { SegmentedControl } from '../components/segmented-control';
+import { Tooltip } from '../components/tooltip';
 
 const meta = {
   title: 'Components/Segmented Control',
@@ -18,6 +21,10 @@ const meta = {
     ),
   ],
   component: SegmentedControl,
+  subcomponents: {
+    Button: Button as ComponentType<unknown>,
+    Tooltip: Tooltip as ComponentType<unknown>,
+  },
   tags: ['autodocs'],
 } satisfies Meta<typeof SegmentedControl>;
 

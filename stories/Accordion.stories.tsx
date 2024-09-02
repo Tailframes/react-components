@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import type { ComponentType } from 'react';
 import { UserIcon } from '../assets/user-icon';
-import { Accordion } from '../components/accordion';
+import { Accordion, AccordionItem } from '../components/accordion';
 
 const meta = {
   title: 'Components/Accordion',
@@ -9,6 +10,7 @@ const meta = {
       'The Accordion component neatly organizes content by collapsible sections, providing users with easy navigation through information. Ideal for FAQs, product descriptions, and more, it maximizes space while maintaining accessibility and user-friendly design.',
   },
   component: Accordion,
+  subcomponents: { AccordionItem: AccordionItem as ComponentType<unknown> },
   tags: ['autodocs'],
   args: {
     type: 'multiple',
