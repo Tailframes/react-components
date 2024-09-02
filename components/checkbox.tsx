@@ -76,7 +76,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           aria-checked={indeterminate ? 'mixed' : checked}
           onChange={handleChange}
           className={clsxMerge(checkboxVariants({ size }), className)}
-          checked
+          checked={checked}
           {...rest}
         />
         {label && (
