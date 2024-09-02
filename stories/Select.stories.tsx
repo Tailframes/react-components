@@ -23,12 +23,15 @@ const meta = {
   ],
   tags: ['autodocs'],
   args: {
-    size: 'medium',
+    checkboxes: true,
     clearable: true,
+    disabled: false,
     error: false,
     label: 'Label',
-    placeholder: 'Select',
+    multiple: false,
     options,
+    placeholder: 'Select',
+    size: 'medium',
   },
   argTypes: {
     buttonClassName: {

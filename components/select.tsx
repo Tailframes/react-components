@@ -11,6 +11,7 @@ import React, {
   useId,
   useRef,
   useState,
+  useCallback,
 } from 'react';
 import { ChevronDownIcon } from '../assets/chevron-down-icon';
 import { CloseIcon } from '../assets/close-icon';
@@ -63,15 +64,15 @@ const selectDropdownVariants = cva(
 );
 
 const selectOptionVariants = cva(
-  'relative mx-1 flex cursor-pointer select-none items-center justify-between rounded px-2 py-1.5 text-sm font-normal text-slate-700 hover:bg-blue-50 hover:text-blue-700',
+  'relative mx-1 flex cursor-pointer select-none items-center justify-between rounded px-2 py-1.5 text-sm font-normal text-slate-700 hover:bg-blue-100 hover:text-blue-700',
   {
     variants: {
-      isFocused: {
-        true: 'bg-blue-50 text-blue-700',
-        false: '',
-      },
       isSelected: {
         true: 'bg-blue-50 font-medium text-blue-700',
+        false: '',
+      },
+      isFocused: {
+        true: 'bg-blue-100 text-blue-700',
         false: '',
       },
     },
@@ -178,14 +179,13 @@ export function Select({
 }: SelectProps) {
   const buttonId = useId();
   const labelId = useId();
-
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const dropdownRef = useRef<HTMLUListElement>(null);
   const [focusedOption, setFocusedOption] = useState<SelectOptionType | null>(null);
   const [opened, setOpened] = useState(false);
   const [selected, setSelected] = useState<SelectOptionType[]>(
     options.filter(o => (Array.isArray(value) ? value.includes(o.value) : o.value === value))
   );
-  const buttonRef = useRef<HTMLButtonElement>(null);
-  const dropdownRef = useRef<HTMLUListElement>(null);
   const [showDropdown, setShowDropdown] = useState(false);
   const [dropdownPosition, setDropdownPosition] = useState<Pick<CSSProperties, 'top' | 'left' | 'width'>>({
     top: 0,
@@ -231,105 +231,121 @@ export function Select({
     };
   }, [opened]);
 
-  const handleSelect = (option: SelectOptionType) => {
-    if (!multiple) {
-      setSelected([option]);
-      onChange?.(option);
-      handleDropdownClose();
-    } else {
-      setSelected(prevSelected => {
-        if (prevSelected.find(o => o.value === option.value)) {
-          const newSelected = prevSelected.filter(o => o.value !== option.value).sort(sortOptions);
-          onChange?.(newSelected);
-
-          return newSelected;
-        } else {
-          const newSelected = [...prevSelected, option].sort(sortOptions);
-          onChange?.(newSelected);
-
-          return newSelected;
-        }
-      });
-    }
-  };
-
-  const handleDropdownOpen = () => {
+  const handleDropdownOpen = useCallback(() => {
     if (!opened) {
       onDropdownOpen?.();
     }
 
     setOpened(true);
-  };
+  }, [onDropdownOpen, opened]);
 
-  const handleDropdownClose = () => {
+  const handleDropdownClose = useCallback(() => {
     if (showDropdown) {
       onDropdownClose?.();
     }
 
     setShowDropdown(false);
     setFocusedOption(null);
-  };
+  }, [onDropdownClose, showDropdown]);
 
-  const toggleDropdown = () => {
+  const toggleDropdown = useCallback(() => {
     if (opened) {
       handleDropdownClose();
     } else {
       handleDropdownOpen();
     }
-  };
+  }, [handleDropdownClose, handleDropdownOpen, opened]);
 
-  const handleBlur = (e: FocusEvent<HTMLDivElement>) => {
-    if (!buttonRef.current?.contains(e.relatedTarget) && !dropdownRef.current?.contains(e.relatedTarget)) {
-      handleDropdownClose();
-    }
-  };
-
-  const handleClear = (e: SyntheticEvent<SVGSVGElement>) => {
-    e.stopPropagation();
-
-    setSelected([]);
-    onClear?.();
-  };
-
-  const handleKeyboardEvents = (e: KeyboardEvent<HTMLButtonElement>) => {
-    if (!opened) {
-      return;
-    }
-
-    handleKeyboardEvent<HTMLButtonElement>('Enter', () => {
-      if (focusedOption) {
-        handleSelect(focusedOption);
+  const handleBlur = useCallback(
+    (e: FocusEvent<HTMLDivElement>) => {
+      if (!buttonRef.current?.contains(e.relatedTarget) && !dropdownRef.current?.contains(e.relatedTarget)) {
+        handleDropdownClose();
       }
-    })(e);
+    },
+    [handleDropdownClose]
+  );
 
-    handleKeyboardEvent<HTMLButtonElement>('Escape', handleDropdownClose)(e);
+  const handleSelect = useCallback(
+    (option: SelectOptionType) => {
+      if (multiple) {
+        setSelected(prevSelected => {
+          if (prevSelected.find(o => o.value === option.value)) {
+            const newSelected = prevSelected.filter(o => o.value !== option.value).sort(sortOptions);
+            onChange?.(newSelected);
 
-    handleKeyboardEvent<HTMLButtonElement>('ArrowUp', () => {
-      setFocusedOption(prevFocusedOption => {
-        if (prevFocusedOption) {
-          const index = options.findIndex(o => o.value === prevFocusedOption.value);
-          const newIndex = index > 0 ? index - 1 : options.length - 1;
+            return newSelected;
+          } else {
+            const newSelected = [...prevSelected, option].sort(sortOptions);
+            onChange?.(newSelected);
 
-          return options[newIndex];
+            return newSelected;
+          }
+        });
+      } else {
+        setSelected([option]);
+        onChange?.(option);
+        handleDropdownClose();
+      }
+    },
+    [handleDropdownClose, multiple, onChange]
+  );
+
+  const handleClear = useCallback(
+    (e: SyntheticEvent<SVGSVGElement>) => {
+      e.stopPropagation();
+
+      setSelected([]);
+      onClear?.();
+    },
+    [onClear]
+  );
+
+  const handleKeyboardEvents = useCallback(
+    (e: KeyboardEvent<HTMLButtonElement>) => {
+      e.preventDefault();
+
+      handleKeyboardEvent<HTMLButtonElement>('Enter', () => {
+        if (focusedOption) {
+          handleSelect(focusedOption);
         } else {
-          return options[options.length - 1];
+          toggleDropdown();
         }
-      });
-    })(e);
+      })(e);
 
-    handleKeyboardEvent<HTMLButtonElement>('ArrowDown', () => {
-      setFocusedOption(prevFocusedOption => {
-        if (prevFocusedOption) {
-          const index = options.findIndex(o => o.value === prevFocusedOption.value);
-          const newIndex = index < options.length - 1 ? index + 1 : 0;
+      if (!opened) {
+        return;
+      }
 
-          return options[newIndex];
-        } else {
-          return options[0];
-        }
-      });
-    })(e);
-  };
+      handleKeyboardEvent<HTMLButtonElement>('Escape', handleDropdownClose)(e);
+
+      handleKeyboardEvent<HTMLButtonElement>('ArrowUp', () => {
+        setFocusedOption(prevFocusedOption => {
+          if (prevFocusedOption) {
+            const index = options.findIndex(o => o.value === prevFocusedOption.value);
+            const newIndex = index > 0 ? index - 1 : options.length - 1;
+
+            return options[newIndex];
+          } else {
+            return options[options.length - 1];
+          }
+        });
+      })(e);
+
+      handleKeyboardEvent<HTMLButtonElement>('ArrowDown', () => {
+        setFocusedOption(prevFocusedOption => {
+          if (prevFocusedOption) {
+            const index = options.findIndex(o => o.value === prevFocusedOption.value);
+            const newIndex = index < options.length - 1 ? index + 1 : 0;
+
+            return options[newIndex];
+          } else {
+            return options[0];
+          }
+        });
+      })(e);
+    },
+    [focusedOption, handleDropdownClose, handleSelect, opened, options, toggleDropdown]
+  );
 
   return (
     <div
@@ -386,7 +402,7 @@ export function Select({
                 key={option.value.toString()}
                 handleSelect={handleSelect}
                 isSelected={selected.some(o => o.value === option.value)}
-                checkboxes={multiple && checkboxes}
+                checkboxes={checkboxes}
                 isFocused={focusedOption === option}
                 {...option}
               />
