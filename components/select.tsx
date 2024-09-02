@@ -26,8 +26,8 @@ const selectButtonVariants = cva(
   {
     variants: {
       size: {
-        large: 'py-2.5',
-        medium: 'py-2',
+        large: 'min-h-10 py-2.5',
+        medium: 'min-h-[38px] py-2',
       },
       error: {
         true: 'border-red-500 stroke-red-500 text-red-500 ring-1 ring-red-500 focus:border-red-500 focus:stroke-red-500 focus:text-black focus:ring-red-500 focus:ring-offset-0',
@@ -118,7 +118,7 @@ export function SelectOption({ handleSelect, checkboxes, isSelected, isFocused, 
     >
       <div className='flex w-full items-center justify-start gap-2'>
         {checkboxes && <Checkbox size='small' disabled={option.disabled} checked={isSelected} />}
-        {!checkboxes && option.startAdornment && (
+        {option.startAdornment && (
           <span className='inline-flex size-[18px] items-center justify-center overflow-hidden'>
             {option.startAdornment}
           </span>
@@ -146,6 +146,7 @@ export interface SelectProps
   containerClassName?: string;
   disabled?: boolean;
   dropdownClassName?: string;
+  dropdownPortalContainerId?: string;
   label?: string;
   multiple?: boolean;
   onChange?: (value: SelectOptionType | SelectOptionType[]) => void;
@@ -159,7 +160,7 @@ export interface SelectProps
 
 export function Select({
   checkboxes = false,
-  clearable = false,
+  clearable = true,
   disabled = false,
   error = false,
   multiple = false,
@@ -175,6 +176,7 @@ export function Select({
   buttonClassName,
   containerClassName,
   dropdownClassName,
+  dropdownPortalContainerId,
   ...rest
 }: SelectProps) {
   const buttonId = useId();
@@ -226,10 +228,17 @@ export function Select({
     updateDropdownPosition();
     window.addEventListener('resize', updateDropdownPosition);
 
+    if (dropdownPortalContainerId) {
+      document.getElementById(dropdownPortalContainerId)?.addEventListener('scroll', updateDropdownPosition);
+    }
+
     return () => {
       window.removeEventListener('resize', updateDropdownPosition);
+      if (dropdownPortalContainerId) {
+        document.getElementById(dropdownPortalContainerId)?.removeEventListener('scroll', updateDropdownPosition);
+      }
     };
-  }, [opened]);
+  }, [dropdownPortalContainerId, opened]);
 
   const handleDropdownOpen = useCallback(() => {
     if (!opened) {
@@ -291,7 +300,7 @@ export function Select({
   );
 
   const handleClear = useCallback(
-    (e: SyntheticEvent<SVGSVGElement>) => {
+    (e: SyntheticEvent) => {
       e.stopPropagation();
 
       setSelected([]);
@@ -311,6 +320,8 @@ export function Select({
           toggleDropdown();
         }
       })(e);
+
+      handleKeyboardEvent(['Delete', 'Backspace'], handleClear)(e);
 
       if (!opened) {
         return;
@@ -389,7 +400,7 @@ export function Select({
         </span>
       </button>
       {opened && (
-        <Portal>
+        <Portal container={dropdownPortalContainerId ? document.getElementById(dropdownPortalContainerId) : undefined}>
           <ul
             ref={dropdownRef}
             className={clsxMerge(selectDropdownVariants({ isOpened: showDropdown }), dropdownClassName)}

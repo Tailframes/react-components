@@ -3,7 +3,7 @@ import { type ComponentType } from 'react';
 import { UserIcon } from '../assets/user-icon';
 import { Select, SelectOption, type SelectOptionType } from '../components/select';
 
-const options = Array.from({ length: 3 }, (_, i) => ({
+const options = Array.from({ length: 5 }, (_, i) => ({
   label: `Label ${i + 1}`,
   value: i + 1,
 }));
@@ -25,14 +25,14 @@ const meta = {
   ],
   tags: ['autodocs'],
   args: {
-    checkboxes: true,
+    checkboxes: false,
     clearable: true,
     disabled: false,
     error: false,
     label: 'Label',
     multiple: false,
     options,
-    placeholder: 'Select',
+    placeholder: 'Choose an option',
     size: 'medium',
   },
   argTypes: {
@@ -62,46 +62,48 @@ export const Default: Story = {
   args: {},
 };
 
-export const WithValue: Story = {
+export const ValueSelected: Story = {
   args: {
     value: 1,
   },
 };
 
-export const Multiple: Story = {
-  args: {
-    multiple: true,
-  },
-};
-
-export const MultipleWithValue: Story = {
-  args: {
-    multiple: true,
-    value: [2, 4, 5],
-  },
-};
-
-export const StartAdornment: Story = {
+export const WithStartAdornment: Story = {
   args: {
     options: options.map(o => ({ ...o, startAdornment: <UserIcon className='size-5' /> })),
-    checkboxes: true,
   },
 };
 
-export const EndAdornment: Story = {
+export const WithEndAdornment: Story = {
   args: {
     options: options.map(o => ({ ...o, endAdornment: `⌘${o.value.toString()}` })),
   },
 };
 
-export const Checkboxes: Story = {
+export const MultipleValues: Story = {
   args: {
     multiple: true,
+    placeholder: 'Choose one or more options',
+  },
+};
+
+export const MultipleValuesSelected: Story = {
+  args: {
+    multiple: true,
+    placeholder: 'Choose one or more options',
+    value: [2, 4, 5],
+  },
+};
+
+export const MultipleValuesWithCheckboxes: Story = {
+  args: {
+    multiple: true,
+    placeholder: 'Choose one or more options',
     checkboxes: true,
   },
 };
 
-export const WithHandlers: Story = {
+export const WithEventsHandlers: Story = {
   args: {
     placeholder: "Check browser's console",
     onClear: () => {
