@@ -265,14 +265,11 @@ export function Select({
     }
   }, [handleDropdownClose, handleDropdownOpen, opened]);
 
-  const handleBlur = useCallback(
-    (e: FocusEvent<HTMLDivElement>) => {
-      if (!buttonRef.current?.contains(e.relatedTarget) && !dropdownRef.current?.contains(e.relatedTarget)) {
-        handleDropdownClose();
-      }
-    },
-    [handleDropdownClose]
-  );
+  const handleBlur = (e: FocusEvent<HTMLDivElement>) => {
+    if (!buttonRef.current?.contains(e.relatedTarget) && !dropdownRef.current?.contains(e.relatedTarget)) {
+      handleDropdownClose();
+    }
+  };
 
   const handleSelect = useCallback(
     (option: SelectOptionType) => {
@@ -355,7 +352,7 @@ export function Select({
         });
       })(e);
     },
-    [focusedOption, handleDropdownClose, handleSelect, opened, options, toggleDropdown]
+    [focusedOption, handleClear, handleDropdownClose, handleSelect, opened, options, toggleDropdown]
   );
 
   return (
