@@ -38,7 +38,9 @@ const dividerVariants = cva('bg-slate-200', {
 });
 
 export interface DividerVariants {
+  /** The size of the divider. */
   size?: 'thin' | 'thick';
+  /** The direction of the divider. */
   direction?: 'horizontal' | 'vertical';
 }
 
