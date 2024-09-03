@@ -18,9 +18,6 @@ const meta = {
   },
   argTypes: {
     icon: IconArgType({ stroke: 'white', fill: 'white' }, [IconKey.StarIcon]),
-    elevated: {
-      description: 'available only for circle shape without badge',
-    },
   },
 } satisfies Meta<typeof Avatar>;
 
