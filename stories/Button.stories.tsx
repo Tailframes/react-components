@@ -19,7 +19,6 @@ const meta = {
   },
   argTypes: {
     iconOnly: {
-      description: 'Removes the horizontal padding from the button',
       control: { type: 'boolean' },
     },
     startAdornment: IconArgType({}),

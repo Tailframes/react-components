@@ -3,9 +3,9 @@ import { type HTMLAttributes, useState, type MouseEvent } from 'react';
 import { AccordionItem, type AccordionItemProps } from './accordion-item';
 
 export interface AccordionProps extends HTMLAttributes<HTMLDivElement> {
-  /** Items to display in the accordion */
+  /** Items to display in the accordion. */
   items: AccordionItemProps[];
-  /** Whether to allow multiple items to be expanded at the same time */
+  /** Whether to allow multiple items to be expanded at the same time. */
   type?: 'single' | 'multiple';
 }
 

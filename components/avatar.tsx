@@ -84,19 +84,19 @@ const avatarTextVariants = cva('flex max-w-full items-center justify-start white
 });
 
 export interface AvatarVariants {
-  /** Shows a badge next to the avatar */
+  /** Shows a badge next to the avatar. */
   badge?: true | BadgeProps;
-  /** Elevates the avatar, available only for circle shape without badge  */
+  /** Elevates the avatar, available only for circle shape without badge.  */
   elevated?: boolean;
-  /** Shows an icon instead of text or image */
+  /** Shows an icon instead of text or image. */
   icon?: ReactNode;
-  /** Shape of the avatar */
+  /** Shape of the avatar. */
   shape?: 'circle' | 'square';
-  /** Size of the avatar */
+  /** Size of the avatar. */
   size?: 'small' | 'medium';
-  /** Image source URL */
+  /** Image source URL. */
   src?: string;
-  /** Shows text instead of image or icon */
+  /** Shows text instead of image or icon. */
   text?: string;
 }
 
@@ -106,9 +106,9 @@ type ImageProps = Omit<HTMLAttributes<HTMLImageElement>, 'src'>;
 
 export type AvatarProps = (HTMLAttributes<HTMLDivElement> & AvatarVariants) &
   AvatarType & {
-    /** Alternative text for image */
+    /** Alternative text for image. */
     alt?: string;
-    /** Custom HTML image props */
+    /** Custom HTML image props. */
     imgProps?: ImageProps;
   };
 

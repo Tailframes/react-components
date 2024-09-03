@@ -92,13 +92,18 @@ const buttonVariants = cva(
 );
 
 export interface ButtonVariants {
+  /** If true, the button will be disabled. */
   disabled?: boolean;
   endAdornment?: boolean;
+  /** If true, the button will be full width. */
   fullWidth?: boolean;
   href?: boolean;
+  /** Should be used with icon content, removes the horizontal padding from the button. */
   iconOnly?: boolean;
+  /** Size of the button. */
   size?: 'small' | 'medium' | 'large';
   startAdornment?: boolean;
+  /** Variant of the button. */
   variant?: 'primary' | 'secondary' | 'outlined' | 'text' | 'text-default';
 }
 
@@ -106,11 +111,14 @@ export interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement>,
     Omit<ButtonVariants, 'disabled' | 'href' | 'startAdornment' | 'endAdornment'>,
     Partial<Pick<HTMLAnchorElement, 'target'>> {
+  /** The content of the button. */
+  children: ReactNode;
+  /** The href of the button. */
   href?: string;
+  /** Start adornment of the button e.g. an icon. */
   startAdornment?: ReactNode;
+  /** End adornment of the button, e.g. an icon. */
   endAdornment?: ReactNode;
-  disabled?: boolean;
-  fullWidth?: boolean;
 }
 
 export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
