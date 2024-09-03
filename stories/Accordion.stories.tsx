@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import type { ComponentType } from 'react';
 import { UserIcon } from '../assets/user-icon';
-import { Accordion, AccordionItem } from '../components/accordion';
+import { Accordion } from '../components/accordion/accordion';
+import { AccordionItem } from '../components/accordion/accordion-item';
 
 const meta = {
   title: 'Components/Accordion',
@@ -15,7 +16,6 @@ const meta = {
   args: {
     type: 'multiple',
   },
-  argTypes: {},
 } satisfies Meta<typeof Accordion>;
 
 export default meta;

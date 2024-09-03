@@ -1,8 +1,8 @@
-import { ChevronDownIcon } from '../assets/chevron-down-icon';
-import { clsxMerge } from '../utils';
-import { type HTMLAttributes, type ReactNode, useState, type MouseEvent, useId } from 'react';
 import { cva } from 'class-variance-authority';
-import { Button } from './button';
+import { type HTMLAttributes, type ReactNode, useId } from 'react';
+import { ChevronDownIcon } from '../../assets/chevron-down-icon';
+import { clsxMerge } from '../../utils';
+import { Button } from '../button';
 
 const accordionItemVariants = cva(
   'flex flex-col items-start justify-start rounded-lg border border-slate-200 bg-white p-3 hover:cursor-pointer hover:bg-gray-50',
@@ -16,14 +16,19 @@ const accordionItemVariants = cva(
   }
 );
 
-export interface AccordionVariants {
+interface AccordionItemVariants {
+  /** @ignore */
   isExpanded: boolean;
 }
 
-export interface AccordionItemProps extends Omit<HTMLAttributes<HTMLDivElement>, 'content'>, AccordionVariants {
+export interface AccordionItemProps extends Omit<HTMLAttributes<HTMLDivElement>, 'content'> {
+  /** Label of the item. */
   label: string;
+  /** Adornment to the left of the label. */
   labelStartAdornment?: ReactNode;
+  /** Content of the item. */
   content: ReactNode;
+  /** Custom class for the content. */
   contentClassName?: string;
 }
 
@@ -35,7 +40,7 @@ export function AccordionItem({
   isExpanded,
   className,
   ...rest
-}: AccordionItemProps) {
+}: AccordionItemProps & AccordionItemVariants) {
   const buttonId = useId();
   const contentId = useId();
 
@@ -82,46 +87,4 @@ export function AccordionItem({
   );
 }
 
-export interface AccordionProps extends HTMLAttributes<HTMLDivElement> {
-  items: Array<Omit<AccordionItemProps, 'isExpanded'>>;
-  type?: 'single' | 'multiple';
-}
-
-export function Accordion({ children, items = [], type = 'multiple', className, ...rest }: AccordionProps) {
-  const [expandedItems, setExpandedItems] = useState<string[]>([]);
-
-  const handleItemClick =
-    ({ label, onClick }: Pick<AccordionItemProps, 'label' | 'onClick'>) =>
-    (event: MouseEvent<HTMLDivElement>) => {
-      if (type === 'single') {
-        if (expandedItems.includes(label)) {
-          setExpandedItems([]);
-        } else {
-          setExpandedItems([label]);
-        }
-      } else if (type === 'multiple') {
-        if (expandedItems.includes(label)) {
-          setExpandedItems(expandedItems.filter(item => item !== label));
-        } else {
-          setExpandedItems([...expandedItems, label]);
-        }
-      }
-
-      onClick?.(event);
-    };
-
-  return (
-    <div className={clsxMerge('flex flex-col gap-4', className)} {...rest}>
-      {items.map(item => (
-        <AccordionItem
-          key={item.label}
-          onClick={handleItemClick(item)}
-          isExpanded={expandedItems.includes(item.label)}
-          {...item}
-        />
-      ))}
-    </div>
-  );
-}
-
-Accordion.displayName = 'Accordion';
+AccordionItem.displayName = 'AccordionItem';
