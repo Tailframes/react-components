@@ -3,7 +3,8 @@ import type { ComponentType } from 'react';
 import { GearIcon } from '../assets/gear-icon';
 import { HomeIcon } from '../assets/home-icon';
 import { UsersIcon } from '../assets/users-icon';
-import { Breadcrumbs, BreadcrumbsItem } from '../components/breadcrumbs';
+import { Breadcrumbs } from '../components/breadcrumbs/breadcrumbs';
+import { BreadcrumbsItem } from '../components/breadcrumbs/breadcrumbs-item';
 
 const meta = {
   title: 'Components/Breadcrumbs',

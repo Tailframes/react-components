@@ -1,12 +1,15 @@
 import { Fragment, type ReactNode, useState } from 'react';
-import { ChevronIcon } from '../assets/chevron-icon';
-import { MoreHorizontalIcon } from '../assets/more-horizontal-icon';
-import { clsxMerge } from '../utils';
-import { Button } from './button';
+import { ChevronIcon } from '../../assets/chevron-icon';
+import { MoreHorizontalIcon } from '../../assets/more-horizontal-icon';
+import { Button } from '../button';
+import { BreadcrumbsItem, type BreadcrumbsItemProps } from './breadcrumbs-item';
 
 export interface BreadcrumbsProps {
+  /** Items to display in the breadcrumbs. */
   items: BreadcrumbsItemProps[];
+  /** Separator to use between items, can be a predefined string (`chevron`, `slash`) or a custom React node. */
   separator?: 'chevron' | 'slash' | ReactNode;
+  /** Maximum number of items to display without collapsing. */
   maxItems?: number;
 }
 
@@ -79,7 +82,7 @@ const DefaultSeparator: Record<string, ReactNode> = {
   slash: '/',
 };
 
-export function BreadcrumbSeparator({ separator }: Pick<BreadcrumbsProps, 'separator'>) {
+function BreadcrumbSeparator({ separator }: Pick<BreadcrumbsProps, 'separator'>) {
   return (
     <li role='presentation' aria-hidden className='inline-flex items-center text-slate-400'>
       {DefaultSeparator[separator?.toString() ?? 'chevron'] ?? separator}
@@ -88,32 +91,3 @@ export function BreadcrumbSeparator({ separator }: Pick<BreadcrumbsProps, 'separ
 }
 
 BreadcrumbSeparator.displayName = 'BreadcrumbSeparator';
-
-export interface BreadcrumbsItemProps {
-  label?: string;
-  icon?: ReactNode;
-  href: string;
-  isLast?: boolean;
-}
-
-export function BreadcrumbsItem({ label, icon, href, isLast }: BreadcrumbsItemProps) {
-  return (
-    <li className='inline-flex items-center' aria-current={isLast ? 'page' : undefined}>
-      <a
-        href={href}
-        className={clsxMerge(
-          'inline-flex cursor-pointer items-center gap-1.5 stroke-slate-400 text-xs leading-none transition-colors duration-300 ease-in-out hover:text-blue-700',
-          {
-            'font-medium text-black': isLast,
-            'font-normal text-slate-500': !isLast,
-          }
-        )}
-      >
-        {icon}
-        {label}
-      </a>
-    </li>
-  );
-}
-
-BreadcrumbsItem.displayName = 'BreadcrumbsItem';
