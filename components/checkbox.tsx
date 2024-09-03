@@ -38,12 +38,16 @@ const checkboxContainerVariants = cva('inline-flex items-center justify-start ga
 });
 
 export interface CheckboxVariants {
+  /** The size of the checkbox. */
   size?: 'small' | 'medium';
 }
 
 export interface CheckboxProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'size'>, CheckboxVariants {
+  /** The label of the checkbox on the right. */
   label?: string;
+  /** If true, the checkbox will be indeterminate. */
   indeterminate?: boolean;
+  /** If true, the button will be disabled. */
   disabled?: boolean;
 }
 
