@@ -16,6 +16,12 @@ const config: StorybookConfig = {
   docs: {
     defaultName: 'Documentation',
   },
+  typescript: {
+    reactDocgen: 'react-docgen-typescript',
+    reactDocgenTypescriptOptions: {
+      shouldRemoveUndefinedFromOptional: true,
+    },
+  },
   core: {
     disableTelemetry: true,
   },

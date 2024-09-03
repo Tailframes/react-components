@@ -13,7 +13,7 @@ const preview: Preview = {
     docs: {
       toc: true,
       controls: {
-        sort: 'alpha',
+        sort: 'requiredFirst',
       },
     },
   },
