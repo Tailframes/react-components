@@ -18,15 +18,22 @@ const alertVariants = cva(
 );
 
 export interface AlertVariants {
+  /** Whether the alert should be full width. */
   fullWidth?: boolean;
 }
 
 export interface AlertProps extends Omit<HTMLAttributes<HTMLDivElement>, 'color'>, AlertVariants {
+  /** An avatar that is shown to the left of the alert. */
   avatar?: AvatarProps;
+  /** Additional content to the alert, such as action buttons etc. */
   children?: ReactNode;
+  /** A description of the alert. */
   description?: string;
+  /** A function that is called when the close button is clicked. */
   onClose?: () => void;
+  /** A start adornment that is shown to the left of the alert. */
   startAdornment?: ReactNode;
+  /** A title of the alert. */
   title?: string;
 }
 

@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import type { ComponentType } from 'react';
 import { IconArgType, IconKey } from '../.storybook/arg-types';
 import { Alert } from '../components/alert';
+import { Avatar } from '../components/avatar';
 import { Button } from '../components/button';
 
 const meta = {
@@ -10,6 +12,7 @@ const meta = {
       'An alert, or a notification is used to communicate the user about an important action or event.',
   },
   component: Alert,
+  subcomponents: { Avatar: Avatar as ComponentType<unknown> },
   tags: ['autodocs'],
   args: {
     title: 'Notification',
@@ -23,6 +26,9 @@ const meta = {
     ),
   },
   argTypes: {
+    children: {
+      control: false,
+    },
     startAdornment: IconArgType({ className: 'stroke-blue-700' }, [
       IconKey.CircleExclamationMarkIcon,
       IconKey.CircleCloseIcon,
@@ -37,7 +43,7 @@ type Story = StoryObj<typeof meta>;
 
 export const TextOnly: Story = {};
 
-export const WithIcon: Story = {
+export const WithStartAdornment: Story = {
   args: {
     startAdornment: IconKey.CircleExclamationMarkIcon,
   },
