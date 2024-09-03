@@ -57,7 +57,7 @@ export const Warning: Story = {
   },
 };
 
-export const Dot: Story = {
+export const DotAndLabel: Story = {
   args: {
     dotOnly: true,
     label: 'Default',

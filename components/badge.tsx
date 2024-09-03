@@ -1,5 +1,5 @@
 import { clsxMerge } from '../utils';
-import { type HTMLAttributes } from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
 import { cva } from 'class-variance-authority';
 
 const badgeVariants = cva(
@@ -96,15 +96,20 @@ const badgeLabelVariants = cva('text-xs font-medium text-black', {
 });
 
 export interface BadgeVariants {
+  /** If true, only a dot will be rendered. */
   dotOnly?: boolean;
   label?: boolean;
+  /** The size of the badge. */
   size?: 'medium' | 'large';
+  /** The variant of the badge. */
   variant?: 'default' | 'primary' | 'secondary' | 'success' | 'error' | 'warning';
 }
 
 export interface BadgeProps extends HTMLAttributes<HTMLSpanElement>, Omit<BadgeVariants, 'label'> {
+  /** The content of the badge. */
+  children?: ReactNode;
+  /** The label of the badge on the right side. */
   label?: string;
-  dotOnly?: boolean;
 }
 
 const Root = ({
