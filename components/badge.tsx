@@ -108,7 +108,7 @@ export interface BadgeVariants {
 export interface BadgeProps extends HTMLAttributes<HTMLSpanElement>, Omit<BadgeVariants, 'label'> {
   /** The content of the badge. */
   children?: ReactNode;
-  /** The label of the badge on the right. */
+  /** The label of the badge, displayed on the right. */
   label?: string;
 }
 

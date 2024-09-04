@@ -55,17 +55,30 @@ const textareaLabelVariants = cva('whitespace-nowrap', {
 
 export interface TextareaVariants {
   disabled?: boolean;
+  /** If true, the textarea will display an error state. */
   error?: boolean;
 }
 
 export interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement>, TextareaVariants {
+  /** Props for Avatar shown to the left of the textarea. */
   avatar?: AvatarProps;
+  /** Sets or retrieves the width of the object. */
+  cols?: number;
+  /** Sets or retrieves the number of horizontal rows contained in the object. */
+  rows?: number;
+  /** Custom class for the textarea container. */
   containerClassName?: string;
+  /** If true, the textarea will be disabled. */
   disabled?: boolean;
+  /** A helper text to display below the textarea. */
   helperText?: string;
+  /** The label text to display above the textarea. */
   label?: string;
+  /** The placeholder text to display in the textarea. */
   placeholder?: string;
+  /** If true, the textarea will be read-only. */
   readOnly?: boolean;
+  /** The maximum length of the textarea content. */
   maxLength?: number;
 }
 

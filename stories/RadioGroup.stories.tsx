@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Radio } from '../components/radio';
-import { RadioGroup } from '../components/radio-group';
+import { type ComponentType } from 'react';
+import { Label } from '../components/label';
+import { Radio } from '../components/radio/radio';
+import { RadioGroup } from '../components/radio/radio-group';
 
 const meta = {
   title: 'Components/RadioGroup',
@@ -17,6 +19,10 @@ const meta = {
     ),
   ],
   component: RadioGroup,
+  subcomponents: {
+    Radio: Radio as ComponentType<unknown>,
+    Label: Label as ComponentType<unknown>,
+  },
   tags: ['autodocs'],
   args: {
     'aria-labelledby': 'group-label',
@@ -28,6 +34,9 @@ const meta = {
       table: {
         disable: true,
       },
+    },
+    children: {
+      control: false,
     },
     direction: {
       control: {

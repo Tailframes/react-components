@@ -1,5 +1,5 @@
-import { clsxMerge } from '../utils';
-import { Label, type LabelProps } from './label';
+import { clsxMerge } from '../../utils';
+import { Label, type LabelProps } from '../label';
 import { cva } from 'class-variance-authority';
 import { type ChangeEvent, type InputHTMLAttributes, useId, useState } from 'react';
 
@@ -29,6 +29,7 @@ const radioContainerVariants = cva('inline-flex items-center justify-start', {
 });
 
 export interface RadioVariants {
+  /** Size of the radio button. */
   size?: 'medium' | 'small';
 }
 
@@ -36,11 +37,11 @@ export interface RadioProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'name' | 'type' | 'size'>,
     Required<Pick<InputHTMLAttributes<HTMLInputElement>, 'name'>>,
     RadioVariants {
+  /** If true, the radio button will be disabled. */
   disabled?: boolean;
+  /** Label for the radio button. */
   label: string;
-  /**
-   * HTML attributes for the label element
-   */
+  /** Custom `Label` props */
   labelProps?: Omit<LabelProps, 'htmlFor'>;
 }
 

@@ -120,14 +120,20 @@ const tooltipVariants = cva(
 );
 
 export interface TooltipVariants {
+  /** The variant of the tooltip. */
   variant?: 'primary' | 'secondary';
+  /** The size of the tooltip. */
   size?: 'medium' | 'small';
+  /** The placement of the tooltip. */
   placement?: 'top' | 'bottom' | 'left' | 'right';
+  /** Whether to show the arrow of the tooltip. */
   showArrow?: boolean;
 }
 
 export interface TooltipProps extends HTMLAttributes<HTMLDivElement>, TooltipVariants {
+  /** The value of the tooltip. */
   value: string;
+  /** Custom container className of the tooltip. */
   containerClassName?: string;
 }
 

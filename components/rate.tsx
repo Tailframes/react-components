@@ -4,9 +4,13 @@ import { StarIcon } from '../assets/star-icon';
 import { type HTMLAttributes } from 'react';
 
 export interface RateProps extends HTMLAttributes<HTMLDivElement> {
+  /** The value of the rating. */
   value: 0 | 0.5 | 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5;
+  /** The label of the rating, displayed on the right. */
   label?: string;
+  /** The number of stars to display. */
   stars?: 1 | 2 | 3 | 4 | 5;
+  /** Custom label props. */
   labelProps?: HTMLAttributes<HTMLSpanElement>;
 }
 

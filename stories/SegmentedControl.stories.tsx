@@ -3,8 +3,8 @@ import type { ComponentType } from 'react';
 import { DribbleIcon } from '../assets/dribble-icon';
 import { GitHubOctocatIcon } from '../assets/github-octocat-icon';
 import { YoutubeIcon } from '../assets/youtube-icon';
-import { Button } from '../components/button';
-import { SegmentedControl } from '../components/segmented-control';
+import { SegmentedControl } from '../components/segmented-control/segmented-control';
+import { SegmentedControlItem } from '../components/segmented-control/segmented-control-item';
 import { Tooltip } from '../components/tooltip';
 
 const meta = {
@@ -22,7 +22,7 @@ const meta = {
   ],
   component: SegmentedControl,
   subcomponents: {
-    Button: Button as ComponentType<unknown>,
+    SegmentedControlItem: SegmentedControlItem as ComponentType<unknown>,
     Tooltip: Tooltip as ComponentType<unknown>,
   },
   tags: ['autodocs'],
@@ -36,13 +36,16 @@ export const Text: Story = {
   args: {
     items: [
       {
-        children: 'GitHub',
+        label: 'GitHub',
+        value: 'github',
       },
       {
-        children: 'Dribble',
+        label: 'Dribble',
+        value: 'dribble',
       },
       {
-        children: 'Youtube',
+        label: 'Youtube',
+        value: 'youtube',
       },
     ],
   },
@@ -52,15 +55,18 @@ export const TextWithIcon: Story = {
   args: {
     items: [
       {
-        children: 'GitHub',
+        label: 'GitHub',
+        value: 'github',
         startAdornment: <GitHubOctocatIcon className='size-4' />,
       },
       {
-        children: 'Dribble',
+        label: 'Dribble',
+        value: 'dribble',
         startAdornment: <DribbleIcon className='size-4' />,
       },
       {
-        children: 'Youtube',
+        label: 'Youtube',
+        value: 'youtube',
         startAdornment: <YoutubeIcon className='size-4' />,
       },
     ],
@@ -72,19 +78,22 @@ export const Icon: Story = {
     items: [
       {
         iconOnly: true,
-        children: <GitHubOctocatIcon className='size-4' />,
+        label: <GitHubOctocatIcon className='size-4' />,
+        value: 'github',
         title: 'GitHub',
         'aria-label': 'GitHub',
       },
       {
         iconOnly: true,
-        children: <DribbleIcon className='size-4' />,
+        label: <DribbleIcon className='size-4' />,
+        value: 'dribble',
         title: 'Dribble',
         'aria-label': 'Dribble',
       },
       {
         iconOnly: true,
-        children: <YoutubeIcon className='size-4' />,
+        label: <YoutubeIcon className='size-4' />,
+        value: 'youtube',
         title: 'Youtube',
         'aria-label': 'Youtube',
       },
@@ -97,24 +106,27 @@ export const IconWithTooltip: Story = {
     items: [
       {
         iconOnly: true,
-        children: <GitHubOctocatIcon className='size-4' />,
+        label: <GitHubOctocatIcon className='size-4' />,
         'aria-label': 'GitHub',
+        value: 'github',
         tooltip: {
           value: 'GitHub',
         },
       },
       {
         iconOnly: true,
-        children: <DribbleIcon className='size-4' />,
+        label: <DribbleIcon className='size-4' />,
         'aria-label': 'Dribble',
+        value: 'dribble',
         tooltip: {
           value: 'Dribble',
         },
       },
       {
         iconOnly: true,
-        children: <YoutubeIcon className='size-4' />,
+        label: <YoutubeIcon className='size-4' />,
         'aria-label': 'Youtube',
+        value: 'youtube',
         tooltip: {
           value: 'Youtube',
         },
@@ -127,13 +139,16 @@ export const Disabled: Story = {
   args: {
     items: [
       {
-        children: 'GitHub',
+        label: 'GitHub',
+        value: 'github',
       },
       {
-        children: 'Dribble',
+        label: 'Dribble',
+        value: 'dribble',
       },
       {
-        children: 'Youtube',
+        label: 'Youtube',
+        value: 'youtube',
         disabled: true,
       },
     ],
@@ -142,22 +157,42 @@ export const Disabled: Story = {
 
 export const ControlledValue: Story = {
   args: {
-    value: 'Dribble',
+    value: 'dribble',
+    items: [
+      {
+        label: 'GitHub',
+        value: 'github',
+      },
+      {
+        label: 'Dribble',
+        value: 'dribble',
+      },
+      {
+        label: 'Youtube',
+        value: 'youtube',
+      },
+    ],
+  },
+};
+
+export const HandleChange: Story = {
+  args: {
+    value: 'youtube',
     onChange: value => {
       alert(`Selected item: ${value}`);
     },
     items: [
       {
-        children: 'GitHub',
-        value: 'GitHub',
+        label: 'GitHub',
+        value: 'github',
       },
       {
-        children: 'Dribble',
-        value: 'Dribble',
+        label: 'Dribble',
+        value: 'dribble',
       },
       {
-        children: 'Youtube',
-        value: 'Youtube',
+        label: 'Youtube',
+        value: 'youtube',
       },
     ],
   },

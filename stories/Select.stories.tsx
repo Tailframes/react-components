@@ -1,11 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { type ComponentType } from 'react';
 import { UserIcon } from '../assets/user-icon';
-import { Select, SelectOption, type SelectOptionType } from '../components/select';
+import { Select } from '../components/select/select';
+import { SelectOption, type SelectOptionValue } from '../components/select/select-option';
 
 const options = Array.from({ length: 5 }, (_, i) => ({
   label: `Label ${i + 1}`,
   value: i + 1,
+  disabled: i % 3 === 0,
 }));
 
 const meta = {
@@ -115,8 +117,8 @@ export const WithEventsHandlers: Story = {
     onDropdownClose: () => {
       console.log('Closed');
     },
-    onChange: (option: SelectOptionType | SelectOptionType[]) => {
-      console.log('Selected: ' + (Array.isArray(option) ? option.map(o => o.value).join(', ') : option?.value));
+    onChange: (option: SelectOptionValue | SelectOptionValue[]) => {
+      console.log('Selected: ' + (Array.isArray(option) ? option.map(o => o).join(', ') : option));
     },
   },
 };

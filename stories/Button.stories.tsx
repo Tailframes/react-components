@@ -12,6 +12,7 @@ const meta = {
   tags: ['autodocs'],
   args: {
     children: 'Button',
+    disabled: false,
     fullWidth: false,
     iconOnly: false,
     size: 'medium',

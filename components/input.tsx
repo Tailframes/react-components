@@ -74,7 +74,9 @@ const inputLabelVariants = cva('whitespace-nowrap', {
 export interface InputVariants {
   disabled?: boolean;
   endAdornment?: boolean;
+  /** If true, the input will display an error state. */
   error?: boolean;
+  /** The size of the input. */
   size?: 'medium' | 'large';
   startAdornment?: boolean;
 }
@@ -82,12 +84,19 @@ export interface InputVariants {
 export interface InputProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>,
     Omit<InputVariants, 'startAdornment' | 'endAdornment'> {
+  /** A custom className for the container. */
   containerClassName?: string;
+  /** If true, the input will be disabled. */
   disabled?: boolean;
+  /** An end adornment to display on the right side of the input. */
   endAdornment?: ReactNode;
+  /** A helper text to display below the input. */
   helperText?: string;
+  /** The label text to display above the input. */
   label?: string;
+  /** The placeholder text to display in the input. */
   placeholder?: string;
+  /** A start adornment to display on the left side of the input. */
   startAdornment?: ReactNode;
 }
 

@@ -88,6 +88,7 @@ const switchTextVariants = cva(
 );
 
 export interface SwitchVariants {
+  /** The size of the switch. */
   size?: 'medium' | 'small';
 }
 
@@ -95,11 +96,17 @@ export interface SwitchProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'name' | 'type' | 'size'>,
     Required<Pick<InputHTMLAttributes<HTMLInputElement>, 'name'>>,
     SwitchVariants {
+  /** If true, the switch will be disabled. */
   disabled?: boolean;
+  /** The label of the switch, displayed on the right. */
   label?: string;
+  /** The element to display when the switch is checked, e.g. icon. */
   checkedIcon?: ReactNode;
+  /** The element to display when the switch is not checked, e.g. icon. */
   uncheckedIcon?: ReactNode;
+  /** The text to display when the switch is checked. */
   checkedText?: string;
+  /** The text to display when the switch is not checked. */
   uncheckedText?: string;
 }
 

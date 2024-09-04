@@ -43,7 +43,7 @@ export interface CheckboxVariants {
 }
 
 export interface CheckboxProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'size'>, CheckboxVariants {
-  /** The label of the checkbox on the right. */
+  /** The label of the checkbox, displayed on the right. */
   label?: string;
   /** If true, the checkbox will be indeterminate. */
   indeterminate?: boolean;

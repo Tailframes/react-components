@@ -92,7 +92,6 @@ const buttonVariants = cva(
 );
 
 export interface ButtonVariants {
-  /** If true, the button will be disabled. */
   disabled?: boolean;
   endAdornment?: boolean;
   /** If true, the button will be full width. */
@@ -109,10 +108,12 @@ export interface ButtonVariants {
 
 export interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement>,
-    Omit<ButtonVariants, 'disabled' | 'href' | 'startAdornment' | 'endAdornment'>,
+    Omit<ButtonVariants, 'href' | 'startAdornment' | 'endAdornment'>,
     Partial<Pick<HTMLAnchorElement, 'target'>> {
   /** The content of the button. */
   children: ReactNode;
+  /** If true, the button will be disabled. */
+  disabled?: boolean;
   /** The href of the button. */
   href?: string;
   /** Start adornment of the button e.g. an icon. */

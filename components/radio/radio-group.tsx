@@ -1,6 +1,6 @@
 import { cva } from 'class-variance-authority';
-import type { HTMLAttributes } from 'react';
-import { clsxMerge } from '../utils';
+import type { HTMLAttributes, ReactNode } from 'react';
+import { clsxMerge } from '../../utils';
 
 const radioGroupVariants = cva('flex', {
   variants: {
@@ -17,11 +17,16 @@ const radioGroupVariants = cva('flex', {
 });
 
 export interface RadioGroupVariants {
+  /** Direction of `Radio` components. */
   direction?: 'horizontal' | 'vertical';
+  /** Space between `Radio` components. */
   space?: 'small' | 'medium' | 'large';
 }
 
-interface RadioGroupProps extends Omit<HTMLAttributes<HTMLDivElement>, 'role'>, RadioGroupVariants {}
+interface RadioGroupProps extends Omit<HTMLAttributes<HTMLDivElement>, 'role'>, RadioGroupVariants {
+  /** `Radio` components. */
+  children: ReactNode;
+}
 
 export function RadioGroup({
   children,

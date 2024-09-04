@@ -16,6 +16,7 @@ const labelVariants = cva(
 );
 
 export interface LabelVariants {
+  /** The size of the label. */
   size?: 'small' | 'medium' | 'large';
 }
 

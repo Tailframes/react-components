@@ -3,7 +3,6 @@ import React, {
   type ButtonHTMLAttributes,
   type CSSProperties,
   type FocusEvent,
-  type ReactNode,
   type SyntheticEvent,
   type KeyboardEvent,
   useEffect,
@@ -13,16 +12,16 @@ import React, {
   useCallback,
   useLayoutEffect,
 } from 'react';
-import { ChevronDownIcon } from '../assets/chevron-down-icon';
-import { CloseIcon } from '../assets/close-icon';
-import { clsxMerge, handleKeyboardEvent } from '../utils';
-import { Checkbox } from './checkbox';
-import { Label } from './label';
-import { Portal } from './portal';
+import { ChevronDownIcon } from '../../assets/chevron-down-icon';
+import { CloseIcon } from '../../assets/close-icon';
+import { clsxMerge, handleKeyboardEvent } from '../../utils';
+import { Label } from '../label';
+import { Portal } from '../portal';
+import { SelectOption, type SelectOptionProps, type SelectOptionValue } from './select-option';
 
 const selectButtonVariants = cva(
   'relative w-full truncate rounded-lg border border-slate-200 bg-white stroke-black px-3 py-2.5 pr-10 text-left text-sm font-medium text-black transition-all duration-300 ease-in-out ' +
-    'disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400 disabled:placeholder-slate-400',
+    'disabled:cursor-not-allowed disabled:bg-slate-50 disabled:stroke-slate-400 disabled:text-slate-400 disabled:placeholder-slate-400',
   {
     variants: {
       size: {
@@ -63,99 +62,49 @@ const selectDropdownVariants = cva(
   }
 );
 
-const selectOptionVariants = cva(
-  'relative mx-1 flex cursor-pointer select-none items-center justify-between rounded px-2 py-1.5 text-sm font-normal text-slate-700 hover:bg-blue-100 hover:text-blue-700',
-  {
-    variants: {
-      isSelected: {
-        true: 'bg-blue-50 font-medium text-blue-700',
-        false: '',
-      },
-      isFocused: {
-        true: 'bg-blue-100 text-blue-700',
-        false: '',
-      },
-    },
-  }
-);
-
 export interface SelectVariants {
   disabled?: boolean;
+  /** If true, the select will be in an error state. */
   error?: boolean;
+  /** The size of the select. */
   size?: 'medium' | 'large';
-}
-
-export interface SelectOptionType {
-  disabled?: boolean;
-  endAdornment?: string;
-  label: string;
-  startAdornment?: ReactNode;
-  value: string | number | boolean;
-}
-
-export interface SelectOptionProps extends Pick<SelectProps, 'checkboxes'>, SelectOptionType {
-  handleSelect: (option: SelectOptionType) => void;
-  isSelected?: boolean;
-  isFocused?: boolean;
-}
-
-export function SelectOption({ handleSelect, checkboxes, isSelected, isFocused, ...option }: SelectOptionProps) {
-  const id = useId();
-
-  return (
-    <li
-      className={clsxMerge(selectOptionVariants({ isSelected, isFocused }))}
-      role='option'
-      tabIndex={-1}
-      onClick={() => {
-        handleSelect(option);
-      }}
-      onKeyDown={handleKeyboardEvent('Enter', () => {
-        handleSelect(option);
-      })}
-      aria-selected={isSelected}
-      aria-labelledby={option.label ? id : undefined}
-    >
-      <div className='flex w-full items-center justify-start gap-2'>
-        {checkboxes && <Checkbox size='small' disabled={option.disabled} checked={isSelected} />}
-        {option.startAdornment && (
-          <span className='inline-flex size-[18px] items-center justify-center overflow-hidden'>
-            {option.startAdornment}
-          </span>
-        )}
-        {option.label && (
-          <span id={id} className='truncate'>
-            {option.label}
-          </span>
-        )}
-      </div>
-      {option.endAdornment && <span className='ml-3'>{option.endAdornment}</span>}
-    </li>
-  );
 }
 
 export interface SelectProps
   extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'onChange' | 'value'>,
     SelectVariants {
+  /** Custom className for the select button. */
   buttonClassName?: string;
-  /**
-   * Whether the option should be displayed as a checkbox, requires `multiple` prop to be true
-   */
+  /** If true, a checkbox will be shown for each option. */
   checkboxes?: boolean;
+  /** If true, the clear button will be shown. */
   clearable?: boolean;
+  /** Custom className for the select container. */
   containerClassName?: string;
+  /** If true, select will be disabled. */
   disabled?: boolean;
+  /** Custom className for the dropdown. */
   dropdownClassName?: string;
+  /** If provided, dropdown will be rendered in an element with the given id. */
   dropdownPortalContainerId?: string;
+  /** The label for the select. */
   label?: string;
+  /** If true, multiple values can be selected. */
   multiple?: boolean;
-  onChange?: (value: SelectOptionType | SelectOptionType[]) => void;
+  /** Callback when the value changes. */
+  onChange?: (value: SelectOptionValue | SelectOptionValue[]) => void;
+  /** Callback when the clear button is clicked. */
   onClear?: () => void;
+  /** Callback when the dropdown is closed. */
   onDropdownClose?: () => void;
+  /** Callback when the dropdown is opened. */
   onDropdownOpen?: () => void;
-  options: SelectOptionType[];
+  /** The options for the select. */
+  options: Pick<SelectOptionProps, 'value' | 'label' | 'startAdornment' | 'endAdornment'>[];
+  /** The placeholder text to display in the select. */
   placeholder?: string;
-  value?: SelectOptionType['value'] | Array<SelectOptionType['value']>;
+  /** The current value of the select. */
+  value?: SelectOptionValue | SelectOptionValue[];
 }
 
 export function Select({
@@ -164,7 +113,7 @@ export function Select({
   disabled = false,
   error = false,
   multiple = false,
-  options = [],
+  options,
   size = 'medium',
   value,
   label,
@@ -183,10 +132,10 @@ export function Select({
   const labelId = useId();
   const buttonRef = useRef<HTMLButtonElement>(null);
   const dropdownRef = useRef<HTMLUListElement>(null);
-  const [focusedOption, setFocusedOption] = useState<SelectOptionType | null>(null);
-  const [opened, setOpened] = useState(false);
-  const [selected, setSelected] = useState<SelectOptionType[]>(
-    options.filter(o => (Array.isArray(value) ? value.includes(o.value) : o.value === value))
+  const [focusedOption, setFocusedOption] = useState<SelectOptionValue | null>(null);
+  const [isOpened, setIsOpened] = useState(false);
+  const [isSelected, setIsSelected] = useState<SelectOptionValue[]>(
+    options.filter(o => (Array.isArray(value) ? value.includes(o.value) : o.value === value)).map(o => o.value)
   );
   const [showDropdown, setShowDropdown] = useState(false);
   const [dropdownPosition, setDropdownPosition] = useState<Pick<CSSProperties, 'top' | 'left' | 'width'>>({
@@ -196,15 +145,15 @@ export function Select({
   });
 
   useEffect(() => {
-    if (opened) {
+    if (isOpened) {
       setShowDropdown(true);
     }
-  }, [opened]);
+  }, [isOpened]);
 
   useEffect(() => {
     if (!showDropdown) {
       const timer = setTimeout(() => {
-        setOpened(false);
+        setIsOpened(false);
       }, 300);
 
       return () => {
@@ -215,7 +164,7 @@ export function Select({
 
   useLayoutEffect(() => {
     const updateDropdownPosition = () => {
-      if (opened && buttonRef.current) {
+      if (isOpened && buttonRef.current) {
         const buttonRect = buttonRef.current.getBoundingClientRect();
         setDropdownPosition({
           top: buttonRect.bottom + window.scrollY + 8,
@@ -238,15 +187,15 @@ export function Select({
         document.getElementById(dropdownPortalContainerId)?.removeEventListener('scroll', updateDropdownPosition);
       }
     };
-  }, [dropdownPortalContainerId, opened]);
+  }, [dropdownPortalContainerId, isOpened]);
 
   const handleDropdownOpen = useCallback(() => {
-    if (!opened) {
+    if (!isOpened) {
       onDropdownOpen?.();
     }
 
-    setOpened(true);
-  }, [onDropdownOpen, opened]);
+    setIsOpened(true);
+  }, [onDropdownOpen, isOpened]);
 
   const handleDropdownClose = useCallback(() => {
     if (showDropdown) {
@@ -258,12 +207,12 @@ export function Select({
   }, [onDropdownClose, showDropdown]);
 
   const toggleDropdown = useCallback(() => {
-    if (opened) {
+    if (isOpened) {
       handleDropdownClose();
     } else {
       handleDropdownOpen();
     }
-  }, [handleDropdownClose, handleDropdownOpen, opened]);
+  }, [handleDropdownClose, handleDropdownOpen, isOpened]);
 
   const handleBlur = (e: FocusEvent<HTMLDivElement>) => {
     if (!buttonRef.current?.contains(e.relatedTarget) && !dropdownRef.current?.contains(e.relatedTarget)) {
@@ -272,11 +221,11 @@ export function Select({
   };
 
   const handleSelect = useCallback(
-    (option: SelectOptionType) => {
+    (option: SelectOptionValue) => {
       if (multiple) {
-        setSelected(prevSelected => {
-          if (prevSelected.find(o => o.value === option.value)) {
-            const newSelected = prevSelected.filter(o => o.value !== option.value).sort(sortOptions);
+        setIsSelected(prevSelected => {
+          if (prevSelected.find(o => o === option)) {
+            const newSelected = prevSelected.filter(selected => selected !== option).sort(sortOptions);
             onChange?.(newSelected);
 
             return newSelected;
@@ -288,7 +237,7 @@ export function Select({
           }
         });
       } else {
-        setSelected([option]);
+        setIsSelected([option]);
         onChange?.(option);
         handleDropdownClose();
       }
@@ -300,7 +249,7 @@ export function Select({
     (e: SyntheticEvent) => {
       e.stopPropagation();
 
-      setSelected([]);
+      setIsSelected([]);
       onClear?.();
     },
     [onClear]
@@ -320,7 +269,8 @@ export function Select({
 
       handleKeyboardEvent(['Delete', 'Backspace'], handleClear)(e);
 
-      if (!opened) {
+      // handle "Escape" and "Arrow" keys only when dropdown is open
+      if (!isOpened) {
         return;
       }
 
@@ -329,12 +279,12 @@ export function Select({
       handleKeyboardEvent<HTMLButtonElement>('ArrowUp', () => {
         setFocusedOption(prevFocusedOption => {
           if (prevFocusedOption) {
-            const index = options.findIndex(o => o.value === prevFocusedOption.value);
+            const index = options.findIndex(o => o.value === prevFocusedOption);
             const newIndex = index > 0 ? index - 1 : options.length - 1;
 
-            return options[newIndex];
+            return options[newIndex].value;
           } else {
-            return options[options.length - 1];
+            return options[options.length - 1].value;
           }
         });
       })(e);
@@ -342,17 +292,17 @@ export function Select({
       handleKeyboardEvent<HTMLButtonElement>('ArrowDown', () => {
         setFocusedOption(prevFocusedOption => {
           if (prevFocusedOption) {
-            const index = options.findIndex(o => o.value === prevFocusedOption.value);
+            const index = options.findIndex(o => o.value === prevFocusedOption);
             const newIndex = index < options.length - 1 ? index + 1 : 0;
 
-            return options[newIndex];
+            return options[newIndex].value;
           } else {
-            return options[0];
+            return options[0].value;
           }
         });
       })(e);
     },
-    [focusedOption, handleClear, handleDropdownClose, handleSelect, opened, options, toggleDropdown]
+    [focusedOption, handleClear, handleDropdownClose, handleSelect, isOpened, options, toggleDropdown]
   );
 
   return (
@@ -376,13 +326,18 @@ export function Select({
         onKeyDown={handleKeyboardEvents}
         className={clsxMerge(selectButtonVariants({ error, size, isOpened: showDropdown }), buttonClassName)}
         aria-haspopup='listbox'
-        aria-expanded={opened}
+        aria-expanded={isOpened}
         disabled={disabled}
         {...rest}
       >
-        {selected.length > 0 ? selected.map(option => option.label).join(', ') : placeholder}
+        {isSelected.length > 0
+          ? options
+              .filter(o => isSelected.includes(o.value))
+              .map(o => o.label)
+              .join(', ')
+          : placeholder}
         <span className='absolute right-0 top-1/2 w-5 -translate-x-1/2 -translate-y-1/2'>
-          {clearable && selected.length > 0 ? (
+          {clearable && isSelected.length > 0 ? (
             <CloseIcon
               className='size-5 stroke-inherit p-0.5 transition-transform duration-300 ease-in-out'
               onClick={handleClear}
@@ -396,7 +351,7 @@ export function Select({
           )}
         </span>
       </button>
-      {opened && (
+      {isOpened && (
         <Portal container={dropdownPortalContainerId ? document.getElementById(dropdownPortalContainerId) : undefined}>
           <ul
             ref={dropdownRef}
@@ -408,10 +363,10 @@ export function Select({
             {options.map(option => (
               <SelectOption
                 key={option.value.toString()}
-                handleSelect={handleSelect}
-                isSelected={selected.some(o => o.value === option.value)}
+                onSelect={handleSelect}
+                isSelected={isSelected.some(o => o === option.value)}
                 checkboxes={checkboxes}
-                isFocused={focusedOption === option}
+                isFocused={focusedOption === option.value}
                 {...option}
               />
             ))}
@@ -426,17 +381,17 @@ Select.displayName = 'Select';
 
 // Helpers
 
-const sortOptions = (a: SelectOptionType, b: SelectOptionType) => {
-  if (typeof a.value === 'number' && typeof b.value === 'number') {
-    return a.value - b.value;
+const sortOptions = (a: SelectOptionValue, b: SelectOptionValue) => {
+  if (typeof a === 'number' && typeof b === 'number') {
+    return a - b;
   }
 
-  if (typeof a.value === 'string' && typeof b.value === 'string') {
-    return a.value.localeCompare(b.value);
+  if (typeof a === 'string' && typeof b === 'string') {
+    return a.localeCompare(b);
   }
 
-  if (typeof a.value === 'boolean' && typeof b.value === 'boolean') {
-    return a.value ? 1 : -1;
+  if (typeof a === 'boolean' && typeof b === 'boolean') {
+    return a ? 1 : -1;
   }
 
   return 0;

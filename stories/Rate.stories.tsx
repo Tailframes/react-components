@@ -10,8 +10,16 @@ const meta = {
   tags: ['autodocs'],
   args: {
     value: 2.5,
+    stars: 5,
   },
-  argTypes: {},
+  argTypes: {
+    stars: {
+      control: {
+        type: 'select',
+        options: [1, 2, 3, 4, 5],
+      },
+    },
+  },
 } satisfies Meta<typeof Rate>;
 
 export default meta;

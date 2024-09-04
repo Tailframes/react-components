@@ -27,6 +27,7 @@ const tagVariants = cva(
 );
 
 export interface TagVariants {
+  /** The variant of the tag. */
   variant?: 'primary' | 'secondary' | 'outlined' | 'success' | 'error' | 'warning';
   startAdornment: boolean;
   endAdornment: boolean;
@@ -35,7 +36,11 @@ export interface TagVariants {
 export interface TagProps
   extends HTMLAttributes<HTMLSpanElement>,
     Omit<TagVariants, 'startAdornment' | 'endAdornment'> {
+  /** Content of the tag. */
+  children: ReactNode;
+  /** Start adornment of the tag e.g. an icon. */
   startAdornment?: ReactNode;
+  /** End adornment of the tag e.g. an icon. */
   endAdornment?: ReactNode;
 }
 

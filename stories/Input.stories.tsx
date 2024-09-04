@@ -70,9 +70,9 @@ export const Error: Story = {
   },
 };
 
-export const Icons: Story = {
+export const Adornments: Story = {
   args: {
-    label: 'Icons',
+    label: 'Adornments',
     startAdornment: IconKey.UserIcon,
     endAdornment: IconKey.CloseIcon,
   },

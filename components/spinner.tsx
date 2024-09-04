@@ -50,15 +50,18 @@ const spinSVGProps: Record<NonNullable<SpinnerVariants['size']>, SVGProps<never>
 };
 
 export interface SpinnerVariants {
+  /** The size of the spinner. */
   size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
 }
 
 export interface SpinnerProps extends HTMLAttributes<HTMLDivElement>, SpinnerVariants {
+  /** The label of the spinner, displayed on the bottom. */
   label?: string;
+  /** Custom label props. */
   labelProps?: HTMLAttributes<HTMLSpanElement>;
 }
 
-export function Spinner({ size = 'medium', children, className, label, labelProps = {}, ...rest }: SpinnerProps) {
+export function Spinner({ size = 'medium', className, label, labelProps = {}, ...rest }: SpinnerProps) {
   const { className: labelClassName, ...labelRest } = labelProps;
 
   return (
