@@ -10,7 +10,7 @@ const meta = {
   title: 'Components/Breadcrumbs',
   parameters: {
     componentSubtitle:
-      'Breadcrumbs play a crucial role in guiding users through websites or applications, offering clear pathways to trace their progress. They are especially vital for user experience, notably in intricate platforms like e-commerce websites or content-heavy portals, where they significantly improve navigation.',
+      'Breadcrumbs are essential navigation aids that guide users through websites or applications, providing clear, traceable pathways to help them understand their journey and location within a site. Particularly valuable in complex platforms such as e-commerce websites or content-rich portals, breadcrumbs enhance user experience by simplifying navigation and reducing the effort required to explore and revisit pages.',
   },
   component: Breadcrumbs,
   subcomponents: {

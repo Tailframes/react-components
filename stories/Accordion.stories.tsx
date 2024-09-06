@@ -8,7 +8,7 @@ const meta = {
   title: 'Components/Accordion',
   parameters: {
     componentSubtitle:
-      'The Accordion component neatly organizes content by collapsible sections, providing users with easy navigation through information. Ideal for FAQs, product descriptions, and more, it maximizes space while maintaining accessibility and user-friendly design.',
+      'The Accordion component offers a sleek and efficient way to present information through collapsible sections, making it perfect for FAQs, product descriptions, and other content-heavy pages. Designed with a focus on maximizing space, it enhances user experience by allowing visitors to easily navigate through information without overwhelming them.',
   },
   component: Accordion,
   subcomponents: { AccordionItem: AccordionItem as ComponentType<unknown> },

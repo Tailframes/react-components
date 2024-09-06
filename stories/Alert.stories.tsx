@@ -9,7 +9,7 @@ const meta = {
   title: 'Components/Alert',
   parameters: {
     componentSubtitle:
-      'An alert, or a notification is used to communicate the user about an important action or event.',
+      'An alert, or notification, is a crucial UI element used to inform users about important actions, events, or updates.',
   },
   component: Alert,
   subcomponents: { Avatar: Avatar as ComponentType<unknown> },

@@ -5,7 +5,7 @@ const meta = {
   title: 'Components/Badge',
   parameters: {
     componentSubtitle:
-      'A badge, sometimes referred to as a tag, is a compact overlapping UI element designed to showcase a status, notification, or event associated with the underlying object.',
+      'A badge, also known as a tag, is a compact overlapping UI element designed to display a status, notification, or event related to the underlying object. This versatile component effectively draws attention to important information, such as unread messages, alerts, or user statuses, making it an essential part of modern interfaces.',
   },
   component: Badge,
   tags: ['autodocs'],
