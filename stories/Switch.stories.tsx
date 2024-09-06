@@ -6,7 +6,7 @@ const meta = {
   title: 'Components/Switch',
   parameters: {
     componentSubtitle:
-      'A switch, occasionally referred to as a "toggle", is a user interface control featuring two states that are mutually exclusive, like ON and OFF. Modeled after a physical switch, this control\'s appearance and functionality emulate the action of users turning things on and off.',
+      'The Switch, also known as a toggle, is a user interface control that allows users to toggle between two mutually exclusive states, such as ON and OFF. Inspired by the functionality of a physical switch, this intuitive component mimics the action of turning settings or features on and off, making it a familiar and effective tool in digital interfaces.',
   },
   component: Switch,
   tags: ['autodocs'],

@@ -4,7 +4,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 const meta = {
   title: 'Components/Rate',
   parameters: {
-    componentSubtitle: 'The rating component comprises a star icon, functioning as an assessment element.',
+    componentSubtitle:
+      'The rating component, often represented by a star icon, serves as a critical assessment tool in user interfaces, allowing users to provide feedback or evaluations. This feature is especially valuable in applications where user ratings are integral, such as e-commerce platforms or review systems.',
   },
   component: Rate,
   tags: ['autodocs'],

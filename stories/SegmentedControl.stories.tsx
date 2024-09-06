@@ -11,7 +11,7 @@ const meta = {
   title: 'Components/Segmented Control',
   parameters: {
     componentSubtitle:
-      "The Segmented Control is a user-friendly interface element allowing easy selection between multiple options. It's commonly used in apps and websites for switching views or modes efficiently. This control enhances user experience by offering clear choices within a compact space, ideal for settings, filtering, or tabbed navigation.",
+      'The Segmented Control is a versatile interface element that enables users to effortlessly toggle between multiple options, commonly used in applications and websites for tasks such as switching views, modes, or settings. Its compact design optimizes space while providing clear and intuitive choices, making it ideal for filtering, tabbed navigation, and other selection-based interactions.',
   },
   decorators: [
     Story => (

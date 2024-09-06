@@ -6,7 +6,7 @@ const meta = {
   title: 'Components/Input',
   parameters: {
     componentSubtitle:
-      'Input fields play a pivotal role in user interface design by enabling users to input unconventional responses. These essential components find application in diverse contexts, with common instances being the input of personal details and shipping addresses in e-commerce web forms or the submission of online inquiries.',
+      'Input fields are fundamental elements in user interface design, allowing users to enter and submit various types of information. Whether used for collecting personal details, shipping addresses, or online inquiries, these versatile components are integral to forms and interactive elements across diverse applications.',
   },
   component: Input,
   decorators: [

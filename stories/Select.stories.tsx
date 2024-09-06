@@ -14,7 +14,7 @@ const meta = {
   title: 'Components/Select',
   parameters: {
     componentSubtitle:
-      'A select, or a dropdown, is a form control that allows a user to select a value from a list of options. It is used to allow users to choose one or more items from a list of options.',
+      'The Select component, also known as a dropdown, is a crucial form control that enables users to choose one or more options from a predefined list. This versatile and user-friendly element is essential in various applications, from simple forms to complex interfaces, where streamlined selection processes are key.',
   },
   component: Select,
   subcomponents: { SelectOption: SelectOption as ComponentType<unknown> },

@@ -6,7 +6,7 @@ const meta = {
   title: 'Components/Divider',
   parameters: {
     componentSubtitle:
-      'A Divider is a component within a composition that visually distinguishes content from one another or from other elements in the interface.',
+      'A Divider is an essential UI component that visually separates content and elements within a composition, enhancing clarity and structure.',
   },
   decorators: [
     (Story, { args }) => {
