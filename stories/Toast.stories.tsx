@@ -33,7 +33,7 @@ const meta = {
   title: 'Components/Toast',
   parameters: {
     componentSubtitle:
-      'A toast, or snack, is a brief message that is displayed temporarily on the screen for a few seconds. It can be used to show success, error, warning, or information messages.',
+      'A Toast, also known as a snack, is a brief, temporary message that appears on the screen for a few seconds to convey success, error, warning, or informational messages. This small yet impactful feature plays a crucial role in providing real-time feedback to users, ensuring that they are promptly informed of important actions or events.',
   },
   decorators: [
     (_Story, StoryContext) => (

@@ -8,7 +8,7 @@ const meta = {
   title: 'Components/Tabs',
   parameters: {
     componentSubtitle:
-      'Tabs serve as a navigational component in web design, providing users with a convenient way to access various sections of a site or different segments within an individual page.',
+      'Tabs are a crucial navigational component in web design, offering users a convenient way to access different sections of a website or various segments within a single page. This user-friendly feature enhances the organization and accessibility of content, making it easier for users to navigate complex interfaces.',
   },
   component: Tabs,
   subcomponents: {

@@ -5,7 +5,7 @@ const meta = {
   title: 'Components/Textarea',
   parameters: {
     componentSubtitle:
-      'Textarea elements are crucial for user interaction, allowing users to input longer or more detailed responses. These versatile components are widely used across various contexts, such as entering detailed messages, feedback, or comments on websites and applications.',
+      'Textarea elements are essential for user interaction, enabling the input of longer or more detailed responses in web forms and applications. These versatile components are commonly used for entering messages, feedback, or comments, making them crucial in contexts where detailed information is required.',
   },
   component: Textarea,
   tags: ['autodocs'],

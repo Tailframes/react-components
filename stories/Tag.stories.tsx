@@ -6,7 +6,7 @@ const meta = {
   title: 'Components/Tag',
   parameters: {
     componentSubtitle:
-      'A tag, a compact overlapping UI element, showcases the status, notice, or event related to the underlying object.',
+      'A Tag is a compact, overlapping UI element that effectively highlights the status, notice, or event associated with an underlying object. Despite its small size, this feature plays a significant role in visual communication, offering users quick and clear insights into relevant information.',
   },
   component: Tag,
   tags: ['autodocs'],
