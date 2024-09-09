@@ -1,12 +1,14 @@
-import { clsxMerge } from '../utils';
+import { clsxMerge, joinClassNames } from '../utils';
 import { Label } from './label';
 import { cva } from 'class-variance-authority';
 import { type ChangeEvent, type InputHTMLAttributes, type ReactNode, useId, useState } from 'react';
 
 const switchDotVariants = cva(
-  'absolute top-0.5 z-10 cursor-pointer rounded-full border border-slate-50 bg-blue-700 transition duration-300 ' +
-    'peer-checked:translate-x-5 peer-checked:border-blue-700 peer-checked:bg-white ' +
-    'peer-disabled:cursor-not-allowed peer-disabled:border-slate-100 peer-disabled:bg-slate-400',
+  joinClassNames(
+    'absolute top-0.5 z-10 cursor-pointer rounded-full border border-slate-50 bg-blue-700 transition duration-300',
+    'peer-checked:translate-x-5 peer-checked:border-blue-700 peer-checked:bg-white',
+    'peer-disabled:cursor-not-allowed peer-disabled:border-slate-100 peer-disabled:bg-slate-400'
+  ),
   {
     variants: {
       size: {
@@ -18,9 +20,11 @@ const switchDotVariants = cva(
 );
 
 const switchContainerVariants = cva(
-  'block cursor-pointer rounded-full border border-slate-300 bg-slate-50 transition duration-300 ' +
-    'peer-checked:border-blue-700 peer-checked:bg-blue-700 ' +
-    'peer-disabled:cursor-not-allowed peer-disabled:border-slate-100 peer-disabled:bg-slate-100',
+  joinClassNames(
+    'block cursor-pointer rounded-full border border-slate-300 bg-slate-50 transition duration-300',
+    'peer-checked:border-blue-700 peer-checked:bg-blue-700',
+    'peer-disabled:cursor-not-allowed peer-disabled:border-slate-100 peer-disabled:bg-slate-100'
+  ),
   {
     variants: {
       size: {
@@ -32,7 +36,10 @@ const switchContainerVariants = cva(
 );
 
 const switchIconVariants = cva(
-  'pointer-events-none absolute top-1/2 flex size-[18px] -translate-y-1/2 items-center justify-center overflow-hidden transition duration-300 peer-disabled:stroke-slate-400',
+  joinClassNames(
+    'pointer-events-none absolute top-1/2 flex size-[18px] -translate-y-1/2 items-center justify-center overflow-hidden transition duration-300',
+    'peer-disabled:stroke-slate-400'
+  ),
   {
     variants: {
       checked: {
@@ -60,7 +67,10 @@ const switchIconVariants = cva(
 );
 
 const switchTextVariants = cva(
-  'pointer-events-none absolute top-1/2 -translate-y-1/2 overflow-hidden text-xs font-semibold transition duration-300 peer-disabled:text-slate-400',
+  joinClassNames(
+    'pointer-events-none absolute top-1/2 -translate-y-1/2 overflow-hidden text-xs font-semibold transition duration-300',
+    'peer-disabled:text-slate-400'
+  ),
   {
     variants: {
       checked: {

@@ -1,4 +1,4 @@
-import { clsxMerge } from '../utils';
+import { clsxMerge, joinClassNames } from '../utils';
 import { Label } from './label';
 import { cva } from 'class-variance-authority';
 import {
@@ -13,11 +13,14 @@ import {
 } from 'react';
 
 const checkboxVariants = cva(
-  'peer cursor-pointer rounded border-2 border-slate-400 transition-colors duration-300 ease-in-out ' +
-    'checked:bg-blue-700 checked:hover:bg-blue-700 checked:disabled:border-slate-300 checked:disabled:bg-slate-300 checked:disabled:hover:bg-slate-300 ' +
-    'disabled:hover:none disabled:cursor-not-allowed disabled:border-slate-200 disabled:indeterminate:border-slate-300 disabled:indeterminate:bg-slate-300 disabled:hover:bg-transparent ' +
-    'hover:border-blue-700 hover:bg-blue-50 focus:ring-transparent ' +
-    'indeterminate:bg-blue-700 indeterminate:disabled:hover:bg-slate-300',
+  joinClassNames(
+    'peer cursor-pointer rounded border-2 border-slate-400 transition-colors duration-300 ease-in-out',
+    'checked:bg-blue-700 checked:hover:bg-blue-700 checked:disabled:border-slate-300 checked:disabled:bg-slate-300 checked:disabled:hover:bg-slate-300',
+    'disabled:hover:none disabled:cursor-not-allowed disabled:border-slate-200 disabled:indeterminate:border-slate-300 disabled:indeterminate:bg-slate-300 disabled:hover:bg-transparent',
+    'focus:ring-transparent',
+    'hover:border-blue-700 hover:bg-blue-50',
+    'indeterminate:bg-blue-700 indeterminate:disabled:hover:bg-slate-300'
+  ),
   {
     variants: {
       size: {

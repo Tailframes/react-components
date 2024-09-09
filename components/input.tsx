@@ -1,11 +1,13 @@
-import { clsxMerge } from '../utils';
+import { clsxMerge, joinClassNames } from '../utils';
 import { type ForwardedRef, forwardRef, type InputHTMLAttributes, type ReactNode, useId } from 'react';
 import { cva } from 'class-variance-authority';
 import { Label } from './label';
 
 const inputContainerVariants = cva(
-  'inline-flex w-full flex-col items-start gap-1.5 stroke-black transition-colors duration-300 ease-in-out ' +
-    'focus-within:stroke-blue-700',
+  joinClassNames(
+    'inline-flex w-full flex-col items-start gap-1.5 stroke-black transition-colors duration-300 ease-in-out',
+    'focus-within:stroke-blue-700'
+  ),
   {
     variants: {
       error: {
@@ -21,9 +23,11 @@ const inputContainerVariants = cva(
 );
 
 const inputVariants = cva(
-  'w-full rounded-lg border border-slate-200 px-3 text-sm font-medium placeholder-slate-400 outline-none transition-all duration-300 ease-in-out ' +
-    'disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400 disabled:placeholder-slate-400' +
-    'focus:border-blue-600',
+  joinClassNames(
+    'w-full rounded-lg border border-slate-200 px-3 text-sm font-medium placeholder-slate-400 outline-none transition-all duration-300 ease-in-out',
+    'disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400 disabled:placeholder-slate-400',
+    'focus:border-blue-600'
+  ),
   {
     variants: {
       size: {

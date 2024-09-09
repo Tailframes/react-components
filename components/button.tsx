@@ -1,10 +1,12 @@
-import { clsxMerge } from '../utils';
+import { clsxMerge, joinClassNames } from '../utils';
 import { type ButtonHTMLAttributes, forwardRef, type ReactNode } from 'react';
 import { cva } from 'class-variance-authority';
 
 const buttonVariants = cva(
-  'group inline-flex items-center justify-center whitespace-nowrap rounded-lg py-2 align-middle text-sm font-semibold leading-none transition-all duration-300 ease-in-out ' +
-    'disabled:cursor-not-allowed',
+  joinClassNames(
+    'group inline-flex items-center justify-center whitespace-nowrap rounded-lg py-2 align-middle text-sm font-semibold leading-none transition-all duration-300 ease-in-out',
+    'disabled:cursor-not-allowed'
+  ),
   {
     variants: {
       variant: {

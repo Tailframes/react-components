@@ -1,14 +1,16 @@
-import { clsxMerge } from '../../utils';
+import { clsxMerge, joinClassNames } from '../../utils';
 import { Label, type LabelProps } from '../label';
 import { cva } from 'class-variance-authority';
 import { type ChangeEvent, type InputHTMLAttributes, useId, useState } from 'react';
 
 const radioVariants = cva(
-  'peer cursor-pointer border-0 ring-2 ring-slate-300 ring-offset-2 transition-colors duration-300 ease-in-out ' +
-    'checked:bg-none checked:ring-blue-700 checked:disabled:bg-slate-400 ' +
-    'disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-50 disabled:ring-slate-200 disabled:ring-offset-slate-50 ' +
-    'focus:ring-[3px] focus:ring-offset-2 ' +
-    'hover:ring-blue-700',
+  joinClassNames(
+    'peer cursor-pointer border-0 ring-2 ring-slate-300 ring-offset-2 transition-colors duration-300 ease-in-out',
+    'checked:bg-none checked:ring-blue-700 checked:disabled:bg-slate-400',
+    'disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-50 disabled:ring-slate-200 disabled:ring-offset-slate-50',
+    'focus:ring-[3px] focus:ring-offset-2',
+    'hover:ring-blue-700'
+  ),
   {
     variants: {
       size: {

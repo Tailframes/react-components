@@ -1,10 +1,12 @@
-import { clsxMerge } from '../utils';
+import { clsxMerge, joinClassNames } from '../utils';
 import { cva } from 'class-variance-authority';
 import { type HTMLAttributes, useId } from 'react';
 
 const tooltipVariants = cva(
-  'pointer-events-none absolute z-50 inline-flex items-center justify-center rounded-md px-3 py-1 font-semibold opacity-0 transition-opacity duration-300 ease-in-out ' +
-    'group-hover:opacity-100',
+  joinClassNames(
+    'pointer-events-none absolute z-50 inline-flex items-center justify-center rounded-md px-3 py-1 font-semibold opacity-0 transition-opacity duration-300 ease-in-out',
+    'group-hover:opacity-100'
+  ),
   {
     variants: {
       variant: {

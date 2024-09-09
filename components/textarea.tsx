@@ -1,11 +1,14 @@
-import { clsxMerge } from '../utils';
+import { clsxMerge, joinClassNames } from '../utils';
 import { type ChangeEvent, type ForwardedRef, forwardRef, type TextareaHTMLAttributes, useId, useState } from 'react';
 import { cva } from 'class-variance-authority';
 import { Avatar, type AvatarProps } from './avatar';
 import { Label } from './label';
 
 const textareaContainerVariants = cva(
-  'inline-flex flex-col items-start gap-1.5 stroke-black transition-colors duration-300 ease-in-out focus-within:stroke-blue-700',
+  joinClassNames(
+    'inline-flex flex-col items-start gap-1.5 stroke-black transition-colors duration-300 ease-in-out',
+    'focus-within:stroke-blue-700'
+  ),
   {
     variants: {
       error: {
@@ -21,10 +24,12 @@ const textareaContainerVariants = cva(
 );
 
 const textareaVariants = cva(
-  'w-full resize rounded-lg border border-slate-200 p-3 pb-5 text-xs font-normal placeholder-slate-500 outline-none transition-colors duration-300 ease-in-out ' +
-    'scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar-thin scrollbar-track-transparent scrollbar-thumb-slate-300 hover:scrollbar-thumb-slate-500 active:scrollbar-thumb-slate-500 ' +
-    'disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400 disabled:placeholder-slate-400 ' +
-    'focus:border-blue-600',
+  joinClassNames(
+    'w-full resize rounded-lg border border-slate-200 p-3 pb-5 text-xs font-normal placeholder-slate-500 outline-none transition-colors duration-300 ease-in-out',
+    'scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar-thin scrollbar-track-transparent scrollbar-thumb-slate-300 hover:scrollbar-thumb-slate-500 active:scrollbar-thumb-slate-500',
+    'disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400 disabled:placeholder-slate-400',
+    'focus:border-blue-600'
+  ),
   {
     variants: {
       error: {

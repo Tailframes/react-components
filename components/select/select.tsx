@@ -14,14 +14,16 @@ import React, {
 } from 'react';
 import { ChevronDownIcon } from '../../assets/chevron-down-icon';
 import { CloseIcon } from '../../assets/close-icon';
-import { clsxMerge, handleKeyboardEvent } from '../../utils';
+import { clsxMerge, handleKeyboardEvent, joinClassNames } from '../../utils';
 import { Label } from '../label';
 import { Portal } from '../portal';
 import { SelectOption, type SelectOptionProps, type SelectOptionValue } from './select-option';
 
 const selectButtonVariants = cva(
-  'relative w-full truncate rounded-lg border border-slate-200 bg-white stroke-black px-3 py-2.5 pr-10 text-left text-sm font-medium text-black transition-all duration-300 ease-in-out ' +
-    'disabled:cursor-not-allowed disabled:bg-slate-50 disabled:stroke-slate-400 disabled:text-slate-400 disabled:placeholder-slate-400',
+  joinClassNames(
+    'relative w-full truncate rounded-lg border border-slate-200 bg-white stroke-black px-3 py-2.5 pr-10 text-left text-sm font-medium text-black transition-all duration-300 ease-in-out',
+    'disabled:cursor-not-allowed disabled:bg-slate-50 disabled:stroke-slate-400 disabled:text-slate-400 disabled:placeholder-slate-400'
+  ),
   {
     variants: {
       size: {
@@ -50,8 +52,10 @@ const inputLabelVariants = cva('whitespace-nowrap', {
 });
 
 const selectDropdownVariants = cva(
-  'absolute z-10 flex max-h-60 w-full scale-50 flex-col gap-1 overflow-auto rounded-lg border border-slate-200 bg-white py-1 text-sm drop-shadow-lg transition-[opacity,transform] duration-300 ease-in-out ' +
-    'scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar-thin scrollbar-track-transparent scrollbar-thumb-slate-300 hover:scrollbar-thumb-slate-500 active:scrollbar-thumb-slate-500',
+  joinClassNames(
+    'absolute z-10 flex max-h-60 w-full scale-50 flex-col gap-1 overflow-auto rounded-lg border border-slate-200 bg-white py-1 text-sm drop-shadow-lg transition-[opacity,transform] duration-300 ease-in-out',
+    'scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar-thin scrollbar-track-transparent scrollbar-thumb-slate-300 hover:scrollbar-thumb-slate-500 active:scrollbar-thumb-slate-500'
+  ),
   {
     variants: {
       isOpened: {

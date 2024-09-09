@@ -4,6 +4,8 @@ import { twMerge } from 'tailwind-merge';
 
 export const clsxMerge = (...inputs: ClassValue[]) => twMerge(clsx(inputs));
 
+export const joinClassNames = (...classNames: string[]) => classNames.join(' ');
+
 export const kebabCase = (value: string) =>
   value
     .replace(/([a-z])([A-Z])/g, '$1-$2')
