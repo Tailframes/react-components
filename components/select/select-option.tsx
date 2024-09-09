@@ -27,7 +27,7 @@ export type SelectOptionValue = string | number | boolean;
 
 export interface SelectOptionProps {
   /** @ignore */
-  checkboxes: SelectProps['checkboxes'];
+  checkboxes?: SelectProps['checkboxes'];
   /** End adornment of the option e.g. icon */
   endAdornment?: ReactNode;
   /** @ignore */

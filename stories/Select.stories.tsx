@@ -1,14 +1,31 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { type ComponentType } from 'react';
-import { UserIcon } from '../assets/user-icon';
+import { StarIcon } from '../assets/star-icon';
 import { Select } from '../components/select/select';
-import { SelectOption, type SelectOptionValue } from '../components/select/select-option';
+import { SelectOption, type SelectOptionProps, type SelectOptionValue } from '../components/select/select-option';
 
-const options = Array.from({ length: 5 }, (_, i) => ({
-  label: `Label ${i + 1}`,
-  value: i + 1,
-  disabled: i % 3 === 0,
-}));
+const options: SelectOptionProps[] = [
+  {
+    label: 'Orange',
+    value: 'orange',
+  },
+  {
+    label: 'Red',
+    value: 'red',
+  },
+  {
+    label: 'Blue',
+    value: 'blue',
+  },
+  {
+    label: 'Green',
+    value: 'green',
+  },
+  {
+    label: 'Purple',
+    value: 'purple',
+  },
+];
 
 const meta = {
   title: 'Components/Select',
@@ -66,19 +83,22 @@ export const Default: Story = {
 
 export const ValueSelected: Story = {
   args: {
-    value: 1,
+    value: 'purple',
   },
 };
 
 export const WithStartAdornment: Story = {
   args: {
-    options: options.map(o => ({ ...o, startAdornment: <UserIcon className='size-5' /> })),
+    options: options.map(o => ({
+      ...o,
+      startAdornment: <StarIcon style={{ color: o.value as string }} className='size-5' />,
+    })),
   },
 };
 
 export const WithEndAdornment: Story = {
   args: {
-    options: options.map(o => ({ ...o, endAdornment: `⌘${o.value.toString()}` })),
+    options: options.map((o, index) => ({ ...o, endAdornment: `⌘${index + 1}` })),
   },
 };
 
@@ -93,7 +113,7 @@ export const MultipleValuesSelected: Story = {
   args: {
     multiple: true,
     placeholder: 'Choose one or more',
-    value: [2, 4, 5],
+    value: ['red', 'green'],
   },
 };
 
