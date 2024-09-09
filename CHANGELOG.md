@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.31](https://github.com/Tailframes/tailframes-components/compare/v0.1.30...v0.1.31) (2024-09-09)
+
+
+### Features
+
+* **accordion:** update Accordion component with new icons and content ([337b238](https://github.com/Tailframes/tailframes-components/commit/337b23809283e8144de5da7a007404b0081c2ce7))
+
+
+### Bug Fixes
+
+* **accordion:** improve styling in accordion component ([18f1d50](https://github.com/Tailframes/tailframes-components/commit/18f1d505fc718d6693da44b0c6c89aebf27c276c))
+
 ### [0.1.30](https://github.com/Tailframes/tailframes-components/compare/v0.1.29...v0.1.30) (2024-09-09)
 
 
