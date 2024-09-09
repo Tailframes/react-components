@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.29](https://github.com/Tailframes/tailframes-components/compare/v0.1.28...v0.1.29) (2024-09-09)
+
+
+### Features
+
+* **alert:** add AlertProps description ([0c72a5e](https://github.com/Tailframes/tailframes-components/commit/0c72a5ee469cc344d7dabfa55aa785f0396dc478))
+* **avatar:** add AvatarProps description ([e205607](https://github.com/Tailframes/tailframes-components/commit/e205607756fb8ef462dbd8447e0268ccf9b32219))
+* **badge:** add BadgeProps description ([070bf79](https://github.com/Tailframes/tailframes-components/commit/070bf79fe927d951087bbe08ffa7f764b6eaf353))
+* **breadcrumbs:** add BreadcrumbsProps description; move BreadcrumbsItem to separate file ([c7b31ee](https://github.com/Tailframes/tailframes-components/commit/c7b31ee06f25a6cb8aca10d5f23ef07dd8fef377))
+* **button:** add ButtonProps description ([92e9d54](https://github.com/Tailframes/tailframes-components/commit/92e9d54e0dac93deea72059b786106dc1b31e0d6))
+* **checkbox:** add CheckboxProps description ([0258f9c](https://github.com/Tailframes/tailframes-components/commit/0258f9ce34ccc8a950e4b7c04045740a27b9c98c))
+* **components:** add components props description; split some of the components into smaller modules ([7a49545](https://github.com/Tailframes/tailframes-components/commit/7a495455a80f213838df60ddb806e3f613691e10))
+* **components:** update descriptions for Avatar, Badge, Alert, Accordion, Breadcrumbs, and Button components ([82f8ae7](https://github.com/Tailframes/tailframes-components/commit/82f8ae7740c8ee1d58477b7907d7ab0110f55924))
+* **divider:** add DividerProps description ([b6caa2c](https://github.com/Tailframes/tailframes-components/commit/b6caa2c030a4a2e29ab1e20ba07967a89cf1bb26))
+
+
+### Bug Fixes
+
+* **select:** refactor handleBlur function ([cfa1d4c](https://github.com/Tailframes/tailframes-components/commit/cfa1d4ce1d830c612292460e2e71ed11cf2949b2))
+
 ### [0.1.28](https://github.com/Tailframes/tailframes-components/compare/v0.1.27...v0.1.28) (2024-09-02)
 
 
