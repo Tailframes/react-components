@@ -80,22 +80,22 @@ const tooltipVariants = cva(
       {
         placement: 'top',
         showArrow: true,
-        class: 'after:-bottom-[0.95rem] after:left-1/2 after:-translate-x-1/2',
+        class: 'after:bottom-[-0.95rem] after:left-1/2 after:-translate-x-1/2',
       },
       {
         placement: 'bottom',
         showArrow: true,
-        class: 'after:-top-[0.95rem] after:left-1/2 after:-translate-x-1/2',
+        class: 'after:left-1/2 after:top-[-0.95rem] after:-translate-x-1/2',
       },
       {
         placement: 'left',
         showArrow: true,
-        class: 'after:-right-[0.95rem] after:top-1/2 after:-translate-y-1/2',
+        class: 'after:right-[-0.95rem] after:top-1/2 after:-translate-y-1/2',
       },
       {
         placement: 'right',
         showArrow: true,
-        class: 'after:-left-[0.95rem] after:top-1/2 after:-translate-y-1/2',
+        class: 'after:left-[-0.95rem] after:top-1/2 after:-translate-y-1/2',
       },
       {
         size: 'medium',
