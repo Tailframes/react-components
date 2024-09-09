@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.30](https://github.com/Tailframes/tailframes-components/compare/v0.1.29...v0.1.30) (2024-09-09)
+
+
+### Bug Fixes
+
+* **components:** fix class names in tooltip and select option ([0e38b46](https://github.com/Tailframes/tailframes-components/commit/0e38b46d98204fe19f0df26e8989b1a7a8d81053))
+
 ### [0.1.29](https://github.com/Tailframes/tailframes-components/compare/v0.1.28...v0.1.29) (2024-09-09)
 
 
