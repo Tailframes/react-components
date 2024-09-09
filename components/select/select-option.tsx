@@ -5,7 +5,7 @@ import { Checkbox } from '../checkbox';
 import { type SelectProps } from './select';
 
 const selectOptionVariants = cva(
-  'relative mx-1 flex cursor-pointer select-none items-center justify-between rounded px-2 py-1.5 text-sm font-normal text-slate-700 hover:bg-blue-100 hover:text-blue-700',
+  'relative mx-1 flex cursor-pointer select-none items-center justify-between rounded px-2 py-1.5 text-sm font-normal text-slate-700 hover:bg-blue-100 hover:text-blue-700 hover:stroke-blue-700',
   {
     variants: {
       isSelected: {
