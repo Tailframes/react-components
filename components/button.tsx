@@ -166,7 +166,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
         {...rest}
       >
         {startAdornment}
-        {children && <span>{children}</span>}
+        {children && <div>{children}</div>}
         {endAdornment}
       </Component>
     );

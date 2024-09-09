@@ -33,7 +33,7 @@ export function Accordion({ items, type = 'multiple', className, ...rest }: Acco
     };
 
   return (
-    <div className={clsxMerge('flex flex-col gap-4', className)} {...rest}>
+    <div className={clsxMerge('flex w-full flex-col gap-4 overflow-hidden', className)} {...rest}>
       {(items || []).map(item => (
         <AccordionItem
           key={item.label}

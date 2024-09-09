@@ -49,22 +49,29 @@ export function AccordionItem({
       <Button
         id={buttonId}
         variant='text-default'
-        className={clsxMerge('flex h-auto w-full items-center justify-between p-0', { 'pb-1': isExpanded })}
+        className={clsxMerge(
+          'flex h-auto w-full items-center justify-between overflow-hidden whitespace-pre-wrap p-0 text-left leading-tight',
+          {
+            'pb-2 md:pb-1': isExpanded,
+          }
+        )}
         endAdornment={
-          <ChevronDownIcon
-            className={clsxMerge('size-5 stroke-black transition-transform duration-300 ease-in-out', {
-              'rotate-180': isExpanded,
-            })}
-          />
+          <div className='size-5'>
+            <ChevronDownIcon
+              className={clsxMerge('stroke-black transition-transform duration-300 ease-in-out', {
+                'rotate-180': isExpanded,
+              })}
+            />
+          </div>
         }
         aria-expanded={isExpanded}
         aria-controls={contentId}
       >
         <div className='flex w-full items-center justify-start gap-2'>
           {labelStartAdornment && (
-            <div className='inline-flex size-5 items-center justify-start overflow-hidden'>{labelStartAdornment}</div>
+            <div className='inline-flex size-5 items-center justify-start'>{labelStartAdornment}</div>
           )}
-          <p className='font-medium'>{label}</p>
+          <p className='w-full font-medium'>{label}</p>
         </div>
       </Button>
       <div
@@ -73,7 +80,7 @@ export function AccordionItem({
         aria-hidden={!isExpanded}
         aria-labelledby={buttonId}
         className={clsxMerge(
-          'grid w-full grid-rows-[1fr] pr-7 text-xs text-slate-600 opacity-100 transition-[grid-template-rows,opacity] duration-300 ease-out',
+          'grid w-full grid-rows-[1fr] text-xs text-slate-600 opacity-100 transition-[grid-template-rows,opacity] duration-300 ease-out md:pr-7',
           contentClassName,
           {
             'pl-7': Boolean(labelStartAdornment),
