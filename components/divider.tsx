@@ -2,15 +2,15 @@ import { clsxMerge } from '../utils';
 import { cva } from 'class-variance-authority';
 import { type HTMLAttributes } from 'react';
 
-const dividerVariants = cva('bg-slate-200', {
+const dividerVariants = cva('', {
   variants: {
     size: {
       thin: '',
       thick: '',
     },
     direction: {
-      horizontal: 'my-4 w-full',
-      vertical: 'mx-4 my-1 max-h-screen min-h-full',
+      horizontal: 'my-4 w-full bg-slate-200',
+      vertical: 'mx-4 my-1 max-h-screen min-h-full border-slate-200',
     },
   },
   compoundVariants: [
