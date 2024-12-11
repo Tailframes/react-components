@@ -126,6 +126,7 @@ const Root = ({
 }: AvatarProps) => (
   <div
     className={clsxMerge(
+      "bg-[url('https://tailframes.com/images/avatar.webp')] bg-cover bg-no-repeat",
       avatarVariants({
         size,
         shape,
