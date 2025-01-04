@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.32](https://github.com/Tailframes/tailframes-components/compare/v0.1.31...v0.1.32) (2025-01-04)
+
+
+### Features
+
+* **avatar:** add background image to avatar component as missing img fallback ([5c0da44](https://github.com/Tailframes/tailframes-components/commit/5c0da4430bc5d6cb7f04607a4ea9a440fb498126))
+
+
+### Bug Fixes
+
+* **divider:** direction variant styling ([8057b0b](https://github.com/Tailframes/tailframes-components/commit/8057b0b1c86e5a7480a6ba5252b4e5f3e73bbe8f))
+
 ### [0.1.31](https://github.com/Tailframes/tailframes-components/compare/v0.1.30...v0.1.31) (2024-09-09)
 
 
