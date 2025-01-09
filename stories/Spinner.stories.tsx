@@ -5,7 +5,7 @@ const meta = {
   title: 'Components/Spinner',
   parameters: {
     componentSubtitle:
-      'The spinner, also known as a loader, is a frequently employed interface element designed to replicate the visual representation of content loading actions.',
+      'The Spinner, also known as a loader, is a vital UI element used to visually indicate content loading or processing actions. This dynamic component enhances user experience by providing feedback during wait times, making it an essential tool in maintaining user engagement.',
   },
   component: Spinner,
   tags: ['autodocs'],

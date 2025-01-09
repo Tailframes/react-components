@@ -1,10 +1,12 @@
-import { clsxMerge } from '../utils';
+import { clsxMerge, joinClassNames } from '../utils';
 import { cva } from 'class-variance-authority';
-import { type HTMLAttributes } from 'react';
+import { type HTMLAttributes, useId } from 'react';
 
 const tooltipVariants = cva(
-  'pointer-events-none absolute z-50 inline-flex items-center justify-center rounded-md px-3 py-1 font-semibold opacity-0 transition-opacity duration-300 ease-in-out ' +
-    'group-hover:opacity-100',
+  joinClassNames(
+    'pointer-events-none absolute z-50 inline-flex items-center justify-center rounded-md px-3 py-1 font-semibold opacity-0 transition-opacity duration-300 ease-in-out',
+    'group-hover:opacity-100'
+  ),
   {
     variants: {
       variant: {
@@ -78,56 +80,62 @@ const tooltipVariants = cva(
       {
         placement: 'top',
         showArrow: true,
-        class: 'after:-bottom-[0.95rem] after:left-1/2 after:-translate-x-1/2',
+        class: 'after:bottom-[-0.95rem] after:left-1/2 after:-translate-x-1/2',
       },
       {
         placement: 'bottom',
         showArrow: true,
-        class: 'after:-top-[0.95rem] after:left-1/2 after:-translate-x-1/2',
+        class: 'after:left-1/2 after:top-[-0.95rem] after:-translate-x-1/2',
       },
       {
         placement: 'left',
         showArrow: true,
-        class: 'after:-right-[0.95rem] after:top-1/2 after:-translate-y-1/2',
+        class: 'after:right-[-0.95rem] after:top-1/2 after:-translate-y-1/2',
       },
       {
         placement: 'right',
         showArrow: true,
-        class: 'after:-left-[0.95rem] after:top-1/2 after:-translate-y-1/2',
+        class: 'after:left-[-0.95rem] after:top-1/2 after:-translate-y-1/2',
       },
       {
         size: 'medium',
         placement: 'top',
-        class: 'top-[-2.5rem]',
+        class: '-top-10',
       },
       {
         size: 'small',
         placement: 'top',
-        class: 'top-[-2.25rem]',
+        class: '-top-9',
       },
       {
         size: 'medium',
         placement: 'bottom',
-        class: 'bottom-[-2.5rem]',
+        class: '-bottom-10',
       },
       {
         size: 'small',
         placement: 'bottom',
-        class: 'bottom-[-2.25rem]',
+        class: '-bottom-9',
       },
     ],
   }
 );
 
 export interface TooltipVariants {
+  /** The variant of the tooltip. */
   variant?: 'primary' | 'secondary';
+  /** The size of the tooltip. */
   size?: 'medium' | 'small';
+  /** The placement of the tooltip. */
   placement?: 'top' | 'bottom' | 'left' | 'right';
+  /** Whether to show the arrow of the tooltip. */
   showArrow?: boolean;
 }
 
 export interface TooltipProps extends HTMLAttributes<HTMLDivElement>, TooltipVariants {
+  /** The value of the tooltip. */
   value: string;
+  /** Custom container className of the tooltip. */
   containerClassName?: string;
 }
 
@@ -142,10 +150,13 @@ export function Tooltip({
   value,
   ...rest
 }: TooltipProps) {
+  const id = useId();
+
   return (
     <div className={clsxMerge('group relative inline-block whitespace-nowrap', containerClassName)}>
-      {children}
+      <div aria-describedby={id}>{children}</div>
       <span
+        id={id}
         role='tooltip'
         className={clsxMerge(tooltipVariants({ placement, size, variant, showArrow }), className)}
         {...rest}

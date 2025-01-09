@@ -4,7 +4,7 @@ const meta = {
   title: 'Components/Checkbox',
   parameters: {
     componentSubtitle:
-      'A checkbox, a UI component displayed as a compact square on the screen, features two states: checked and unchecked. Users have the option to select one or multiple items from a list by utilizing checkboxes.',
+      'A checkbox is a simple yet essential UI component displayed as a small square, offering two states: checked and unchecked. It allows users to select one or multiple options from a list, making it a versatile tool for forms, surveys, and settings within applications.',
   },
   component: Checkbox,
   tags: ['autodocs'],
@@ -38,7 +38,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    id: 'default',
     name: 'default',
     label: 'Default',
   },
@@ -46,7 +45,6 @@ export const Default: Story = {
 
 export const Checked: Story = {
   args: {
-    id: 'checked',
     name: 'checked',
     label: 'Checked',
     defaultChecked: true,
@@ -55,7 +53,6 @@ export const Checked: Story = {
 
 export const Indeterminate: Story = {
   args: {
-    id: 'indeterminate',
     name: 'indeterminate',
     label: 'Indeterminate',
     indeterminate: true,

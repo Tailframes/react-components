@@ -23,13 +23,15 @@ export const Icons: (iconProps: SVGProps<SVGSVGElement>) => Record<IconKey, Reac
   className,
   ...iconProps
 }: SVGProps<SVGSVGElement> = {}) => ({
-  CheckIcon: <CheckIcon className={className} {...iconProps} />,
-  CloseIcon: <CloseIcon className={className} {...iconProps} />,
-  StarIcon: <StarIcon className={className} {...iconProps} />,
-  UserIcon: <UserIcon className={className} {...iconProps} />,
-  CheckboxIcon: <CheckboxIcon className={className} {...iconProps} />,
-  CircleCloseIcon: <CircleCloseIcon className={className} {...iconProps} />,
-  CircleExclamationMarkIcon: <CircleExclamationMarkIcon className={className} {...iconProps} />,
+  CheckIcon: <CheckIcon aria-label='Check' className={className} {...iconProps} />,
+  CloseIcon: <CloseIcon aria-label='Close' className={className} {...iconProps} />,
+  StarIcon: <StarIcon aria-label='Star' className={className} {...iconProps} />,
+  UserIcon: <UserIcon aria-label='User' className={className} {...iconProps} />,
+  CheckboxIcon: <CheckboxIcon aria-label='Checkbox' className={className} {...iconProps} />,
+  CircleCloseIcon: <CircleCloseIcon aria-label='Close' className={className} {...iconProps} />,
+  CircleExclamationMarkIcon: (
+    <CircleExclamationMarkIcon aria-label='Exclamation Mark' className={className} {...iconProps} />
+  ),
 });
 
 export const IconsKeys = Object.keys(Icons({})) as IconKey[];

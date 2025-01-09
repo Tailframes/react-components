@@ -7,7 +7,6 @@ Open-source React components styled with Tailwind CSS for streamlined and respon
 
 Documentation can be found on [tailframes.com](https://tailframes.com/getting-started/introduction).
 
-
 ## Storybook
 
 React components Storybook is available on [storybook.tailframes.com](https://storybook.tailframes.com).
@@ -15,3 +14,7 @@ React components Storybook is available on [storybook.tailframes.com](https://st
 ## Figma Design System
 
 Get access to the open-source Figma file on [https://www.figma.com/community/file/1368254181288101112/tailframes-open-source-design-system-react-tailwind](https://www.figma.com/community/file/1368254181288101112/tailframes-open-source-design-system-react-tailwind).
+
+## Blog
+
+Read our articles on [blog.tailframes.com](https://blog.tailframes.com).

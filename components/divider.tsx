@@ -2,22 +2,22 @@ import { clsxMerge } from '../utils';
 import { cva } from 'class-variance-authority';
 import { type HTMLAttributes } from 'react';
 
-const dividerVariants = cva('bg-slate-300', {
+const dividerVariants = cva('', {
   variants: {
     size: {
       thin: '',
       thick: '',
     },
     direction: {
-      horizontal: 'my-4 w-full',
-      vertical: 'mx-4 my-1 max-h-screen min-h-full',
+      horizontal: 'my-4 w-full bg-slate-200',
+      vertical: 'mx-4 my-1 max-h-screen min-h-full border-slate-200',
     },
   },
   compoundVariants: [
     {
       direction: 'horizontal',
       size: 'thin',
-      class: 'h-[1px]',
+      class: 'h-px',
     },
     {
       direction: 'horizontal',
@@ -38,7 +38,9 @@ const dividerVariants = cva('bg-slate-300', {
 });
 
 export interface DividerVariants {
+  /** The size of the divider. */
   size?: 'thin' | 'thick';
+  /** The direction of the divider. */
   direction?: 'horizontal' | 'vertical';
 }
 
@@ -46,7 +48,7 @@ export interface DividerProps extends HTMLAttributes<HTMLDivElement>, DividerVar
 
 export function Divider({ size = 'thin', direction = 'horizontal', children, className, ...rest }: DividerProps) {
   return (
-    <div className={clsxMerge(dividerVariants({ size, direction }), className)} {...rest}>
+    <div role='separator' className={clsxMerge(dividerVariants({ size, direction }), className)} {...rest}>
       {children}
     </div>
   );

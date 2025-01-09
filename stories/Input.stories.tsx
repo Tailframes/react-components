@@ -6,7 +6,7 @@ const meta = {
   title: 'Components/Input',
   parameters: {
     componentSubtitle:
-      'Input fields play a pivotal role in user interface design by enabling users to input unconventional responses. These essential components find application in diverse contexts, with common instances being the input of personal details and shipping addresses in e-commerce web forms or the submission of online inquiries.',
+      'Input fields are fundamental elements in user interface design, allowing users to enter and submit various types of information. Whether used for collecting personal details, shipping addresses, or online inquiries, these versatile components are integral to forms and interactive elements across diverse applications.',
   },
   component: Input,
   decorators: [
@@ -25,12 +25,7 @@ const meta = {
     disabled: false,
   },
   argTypes: {
-    containerClassName: {
-      table: {
-        disable: true,
-      },
-    },
-    endIcon: IconArgType({ className: 'size-5', stroke: 'inherit' }, [IconKey.CloseIcon]),
+    endAdornment: IconArgType({ className: 'size-5', stroke: 'inherit' }, [IconKey.CloseIcon]),
     id: {
       table: {
         disable: true,
@@ -46,12 +41,7 @@ const meta = {
         type: 'inline-radio',
       },
     },
-    startIcon: IconArgType({ className: 'size-5', stroke: 'inherit' }, [IconKey.UserIcon]),
-    value: {
-      table: {
-        disable: true,
-      },
-    },
+    startAdornment: IconArgType({ className: 'size-5', stroke: 'inherit' }, [IconKey.UserIcon]),
   },
 } satisfies Meta<typeof Input>;
 
@@ -61,14 +51,12 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    id: 'default',
     label: 'Default',
   },
 };
 
 export const Disabled: Story = {
   args: {
-    id: 'disabled',
     label: 'Disabled',
     disabled: true,
   },
@@ -76,18 +64,16 @@ export const Disabled: Story = {
 
 export const Error: Story = {
   args: {
-    id: 'error',
     label: 'Error',
     defaultValue: 'Invalid value',
     error: true,
   },
 };
 
-export const Icons: Story = {
+export const Adornments: Story = {
   args: {
-    id: 'icons',
-    label: 'Icons',
-    startIcon: IconKey.UserIcon,
-    endIcon: IconKey.CloseIcon,
+    label: 'Adornments',
+    startAdornment: IconKey.UserIcon,
+    endAdornment: IconKey.CloseIcon,
   },
 };

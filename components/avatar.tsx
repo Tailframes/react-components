@@ -84,20 +84,32 @@ const avatarTextVariants = cva('flex max-w-full items-center justify-start white
 });
 
 export interface AvatarVariants {
+  /** Shows a badge next to the avatar. */
   badge?: true | BadgeProps;
+  /** Elevates the avatar, available only for circle shape without badge.  */
   elevated?: boolean;
+  /** Shows an icon instead of text or image. */
   icon?: ReactNode;
+  /** Shape of the avatar. */
   shape?: 'circle' | 'square';
+  /** Size of the avatar. */
   size?: 'small' | 'medium';
+  /** Image source URL. */
   src?: string;
+  /** Shows text instead of image or icon. */
   text?: string;
 }
 
 type AvatarType = { src: string } | { icon: ReactNode } | { text: string };
 
+type ImageProps = Omit<HTMLAttributes<HTMLImageElement>, 'src'>;
+
 export type AvatarProps = (HTMLAttributes<HTMLDivElement> & AvatarVariants) &
   AvatarType & {
-    imgProps?: Omit<HTMLAttributes<HTMLImageElement>, 'src'>;
+    /** Alternative text for image. */
+    alt?: string;
+    /** Custom HTML image props. */
+    imgProps?: ImageProps;
   };
 
 const Root = ({
@@ -114,6 +126,7 @@ const Root = ({
 }: AvatarProps) => (
   <div
     className={clsxMerge(
+      "bg-[url('https://tailframes.com/images/avatar.webp')] bg-cover bg-no-repeat",
       avatarVariants({
         size,
         shape,

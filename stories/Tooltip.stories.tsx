@@ -5,7 +5,7 @@ const meta = {
   title: 'Components/Tooltip',
   parameters: {
     componentSubtitle:
-      'A tooltip is a concise and informative message that emerges when a user engages with an element within a graphical user interface (GUI). Activation of tooltips commonly occurs through either a mouse-hover action or a keyboard-hover gesture.',
+      'A Tooltip is a concise, informative message that appears when a user interacts with an element in a graphical user interface (GUI), typically triggered by a mouse hover or keyboard focus. This user-friendly feature provides additional context or guidance without cluttering the interface, making it easier for users to understand and navigate complex elements.',
     layout: 'centered',
   },
   decorators: [

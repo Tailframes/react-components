@@ -6,7 +6,7 @@ import { Avatar, type AvatarProps } from './avatar';
 import { Button } from './button';
 
 const alertVariants = cva(
-  'inline-flex min-w-[300px] items-start justify-start gap-2 rounded-lg border border-slate-200 bg-white p-3 text-sm font-medium leading-tight drop-shadow transition-all duration-500 ease-in-out',
+  'inline-flex min-w-[300px] items-start justify-start gap-2 rounded-lg border border-slate-200 bg-white p-3 text-sm font-medium drop-shadow transition-all duration-500 ease-in-out',
   {
     variants: {
       fullWidth: {
@@ -18,15 +18,22 @@ const alertVariants = cva(
 );
 
 export interface AlertVariants {
+  /** Whether the alert should be full width. */
   fullWidth?: boolean;
 }
 
 export interface AlertProps extends Omit<HTMLAttributes<HTMLDivElement>, 'color'>, AlertVariants {
+  /** An avatar that is shown to the left of the alert. */
   avatar?: AvatarProps;
+  /** Additional content to the alert, such as action buttons etc. */
   children?: ReactNode;
+  /** A description of the alert. */
   description?: string;
+  /** A function that is called when the close button is clicked. */
   onClose?: () => void;
-  startIcon?: ReactNode;
+  /** A start adornment that is shown to the left of the alert. */
+  startAdornment?: ReactNode;
+  /** A title of the alert. */
   title?: string;
 }
 
@@ -35,7 +42,7 @@ export function Alert({
   title,
   description,
   children,
-  startIcon,
+  startAdornment,
   avatar,
   className,
   onClose,
@@ -52,15 +59,15 @@ export function Alert({
       className={clsxMerge(alertVariants({ fullWidth }), className)}
       {...rest}
     >
-      {(startIcon ?? avatar) && (
+      {(startAdornment ?? avatar) && (
         <div className='inline-flex items-start justify-start'>
-          {!avatar && startIcon}
-          {!startIcon && avatar && <Avatar {...avatar} />}
+          {!avatar && startAdornment}
+          {!startAdornment && avatar && <Avatar {...avatar} />}
         </div>
       )}
       <div className='flex flex-1 flex-col items-start justify-center gap-3 overflow-hidden'>
         {title && (
-          <p id={labelId} className='text-sm font-medium leading-tight text-black'>
+          <p id={labelId} className='text-sm font-medium text-black'>
             {title}
           </p>
         )}

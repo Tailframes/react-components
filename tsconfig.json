@@ -13,8 +13,8 @@
     "jsx": "preserve",
     "incremental": true,
     "baseUrl": ".",
-    "moduleResolution": "node",
+    "moduleResolution": "node"
   },
   "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules"]
 }

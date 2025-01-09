@@ -6,7 +6,7 @@ const meta = {
   title: 'Components/Avatar',
   parameters: {
     componentSubtitle:
-      "An avatar serves as a visual representation of the user's identity on screens, commonly featured in various applications such as business software, social media platforms, and video games.",
+      "An avatar is a visual representation of a user's identity, commonly utilized across various applications like business software, social media platforms, and video games.",
   },
   component: Avatar,
   tags: ['autodocs'],
@@ -18,9 +18,6 @@ const meta = {
   },
   argTypes: {
     icon: IconArgType({ stroke: 'white', fill: 'white' }, [IconKey.StarIcon]),
-    elevated: {
-      description: 'available only for circle shape without badge',
-    },
   },
 } satisfies Meta<typeof Avatar>;
 

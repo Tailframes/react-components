@@ -6,12 +6,13 @@ const meta = {
   title: 'Components/Button',
   parameters: {
     componentSubtitle:
-      'A button with a call-to-action (CTA) is a dynamic component within a user interface, motivating users to perform specific actions.',
+      'A button with a call-to-action (CTA) is a powerful and dynamic UI component designed to prompt users to take specific actions, such as submitting forms, navigating to other pages, or making purchases. As an interactive element, it plays a crucial role in driving user engagement and achieving desired outcomes within digital interfaces.',
   },
   component: Button,
   tags: ['autodocs'],
   args: {
     children: 'Button',
+    disabled: false,
     fullWidth: false,
     iconOnly: false,
     size: 'medium',
@@ -19,17 +20,10 @@ const meta = {
   },
   argTypes: {
     iconOnly: {
-      description: 'removes the horizontal padding from the button',
       control: { type: 'boolean' },
     },
-    fullWidth: {
-      control: { type: 'boolean' },
-    },
-    disabled: {
-      control: { type: 'boolean' },
-    },
-    startIcon: IconArgType({}),
-    endIcon: IconArgType({}),
+    startAdornment: IconArgType({}),
+    endAdornment: IconArgType({}),
   },
 } satisfies Meta<typeof Button>;
 

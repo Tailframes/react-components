@@ -1,13 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Radio } from '../components/radio';
+import { type ComponentType } from 'react';
+import { Label } from '../components/label';
+import { Radio } from '../components/radio/radio';
 
 const meta = {
   title: 'Components/Radio',
   parameters: {
     componentSubtitle:
-      'Radio buttons constitute a vital component within forms, serving their purpose when users need to select precisely one option from a list featuring two or more mutually exclusive possibilities.',
+      'Radio buttons are essential form elements used when users need to select a single option from a set of mutually exclusive choices. These components play a crucial role in ensuring clear and straightforward user interactions, particularly in scenarios requiring a definitive selection.',
   },
   component: Radio,
+  subcomponents: { Label: Label as ComponentType<unknown> },
   tags: ['autodocs'],
   args: {
     size: 'medium',
@@ -18,9 +21,6 @@ const meta = {
       table: {
         disable: true,
       },
-    },
-    labelProps: {
-      description: 'HTML attributes for the label element',
     },
     name: {
       table: {

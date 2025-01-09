@@ -2,6 +2,122 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.32](https://github.com/Tailframes/tailframes-components/compare/v0.1.31...v0.1.32) (2025-01-04)
+
+
+### Features
+
+* **avatar:** add background image to avatar component as missing img fallback ([5c0da44](https://github.com/Tailframes/tailframes-components/commit/5c0da4430bc5d6cb7f04607a4ea9a440fb498126))
+
+
+### Bug Fixes
+
+* **divider:** direction variant styling ([8057b0b](https://github.com/Tailframes/tailframes-components/commit/8057b0b1c86e5a7480a6ba5252b4e5f3e73bbe8f))
+
+### [0.1.31](https://github.com/Tailframes/tailframes-components/compare/v0.1.30...v0.1.31) (2024-09-09)
+
+
+### Features
+
+* **accordion:** update Accordion component with new icons and content ([337b238](https://github.com/Tailframes/tailframes-components/commit/337b23809283e8144de5da7a007404b0081c2ce7))
+
+
+### Bug Fixes
+
+* **accordion:** improve styling in accordion component ([18f1d50](https://github.com/Tailframes/tailframes-components/commit/18f1d505fc718d6693da44b0c6c89aebf27c276c))
+
+### [0.1.30](https://github.com/Tailframes/tailframes-components/compare/v0.1.29...v0.1.30) (2024-09-09)
+
+
+### Bug Fixes
+
+* **components:** fix class names in tooltip and select option ([0e38b46](https://github.com/Tailframes/tailframes-components/commit/0e38b46d98204fe19f0df26e8989b1a7a8d81053))
+
+### [0.1.29](https://github.com/Tailframes/tailframes-components/compare/v0.1.28...v0.1.29) (2024-09-09)
+
+
+### Features
+
+* **alert:** add AlertProps description ([0c72a5e](https://github.com/Tailframes/tailframes-components/commit/0c72a5ee469cc344d7dabfa55aa785f0396dc478))
+* **avatar:** add AvatarProps description ([e205607](https://github.com/Tailframes/tailframes-components/commit/e205607756fb8ef462dbd8447e0268ccf9b32219))
+* **badge:** add BadgeProps description ([070bf79](https://github.com/Tailframes/tailframes-components/commit/070bf79fe927d951087bbe08ffa7f764b6eaf353))
+* **breadcrumbs:** add BreadcrumbsProps description; move BreadcrumbsItem to separate file ([c7b31ee](https://github.com/Tailframes/tailframes-components/commit/c7b31ee06f25a6cb8aca10d5f23ef07dd8fef377))
+* **button:** add ButtonProps description ([92e9d54](https://github.com/Tailframes/tailframes-components/commit/92e9d54e0dac93deea72059b786106dc1b31e0d6))
+* **checkbox:** add CheckboxProps description ([0258f9c](https://github.com/Tailframes/tailframes-components/commit/0258f9ce34ccc8a950e4b7c04045740a27b9c98c))
+* **components:** add components props description; split some of the components into smaller modules ([7a49545](https://github.com/Tailframes/tailframes-components/commit/7a495455a80f213838df60ddb806e3f613691e10))
+* **components:** update descriptions for Avatar, Badge, Alert, Accordion, Breadcrumbs, and Button components ([82f8ae7](https://github.com/Tailframes/tailframes-components/commit/82f8ae7740c8ee1d58477b7907d7ab0110f55924))
+* **divider:** add DividerProps description ([b6caa2c](https://github.com/Tailframes/tailframes-components/commit/b6caa2c030a4a2e29ab1e20ba07967a89cf1bb26))
+
+
+### Bug Fixes
+
+* **select:** refactor handleBlur function ([cfa1d4c](https://github.com/Tailframes/tailframes-components/commit/cfa1d4ce1d830c612292460e2e71ed11cf2949b2))
+
+### [0.1.28](https://github.com/Tailframes/tailframes-components/compare/v0.1.27...v0.1.28) (2024-09-02)
+
+
+### Features
+
+* **storybook:** add subcomponents ([120550e](https://github.com/Tailframes/tailframes-components/commit/120550ecf38044b65492983b027c88ca00789ed1))
+
+### [0.1.27](https://github.com/Tailframes/tailframes-components/compare/v0.1.26...v0.1.27) (2024-09-02)
+
+
+### Features
+
+* add new storybook addons ([773ab0c](https://github.com/Tailframes/tailframes-components/commit/773ab0c8f581566cccb2436d6c0b306d8ee757df))
+* **components:** update class names in tooltip and divider components ([2cde846](https://github.com/Tailframes/tailframes-components/commit/2cde846bc929f3f97b56c758ee325a3732171ac5))
+* **select:** add Select component ([#13](https://github.com/Tailframes/tailframes-components/issues/13)) ([eb00a05](https://github.com/Tailframes/tailframes-components/commit/eb00a050e6b3f1850da502c31c9cd60551e870d4))
+* **storybook:** migrate to storybook v8 ([28b0e60](https://github.com/Tailframes/tailframes-components/commit/28b0e607732ee8d69684b9e67d3abcdb64dd7f5d))
+
+
+### Bug Fixes
+
+* **checkbox:** fix issue with unchecked checkboxes in Checkbox component ([fd9cdef](https://github.com/Tailframes/tailframes-components/commit/fd9cdeff1a8591681430454c729906f1044a0253))
+
+### [0.1.26](https://github.com/Tailframes/tailframes-components/compare/v0.1.25...v0.1.26) (2024-08-21)
+
+### [0.1.25](https://github.com/Tailframes/tailframes-components/compare/v0.1.24...v0.1.25) (2024-08-21)
+
+
+### Bug Fixes
+
+* **switch:** fix switch component label id assignment ([9d0150a](https://github.com/Tailframes/tailframes-components/commit/9d0150ac24549c0356a447fc9bd8492d9ea9a406))
+
+### [0.1.24](https://github.com/Tailframes/tailframes-components/compare/v0.1.23...v0.1.24) (2024-08-21)
+
+### [0.1.23](https://github.com/Tailframes/tailframes-components/compare/v0.1.22...v0.1.23) (2024-08-21)
+
+
+### Features
+
+* **components:** improve accessibility ([6e3e6be](https://github.com/Tailframes/tailframes-components/commit/6e3e6be97a3a9bb15551898727c13bd1eabac4f3))
+
+### [0.1.22](https://github.com/Tailframes/tailframes-components/compare/v0.1.21...v0.1.22) (2024-07-25)
+
+
+### Features
+
+* **breadcrumbs:** improve accessibility ([d9e721a](https://github.com/Tailframes/tailframes-components/commit/d9e721a06cfe4aa601621a320fedf668ffc179c6))
+* **radio:** improve accessibility; add RadioGroup component ([8f20702](https://github.com/Tailframes/tailframes-components/commit/8f207029f24f6014426be247f0dee5593b1e4ba6))
+
+
+### Bug Fixes
+
+* **input:** typing ([5d50ea2](https://github.com/Tailframes/tailframes-components/commit/5d50ea285e475c8e8e91bd4cb8a4e9070705a943))
+* **storybook:** tailwind config ([635dc21](https://github.com/Tailframes/tailframes-components/commit/635dc21b24195ea99940f42e680f46f5aa29ad92))
+
+### [0.1.21](https://github.com/Tailframes/tailframes-components/compare/v0.1.20...v0.1.21) (2024-07-21)
+
+
+### Features
+
+* **button:** improve accessibility ([3acbc62](https://github.com/Tailframes/tailframes-components/commit/3acbc62477a4a3a9c28db900704807895c81e256))
+* **checkbox:** improve accessibility ([1f8000e](https://github.com/Tailframes/tailframes-components/commit/1f8000e7a0725eee429abd31f2f55cfbc358c0b5))
+* **divider:** improve accessibility ([91b7391](https://github.com/Tailframes/tailframes-components/commit/91b7391055b8e3297e4a196e2dffb52d935c6159))
+* **input:** improve accessibility ([6017b9c](https://github.com/Tailframes/tailframes-components/commit/6017b9c5c69a5d9073a757a51031074687b064cb))
+* **label:** improve typing ([b97657b](https://github.com/Tailframes/tailframes-components/commit/b97657b144c5aba32a54d3f8e9f54e72a5d1df38))
+
 ### [0.1.20](https://github.com/Tailframes/tailframes-components/compare/v0.1.18...v0.1.20) (2024-07-17)
 
 

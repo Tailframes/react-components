@@ -1,10 +1,12 @@
-import { clsxMerge } from '../utils';
+import { clsxMerge, joinClassNames } from '../utils';
 import { type ButtonHTMLAttributes, forwardRef, type ReactNode } from 'react';
 import { cva } from 'class-variance-authority';
 
 const buttonVariants = cva(
-  'group inline-flex items-center justify-center whitespace-nowrap rounded-lg py-2 align-middle text-sm font-semibold leading-none transition-all duration-300 ease-in-out ' +
-    'disabled:cursor-not-allowed',
+  joinClassNames(
+    'group inline-flex items-center justify-center whitespace-nowrap rounded-lg py-2 align-middle text-sm font-semibold leading-none transition-all duration-300 ease-in-out',
+    'disabled:cursor-not-allowed'
+  ),
   {
     variants: {
       variant: {
@@ -32,11 +34,11 @@ const buttonVariants = cva(
         true: 'p-0',
         false: '',
       },
-      startIcon: {
+      startAdornment: {
         true: '',
         false: '',
       },
-      endIcon: {
+      endAdornment: {
         true: '',
         false: '',
       },
@@ -58,13 +60,13 @@ const buttonVariants = cva(
       {
         variant: ['primary', 'secondary', 'outlined'],
         iconOnly: false,
-        startIcon: true,
+        startAdornment: true,
         class: 'px-4',
       },
       {
         variant: ['primary', 'secondary', 'outlined'],
         iconOnly: false,
-        endIcon: true,
+        endAdornment: true,
         class: 'px-4',
       },
       {
@@ -93,22 +95,33 @@ const buttonVariants = cva(
 
 export interface ButtonVariants {
   disabled?: boolean;
-  endIcon?: boolean;
+  endAdornment?: boolean;
+  /** If true, the button will be full width. */
   fullWidth?: boolean;
   href?: boolean;
+  /** Should be used with icon content, removes the horizontal padding from the button. */
   iconOnly?: boolean;
+  /** Size of the button. */
   size?: 'small' | 'medium' | 'large';
-  startIcon?: boolean;
+  startAdornment?: boolean;
+  /** Variant of the button. */
   variant?: 'primary' | 'secondary' | 'outlined' | 'text' | 'text-default';
 }
 
 export interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement>,
-    Omit<ButtonVariants, 'disabled' | 'href' | 'startIcon' | 'endIcon'>,
+    Omit<ButtonVariants, 'href' | 'startAdornment' | 'endAdornment'>,
     Partial<Pick<HTMLAnchorElement, 'target'>> {
+  /** The content of the button. */
+  children: ReactNode;
+  /** If true, the button will be disabled. */
+  disabled?: boolean;
+  /** The href of the button. */
   href?: string;
-  startIcon?: ReactNode;
-  endIcon?: ReactNode;
+  /** Start adornment of the button e.g. an icon. */
+  startAdornment?: ReactNode;
+  /** End adornment of the button, e.g. an icon. */
+  endAdornment?: ReactNode;
 }
 
 export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
@@ -118,40 +131,43 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
       size = 'medium',
       iconOnly = false,
       fullWidth = false,
+      disabled = false,
       href,
       className,
       children,
-      startIcon,
-      endIcon,
+      startAdornment,
+      endAdornment,
       ...rest
     }: ButtonProps,
     ref
   ) => {
-    const Component = href && !rest.disabled ? 'a' : 'button';
+    const Component = href && !disabled ? 'a' : 'button';
 
     return (
       <Component
         ref={ref as never}
         type='button'
         href={href}
+        aria-disabled={disabled}
         className={clsxMerge(
           buttonVariants({
             href: Boolean(href),
             variant,
             size,
             iconOnly,
-            startIcon: Boolean(startIcon),
-            endIcon: Boolean(endIcon),
-            disabled: Boolean(rest?.disabled),
+            startAdornment: Boolean(startAdornment),
+            endAdornment: Boolean(endAdornment),
+            disabled,
             fullWidth,
           }),
           className
         )}
+        disabled={disabled}
         {...rest}
       >
-        {startIcon}
-        {children && <span>{children}</span>}
-        {endIcon}
+        {startAdornment}
+        {children && <div>{children}</div>}
+        {endAdornment}
       </Component>
     );
   }

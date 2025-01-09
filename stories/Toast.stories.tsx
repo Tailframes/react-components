@@ -33,7 +33,7 @@ const meta = {
   title: 'Components/Toast',
   parameters: {
     componentSubtitle:
-      'A toast, or snack, is a brief message that is displayed temporarily on the screen for a few seconds. It can be used to show success, error, warning, or information messages.',
+      'A Toast, also known as a snack, is a brief, temporary message that appears on the screen for a few seconds to convey success, error, warning, or informational messages. This small yet impactful feature plays a crucial role in providing real-time feedback to users, ensuring that they are promptly informed of important actions or events.',
   },
   decorators: [
     (_Story, StoryContext) => (
@@ -63,7 +63,7 @@ const meta = {
         summary: 3000,
       },
     },
-    startIcon: IconArgType({ className: 'stroke-inherit' }, [
+    startAdornment: IconArgType({ className: 'stroke-inherit' }, [
       IconKey.CircleExclamationMarkIcon,
       IconKey.CircleCloseIcon,
       IconKey.CheckboxIcon,
@@ -77,35 +77,35 @@ type Story = StoryObj<typeof meta>;
 
 export const OutlinedDefaultWithIcon: Story = {
   args: {
-    startIcon: IconKey.CircleExclamationMarkIcon,
+    startAdornment: IconKey.CircleExclamationMarkIcon,
   },
 };
 
 export const OutlinedSuccessWithIcon: Story = {
   args: {
     color: 'success',
-    startIcon: IconKey.CheckboxIcon,
+    startAdornment: IconKey.CheckboxIcon,
   },
 };
 
 export const OutlinedErrorWithIcon: Story = {
   args: {
     color: 'error',
-    startIcon: IconKey.CircleCloseIcon,
+    startAdornment: IconKey.CircleCloseIcon,
   },
 };
 
 export const OutlinedWarningWithIcon: Story = {
   args: {
     color: 'warning',
-    startIcon: IconKey.CircleExclamationMarkIcon,
+    startAdornment: IconKey.CircleExclamationMarkIcon,
   },
 };
 
 export const FilledDefaultWithIcon: Story = {
   args: {
     variant: 'filled',
-    startIcon: IconKey.CircleExclamationMarkIcon,
+    startAdornment: IconKey.CircleExclamationMarkIcon,
   },
 };
 
@@ -113,7 +113,7 @@ export const FilledSuccessWithIcon: Story = {
   args: {
     variant: 'filled',
     color: 'success',
-    startIcon: IconKey.CheckboxIcon,
+    startAdornment: IconKey.CheckboxIcon,
   },
 };
 
@@ -121,7 +121,7 @@ export const FilledErrorWithIcon: Story = {
   args: {
     variant: 'filled',
     color: 'error',
-    startIcon: IconKey.CircleCloseIcon,
+    startAdornment: IconKey.CircleCloseIcon,
   },
 };
 
@@ -129,7 +129,7 @@ export const FilledWarningWithIcon: Story = {
   args: {
     variant: 'filled',
     color: 'warning',
-    startIcon: IconKey.CircleExclamationMarkIcon,
+    startAdornment: IconKey.CircleExclamationMarkIcon,
   },
 };
 
