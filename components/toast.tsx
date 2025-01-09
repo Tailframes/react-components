@@ -1,5 +1,5 @@
 import { cva } from 'class-variance-authority';
-import { createContext, type HTMLAttributes, type ReactNode, useEffect, useState } from 'react';
+import { createContext, type HTMLAttributes, type ReactNode, useCallback, useEffect, useState } from 'react';
 import { CloseIcon } from '../assets/close-icon';
 import { clsxMerge } from '../utils';
 import { Button } from './button';
@@ -125,25 +125,28 @@ export function ToastProvider({ children }: { children: ReactNode }) {
   const [toastProps, setToastProps] = useState<(ToastProps & { id: string }) | null>(null);
   const [visible, setVisible] = useState<boolean>(false);
 
-  const setToast = (props: ToastProps | null) => {
-    if (props === null) {
-      setVisible(false);
-      // setTimeout used for smooth transition
-      const timeout = setTimeout(() => {
-        setToastProps(props);
-      }, 500);
+  const setToast = useCallback(
+    (props: ToastProps | null) => {
+      if (props === null) {
+        setVisible(false);
+        // setTimeout used for smooth transition
+        const timeout = setTimeout(() => {
+          setToastProps(props);
+        }, 500);
 
-      setToastTimeout(timeout);
-    } else {
-      clearTimeout(toastTimeout);
-      setToastProps({ id: Date.now().toString(), ...props });
-      setVisible(true);
-    }
-  };
+        setToastTimeout(timeout);
+      } else {
+        clearTimeout(toastTimeout);
+        setToastProps({ id: Date.now().toString(), ...props });
+        setVisible(true);
+      }
+    },
+    [toastTimeout]
+  );
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setToast(null);
-  };
+  }, [setToast]);
 
   // auto closing
   useEffect(() => {
