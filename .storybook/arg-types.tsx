@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type ReactNode } from 'react';
 import { ArgTypes } from '@storybook/react';
 import { SVGProps } from 'react';
 import { CheckIcon } from '../assets/check-icon';
@@ -19,7 +19,7 @@ export enum IconKey {
   CircleExclamationMarkIcon = 'CircleExclamationMarkIcon',
 }
 
-export const Icons: (iconProps: SVGProps<SVGSVGElement>) => Record<IconKey, React.ReactNode> = ({
+export const Icons: (iconProps: SVGProps<SVGSVGElement>) => Record<IconKey, ReactNode> = ({
   className,
   ...iconProps
 }: SVGProps<SVGSVGElement> = {}) => ({

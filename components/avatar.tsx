@@ -141,7 +141,12 @@ const Root = ({
     {...rest}
   >
     {!icon && !text && (
-      <img src={src ?? 'https://tailframes.com/images/avatar.webp'} alt='' className='aspect-square' {...imgProps} />
+      <img
+        src={src ?? 'https://tailframes.com/images/avatar.webp'}
+        alt=''
+        className='aspect-square bg-white'
+        {...imgProps}
+      />
     )}
     {icon && !text && <div className={avatarIconVariants({ size })}>{icon}</div>}
     {text && !icon && <span className={avatarTextVariants({ size })}>{text}</span>}
