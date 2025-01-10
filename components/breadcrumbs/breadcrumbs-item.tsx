@@ -18,7 +18,7 @@ export function BreadcrumbsItem({ label, icon, href, isLast }: BreadcrumbsItemPr
       <a
         href={href}
         className={clsxMerge(
-          'inline-flex cursor-pointer items-center gap-1.5 stroke-slate-500 text-xs leading-none transition-colors duration-300 ease-in-out hover:text-blue-700',
+          'inline-flex cursor-pointer items-center gap-1.5 stroke-slate-400 text-xs leading-none transition-colors duration-300 ease-in-out hover:text-blue-700',
           {
             'font-medium text-black': isLast,
             'font-normal text-slate-500': !isLast,
