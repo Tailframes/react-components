@@ -14,3 +14,7 @@ React components Storybook is available on [storybook.tailframes.com](https://st
 ## Blog
 
 Read our articles on [blog.tailframes.com](https://blog.tailframes.com).
+
+## Free Icons
+
+Explore our collection of free SVG icons on [GitHub](https://github.com/Tailframes/icons).
