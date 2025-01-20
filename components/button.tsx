@@ -4,7 +4,7 @@ import { cva } from 'class-variance-authority';
 
 const buttonVariants = cva(
   joinClassNames(
-    'group inline-flex items-center justify-center whitespace-nowrap rounded-lg py-2 align-middle text-sm font-semibold leading-none transition-all duration-300 ease-in-out',
+    'group flex items-center justify-center whitespace-nowrap rounded-lg py-2 align-middle text-sm font-semibold leading-none transition-all duration-300 ease-in-out',
     'disabled:cursor-not-allowed'
   ),
   {
@@ -114,6 +114,8 @@ export interface ButtonProps
     Partial<Pick<HTMLAnchorElement, 'target'>> {
   /** The content of the button. */
   children: ReactNode;
+  /** The className of the button content. */
+  contentClassName?: string;
   /** If true, the button will be disabled. */
   disabled?: boolean;
   /** The href of the button. */
@@ -134,6 +136,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
       disabled = false,
       href,
       className,
+      contentClassName,
       children,
       startAdornment,
       endAdornment,
@@ -166,7 +169,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
         {...rest}
       >
         {startAdornment}
-        {children && <div>{children}</div>}
+        {children && <div className={contentClassName}>{children}</div>}
         {endAdornment}
       </Component>
     );
