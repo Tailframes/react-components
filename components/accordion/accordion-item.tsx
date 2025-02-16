@@ -58,7 +58,7 @@ export function AccordionItem({
         endAdornment={
           <div className='size-5'>
             <ChevronDownIcon
-              className={clsxMerge('stroke-black transition-transform duration-300 ease-in-out', {
+              className={clsxMerge('stroke-inherit transition-transform duration-300 ease-in-out', {
                 'rotate-180': isExpanded,
               })}
             />
