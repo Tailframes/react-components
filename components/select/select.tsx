@@ -1,20 +1,16 @@
 import { cva } from 'class-variance-authority';
 import React, {
   type ButtonHTMLAttributes,
-  type CSSProperties,
-  type FocusEvent,
   type SyntheticEvent,
   type KeyboardEvent,
-  useEffect,
   useId,
-  useRef,
   useState,
   useCallback,
-  useLayoutEffect,
 } from 'react';
 import { ChevronDownIcon } from '../../assets/chevron-down-icon';
 import { CloseIcon } from '../../assets/close-icon';
 import { clsxMerge, handleKeyboardEvent, joinClassNames } from '../../utils';
+import { useDropdown, type UseDropdownProps } from '../../hooks/use-dropdown';
 import { Label } from '../label';
 import { Portal } from '../portal';
 import { SelectOption, type SelectOptionProps, type SelectOptionValue } from './select-option';
@@ -76,7 +72,8 @@ export interface SelectVariants {
 
 export interface SelectProps
   extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'onChange' | 'value'>,
-    SelectVariants {
+    SelectVariants,
+    UseDropdownProps {
   /** Custom className for the select button. */
   buttonClassName?: string;
   /** If true, a checkbox will be shown for each option. */
@@ -89,8 +86,6 @@ export interface SelectProps
   disabled?: boolean;
   /** Custom className for the dropdown. */
   dropdownClassName?: string;
-  /** If provided, dropdown will be rendered in an element with the given id. */
-  dropdownPortalContainerId?: string;
   /** The label for the select. */
   label?: string;
   /** If true, multiple values can be selected. */
@@ -99,10 +94,6 @@ export interface SelectProps
   onChange?: (value: SelectOptionValue | SelectOptionValue[]) => void;
   /** Callback when the clear button is clicked. */
   onClear?: () => void;
-  /** Callback when the dropdown is closed. */
-  onDropdownClose?: () => void;
-  /** Callback when the dropdown is opened. */
-  onDropdownOpen?: () => void;
   /** The options for the select. */
   options: Pick<SelectOptionProps, 'value' | 'label' | 'startAdornment' | 'endAdornment'>[];
   /** The placeholder text to display in the select. */
@@ -130,99 +121,37 @@ export function Select({
   containerClassName,
   dropdownClassName,
   dropdownPortalContainerId,
+  alignment = 'center',
+  width,
   ...rest
 }: SelectProps) {
   const buttonId = useId();
   const labelId = useId();
-  const buttonRef = useRef<HTMLButtonElement>(null);
-  const dropdownRef = useRef<HTMLUListElement>(null);
+
   const [focusedOption, setFocusedOption] = useState<SelectOptionValue | null>(null);
-  const [isOpened, setIsOpened] = useState(false);
   const [isSelected, setIsSelected] = useState<SelectOptionValue[]>(
     options.filter(o => (Array.isArray(value) ? value.includes(o.value) : o.value === value)).map(o => o.value)
   );
-  const [showDropdown, setShowDropdown] = useState(false);
-  const [dropdownPosition, setDropdownPosition] = useState<Pick<CSSProperties, 'top' | 'left' | 'width'>>({
-    top: 0,
-    left: 0,
-    width: 0,
-  });
 
-  useEffect(() => {
-    if (isOpened) {
-      setShowDropdown(true);
-    }
-  }, [isOpened]);
-
-  useEffect(() => {
-    if (!showDropdown) {
-      const timer = setTimeout(() => {
-        setIsOpened(false);
-      }, 300);
-
-      return () => {
-        clearTimeout(timer);
-      };
-    }
-  }, [showDropdown]);
-
-  useLayoutEffect(() => {
-    const updateDropdownPosition = () => {
-      if (isOpened && buttonRef.current) {
-        const buttonRect = buttonRef.current.getBoundingClientRect();
-        setDropdownPosition({
-          top: buttonRect.bottom + window.scrollY + 8,
-          left: buttonRect.left + window.scrollX,
-          width: buttonRect.width,
-        });
-      }
-    };
-
-    updateDropdownPosition();
-    window.addEventListener('resize', updateDropdownPosition);
-
-    if (dropdownPortalContainerId) {
-      document.getElementById(dropdownPortalContainerId)?.addEventListener('scroll', updateDropdownPosition);
-    }
-
-    return () => {
-      window.removeEventListener('resize', updateDropdownPosition);
-      if (dropdownPortalContainerId) {
-        document.getElementById(dropdownPortalContainerId)?.removeEventListener('scroll', updateDropdownPosition);
-      }
-    };
-  }, [dropdownPortalContainerId, isOpened]);
-
-  const handleDropdownOpen = useCallback(() => {
-    if (!isOpened) {
-      onDropdownOpen?.();
-    }
-
-    setIsOpened(true);
-  }, [onDropdownOpen, isOpened]);
-
-  const handleDropdownClose = useCallback(() => {
-    if (showDropdown) {
+  const {
+    triggerRef,
+    dropdownRef,
+    isOpened,
+    showDropdown,
+    dropdownPosition,
+    handleDropdownClose,
+    toggleDropdown,
+    handleBlur,
+  } = useDropdown({
+    alignment,
+    dropdownPortalContainerId,
+    onDropdownClose: () => {
       onDropdownClose?.();
-    }
-
-    setShowDropdown(false);
-    setFocusedOption(null);
-  }, [onDropdownClose, showDropdown]);
-
-  const toggleDropdown = useCallback(() => {
-    if (isOpened) {
-      handleDropdownClose();
-    } else {
-      handleDropdownOpen();
-    }
-  }, [handleDropdownClose, handleDropdownOpen, isOpened]);
-
-  const handleBlur = (e: FocusEvent<HTMLDivElement>) => {
-    if (!buttonRef.current?.contains(e.relatedTarget) && !dropdownRef.current?.contains(e.relatedTarget)) {
-      handleDropdownClose();
-    }
-  };
+      setFocusedOption(null);
+    },
+    onDropdownOpen,
+    width,
+  });
 
   const handleSelect = useCallback(
     (option: SelectOptionValue) => {
@@ -259,6 +188,7 @@ export function Select({
     [onClear]
   );
 
+  // TODO create a hook for keyboard events etc. - useSelect
   const handleKeyboardEvents = useCallback(
     (e: KeyboardEvent<HTMLButtonElement>) => {
       e.preventDefault();
@@ -277,8 +207,6 @@ export function Select({
       if (!isOpened) {
         return;
       }
-
-      handleKeyboardEvent<HTMLButtonElement>('Escape', handleDropdownClose)(e);
 
       handleKeyboardEvent<HTMLButtonElement>('ArrowUp', () => {
         setFocusedOption(prevFocusedOption => {
@@ -306,7 +234,7 @@ export function Select({
         });
       })(e);
     },
-    [focusedOption, handleClear, handleDropdownClose, handleSelect, isOpened, options, toggleDropdown]
+    [focusedOption, handleClear, handleSelect, isOpened, options, toggleDropdown]
   );
 
   return (
@@ -325,7 +253,7 @@ export function Select({
         </Label>
       )}
       <button
-        ref={buttonRef}
+        ref={triggerRef}
         onClick={toggleDropdown}
         onKeyDown={handleKeyboardEvents}
         className={clsxMerge(selectButtonVariants({ error, size, isOpened: showDropdown }), buttonClassName)}

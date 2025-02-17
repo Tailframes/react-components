@@ -48,7 +48,12 @@ export interface DividerProps extends HTMLAttributes<HTMLDivElement>, DividerVar
 
 export function Divider({ size = 'thin', direction = 'horizontal', children, className, ...rest }: DividerProps) {
   return (
-    <div role='separator' className={clsxMerge(dividerVariants({ size, direction }), className)} {...rest}>
+    <div
+      role='separator'
+      aria-hidden='true'
+      className={clsxMerge(dividerVariants({ size, direction }), className)}
+      {...rest}
+    >
       {children}
     </div>
   );
