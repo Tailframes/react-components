@@ -121,7 +121,7 @@ export function Toast({
 
 Toast.displayName = 'Toast';
 
-// ToastProvider
+// Toast context
 
 export interface ToastContextProps {
   toast: (ToastProps & { id: string }) | null;
