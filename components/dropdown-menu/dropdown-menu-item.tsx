@@ -53,7 +53,7 @@ export const DropdownMenuItem = forwardRef<HTMLButtonElement, DropdownMenuItemPr
           className={clsxMerge(
             joinClassNames(
               'justify-start rounded stroke-slate-700 text-sm font-normal text-slate-700 transition-colors duration-300 ease-in-out',
-              'hover:bg-blue-50 hover:text-blue-700 focus:bg-blue-50 focus:text-blue-700'
+              'hover:bg-blue-50 hover:text-blue-700 hover:opacity-100 focus:bg-blue-50 focus:text-blue-700'
             ),
             className
           )}
